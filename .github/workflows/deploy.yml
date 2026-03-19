@@ -1,0 +1,76 @@
+# Despliegue del theme Julia Design → FTP Tienda Nube
+#
+# Secretos requeridos (Settings → Secrets and variables → Actions):
+#   FTP_SERVER   → ej. ftp.tiendanube.com (según lo que indique tu panel)
+#   FTP_USERNAME → usuario FTP del theme
+#   FTP_PASSWORD → contraseña FTP (NUNCA commitear; rotar si se filtró)
+#
+# Opcional: FTP_SERVER_DIR → carpeta remota si TN te pide un path (ej. / o /public_html/...)
+#   Definilo como secret y usá server-dir abajo si hace falta.
+
+name: Deploy theme to Tienda Nube (FTP)
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-tiendanube-ftp
+  cancel-in-progress: true
+
+# Necesario para commitear `.ftp-deploy-sync-state.json` tras el deploy (estado incremental entre runs).
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Despliegue incremental: FTP-Deploy-Action usa `.ftp-deploy-sync-state.json` en la raíz
+      # para subir solo archivos nuevos/modificados. Ese archivo debe quedar en el repo
+      # (se actualiza en el paso siguiente).
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Si tu FTP exige una carpeta concreta, creá el secret FTP_SERVER_DIR y descomentá:
+          # server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          # Incremental: no borrar remoto completo; solo sincronizar cambios respecto al estado.
+          dangerous-clean-slate: false
+          # No subir basura del prototipo local / IDE (ajustá según tu repo)
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            .github/**
+            **/.DS_Store
+            **/Thumbs.db
+            index.html
+            assets/**
+            Julia1.docx
+          log-level: standard
+
+      - name: Guardar estado incremental en Git
+        run: |
+          if [ ! -f .ftp-deploy-sync-state.json ]; then
+            echo "No se generó .ftp-deploy-sync-state.json; nada que commitear."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .ftp-deploy-sync-state.json
+          if git diff --cached --quiet; then
+            echo "Estado FTP sin cambios."
+          else
+            git commit -m "chore(deploy): actualizar estado FTP incremental [skip ci]"
+            git push
+          fi

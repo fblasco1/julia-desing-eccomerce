@@ -1,0 +1,16 @@
+---
+description: Guía de marca y UX para Julia Design (Spruce Simple).
+alwaysApply: true
+---
+
+# Julia Design: Reglas de marca y estilo
+
+- Responder SIEMPRE en español.
+- Paleta (usar tal cual): `#D2D0D0` (gris claro), `#FFFFFF` (blanco), `#81756C` (visón intermedio), `#54463D` (marrón oscuro).
+- Tipografías: **HK Grotesk** para títulos (bold) y **Montserrat** para cuerpo (light/regular/medium).
+- Estética: editorial/minimalista con contraste alto, split screen 50/50, logo gigante translúcido (aprox. `opacity: 0.2`), imágenes recortadas sin fondo integradas con sombras/drop-shadows sutiles.
+- Interacciones: animaciones suaves (transiciones/scroll) y carrusel “infinito” con apariencia continua.
+- Mobile-first: cada componente debe verse impecable en móvil antes que en desktop.
+- Arquitectura Tienda Nube: no usar frameworks (React/Vue/Next). Solo `.tpl/.twig`, `static` (CSS/JS vanilla) y estructura de `layouts/templates/snipplets`.
+- Si un componente nativo rompe el diseño, ocultarlo con CSS o reemplazarlo desde el `.tpl` (sin cambiar lógica si no hace falta).
+

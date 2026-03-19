@@ -1,0 +1,14 @@
+---
+description: Implementación frontend para “Spruce Simple”.
+globs: "**/*.css **/*.scss **/*.scss.tpl **/*.js **/*.tpl.js **/*.html **/static/**"
+alwaysApply: false
+---
+
+# Julia Design: Frontend (CSS/JS vanilla)
+
+1. Tipografías: HK Grotesk en títulos; Montserrat en cuerpo. No usar fuentes del sistema.
+2. Colores: usar las variables/paleta definidas; evitar grises/negros “random”.
+3. Carrusel infinito: usar lógica de duplicación/clonado (o loop) para que el scroll/seam sea imperceptible y no rompa en mobile.
+4. Imágenes: asumir fondos transparentes; aplicar `object-fit: contain` y `mix-blend-mode`/drop-shadows sutiles cuando mejore la integración.
+5. Performance: priorizar carga inicial; evitar DOM excesivo; JS liviano y progresivo.
+
