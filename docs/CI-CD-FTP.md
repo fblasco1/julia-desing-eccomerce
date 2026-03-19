@@ -51,3 +51,12 @@ Para que el estado sobreviva entre runs de GitHub Actions, el workflow incluye u
 ### Limpieza total del servidor
 
 Con `dangerous-clean-slate: false` **no** se eliminan en el FTP archivos que ya no existen en el repo. Si alguna vez necesitás un espejo exacto (borrar remotos huérfanos), revisá la documentación de la acción y usá `dangerous-clean-slate: true` **solo** cuando sepas el riesgo.
+
+## Error `534 TLS required` o “server only supports SFTP”
+
+- **`534 TLS required`**: el servidor pide **FTPS** (TLS), no FTP plano. En `.github/workflows/deploy.yml` debe estar `protocol: ftps` (ya configurado).
+- Si sigue fallando:
+  1. Revisá en el panel de TN el **puerto** (suele ser **21** con TLS explícito).
+  2. Si el error pasa a certificados SSL, cambiá `security: strict` por **`loose`** en el workflow.
+  3. Si tu doc dice **FTPS implícito** (puerto **990**), probá `protocol: ftps-legacy` y `port: 990`.
+- **SFTP** (SSH) **no** es lo mismo que FTPS: esta acción **no** usa SFTP. Si TN solo ofrece SFTP, habría que usar otra acción (p. ej. subida vía `scp`/`rsync` con clave SSH) o el método de despliegue que indique Tienda Nube.

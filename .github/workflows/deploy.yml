@@ -42,6 +42,13 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          # Tienda Nube / muchos hosts exigen FTPS (AUTH TLS). Error 534 => sin esto estás en FTP plano.
+          protocol: ftps
+          # strict = certificado debe ser válido. Si falla por certificado, probá loose (menos estricto).
+          security: strict
+          # Puerto explícito solo si TN te indica otro (21 = FTPS explícito habitual).
+          # port: 21
+          # Si aún falla: probá protocol ftps-legacy + port 990 (FTPS implícito), según doc del host.
           # Si tu FTP exige una carpeta concreta, creá el secret FTP_SERVER_DIR y descomentá:
           # server-dir: ${{ secrets.FTP_SERVER_DIR }}
           # Incremental: no borrar remoto completo; solo sincronizar cambios respecto al estado.
@@ -57,6 +64,9 @@ jobs:
             index.html
             assets/**
             Julia1.docx
+            docs/**
+            prototype/**
+            prototype/**/**
           log-level: standard
 
       - name: Guardar estado incremental en Git
