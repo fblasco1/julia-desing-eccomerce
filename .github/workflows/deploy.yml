@@ -44,11 +44,14 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           # Tienda Nube / muchos hosts exigen FTPS (AUTH TLS). Error 534 => sin esto estás en FTP plano.
           protocol: ftps
-          # strict = certificado debe ser válido. Si falla por certificado, probá loose (menos estricto).
-          security: strict
-          # Puerto explícito solo si TN te indica otro (21 = FTPS explícito habitual).
-          # port: 21
-          # Si aún falla: probá protocol ftps-legacy + port 990 (FTPS implícito), según doc del host.
+          # "data socket" / ECONNRESET en TLS: suele ser canal de datos FTPS; loose suele ayudar (cert / negociación).
+          security: loose
+          port: 21
+          # Primer deploy grande: más tiempo para PASV + TLS en cada transferencia.
+          timeout: 180000
+          # Si sigue fallando en "data socket", probá en TN si ofrecen FTPS implícito y descomentá:
+          # protocol: ftps-legacy
+          # port: 990
           # Si tu FTP exige una carpeta concreta, creá el secret FTP_SERVER_DIR y descomentá:
           # server-dir: ${{ secrets.FTP_SERVER_DIR }}
           # Incremental: no borrar remoto completo; solo sincronizar cambios respecto al estado.
@@ -57,6 +60,8 @@ jobs:
           exclude: |
             **/.git*
             **/.git*/**
+            **/.cursor/**
+            .cursor/**
             **/node_modules/**
             .github/**
             **/.DS_Store
