@@ -1,13 +1,13 @@
 {
     "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
     "version": "1.0.0",
-    "generatedTime": 1774032785001,
+    "generatedTime": 1774035038344,
     "data": [
         {
             "type": "file",
             "name": ".ftp-deploy-sync-state.json",
             "size": 34839,
-            "hash": "f33081d022036ba1159614c8147d443022ffbae8b7afda1c9faaa36aa41b1f52"
+            "hash": "3bdd76176911a6b907e0596f1d8044c50448f4d5fc40aae6bb2cc1864c41d1ff"
         },
         {
             "type": "folder",
@@ -37,21 +37,21 @@
         },
         {
             "type": "file",
-            "name": "config/sections.txt",
-            "size": 464,
-            "hash": "f8da069511a2c28b5fede8bfd6837bd5b5bbc20692a0b418a242b505c1903c56"
-        },
-        {
-            "type": "file",
             "name": "config/defaults.txt",
             "size": 4312,
             "hash": "ebe54682100122a44474f0f0b9510fbbacc78c2a996a520dc25b102a99cb8620"
         },
         {
             "type": "file",
+            "name": "config/sections.txt",
+            "size": 464,
+            "hash": "f8da069511a2c28b5fede8bfd6837bd5b5bbc20692a0b418a242b505c1903c56"
+        },
+        {
+            "type": "file",
             "name": "config/settings.txt",
-            "size": 16984,
-            "hash": "d6434315a8f15c84e83523a05a24095a6bbbd7263830a88c27748a54b01ab5fb"
+            "size": 38343,
+            "hash": "448a1ae168cbd5cfb48c93761069b065ac969abc6cac2e0e7055a147a80a8919"
         },
         {
             "type": "file",
@@ -72,14 +72,14 @@
             "hash": "b41569f20e01cfd09e74dae3701d4bb8d9248b92a2d596949a3010ff62c55dd5"
         },
         {
+            "type": "folder",
+            "name": "snipplets/banner-services"
+        },
+        {
             "type": "file",
             "name": "snipplets/breadcrumbs.tpl",
             "size": 1817,
             "hash": "60414e0862c26a35d01501645f609339baf9cb56ff204358b2604de5ed3870d3"
-        },
-        {
-            "type": "folder",
-            "name": "snipplets/banner-services"
         },
         {
             "type": "file",
@@ -150,14 +150,14 @@
             "name": "snipplets/header"
         },
         {
+            "type": "folder",
+            "name": "snipplets/home"
+        },
+        {
             "type": "file",
             "name": "snipplets/labels.tpl",
             "size": 699,
             "hash": "98533fe2d3fb6b3a065deae327f02f09974287870e55a99ab22670d8a537720f"
-        },
-        {
-            "type": "folder",
-            "name": "snipplets/home"
         },
         {
             "type": "file",
@@ -183,15 +183,15 @@
         },
         {
             "type": "file",
-            "name": "snipplets/notification.tpl",
-            "size": 1912,
-            "hash": "b87d9a39be4f32c16453dfc65251249d5502de2318d3da8f79d33a9929aca30c"
-        },
-        {
-            "type": "file",
             "name": "snipplets/page-header.tpl",
             "size": 805,
             "hash": "1f28ec0601e292e2d1bfef73021e509d37aeb7c433754d564593b3f3d0735908"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/notification.tpl",
+            "size": 1912,
+            "hash": "b87d9a39be4f32c16453dfc65251249d5502de2318d3da8f79d33a9929aca30c"
         },
         {
             "type": "folder",
@@ -237,15 +237,15 @@
         },
         {
             "type": "file",
-            "name": "snipplets/whatsapp-chat.tpl",
-            "size": 499,
-            "hash": "2cf47114ace0ebf149e21c7f692ab78edf95f808006be73b86048651e4137e36"
-        },
-        {
-            "type": "file",
             "name": "snipplets/video-item.tpl",
             "size": 3209,
             "hash": "3115316fd6f9ac6663b58e2f72659208dc6665ccb5075cfd51a80e3f268cc775"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/whatsapp-chat.tpl",
+            "size": 499,
+            "hash": "2cf47114ace0ebf149e21c7f692ab78edf95f808006be73b86048651e4137e36"
         },
         {
             "type": "file",
@@ -259,11 +259,11 @@
         },
         {
             "type": "folder",
-            "name": "static/js"
+            "name": "static/images"
         },
         {
             "type": "folder",
-            "name": "static/images"
+            "name": "static/js"
         },
         {
             "type": "file",
@@ -283,15 +283,15 @@
         },
         {
             "type": "file",
-            "name": "templates/blog.tpl",
-            "size": 1278,
-            "hash": "fdb79c81ea2bd29d610d60efac24d4044021f250cd6a0680730aa11cc71f1861"
-        },
-        {
-            "type": "file",
             "name": "templates/cart.tpl",
             "size": 3885,
             "hash": "d84d92563d474ec664f9256c65326738cc7bc41de0fd698a62b64da6f7c3e3c3"
+        },
+        {
+            "type": "file",
+            "name": "templates/blog.tpl",
+            "size": 1278,
+            "hash": "fdb79c81ea2bd29d610d60efac24d4044021f250cd6a0680730aa11cc71f1861"
         },
         {
             "type": "file",
@@ -599,18 +599,6 @@
         },
         {
             "type": "file",
-            "name": "snipplets/home/julia-home-hero.tpl",
-            "size": 3078,
-            "hash": "b186977bcf2086910c6c8907ec454f63bb66e64c5a0ff4c580168ef136079bf5"
-        },
-        {
-            "type": "file",
-            "name": "snipplets/home/julia-home.tpl",
-            "size": 674,
-            "hash": "5b19e876587c4f1c96e16289bc63e20833aa261aada757985299a66da320874b"
-        },
-        {
-            "type": "file",
             "name": "snipplets/home/julia-home-carousel.tpl",
             "size": 6058,
             "hash": "e999228f852a4917b2957824a3484ee306cf0148ee4472c9b2e83dc519a14a9c"
@@ -623,6 +611,24 @@
         },
         {
             "type": "file",
+            "name": "snipplets/home/julia-home-hero.tpl",
+            "size": 3078,
+            "hash": "b186977bcf2086910c6c8907ec454f63bb66e64c5a0ff4c580168ef136079bf5"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/home/julia-home.tpl",
+            "size": 674,
+            "hash": "5b19e876587c4f1c96e16289bc63e20833aa261aada757985299a66da320874b"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/navigation/navigation-foot.tpl",
+            "size": 311,
+            "hash": "8e78bbc9f8b9b12b5e783a2f71f9fa2f88184e7b23be06daf58385540e28c0fc"
+        },
+        {
+            "type": "file",
             "name": "snipplets/navigation/navigation-lang.tpl",
             "size": 632,
             "hash": "e79d736417e0a1e45bc5492bd8da1b00c3942a2736ca32f1aca49d40d6d1b8aa"
@@ -632,12 +638,6 @@
             "name": "snipplets/navigation/navigation-nav-list.tpl",
             "size": 3194,
             "hash": "dae78172cb5fa165c7436797060a3bb244a8a666e31323285dd231736d1190b7"
-        },
-        {
-            "type": "file",
-            "name": "snipplets/navigation/navigation-foot.tpl",
-            "size": 311,
-            "hash": "8e78bbc9f8b9b12b5e783a2f71f9fa2f88184e7b23be06daf58385540e28c0fc"
         },
         {
             "type": "file",
@@ -665,6 +665,12 @@
         },
         {
             "type": "file",
+            "name": "snipplets/product/product-description.tpl",
+            "size": 830,
+            "hash": "d8c1fce73a321fc2f871f8f946f6df34a33da0c8a518d079740576da8c5c7843"
+        },
+        {
+            "type": "file",
             "name": "snipplets/product/product-form.tpl",
             "size": 16539,
             "hash": "076d7af958102e8de5686fafd2418e75d97b217dee7e542507d73280a747884a"
@@ -677,15 +683,15 @@
         },
         {
             "type": "file",
-            "name": "snipplets/product/product-description.tpl",
-            "size": 830,
-            "hash": "d8c1fce73a321fc2f871f8f946f6df34a33da0c8a518d079740576da8c5c7843"
-        },
-        {
-            "type": "file",
             "name": "snipplets/product/product-image.tpl",
             "size": 5092,
             "hash": "e6c9a20fcd2b0f6ad92f729278b94a8d19dba2a33bf764a437b899c5e73bb6bd"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/product/product-payment-details.tpl",
+            "size": 2333,
+            "hash": "372298c9db309af35b636476133f7727702cadc249611c72ace7cf378b936fc1"
         },
         {
             "type": "file",
@@ -695,9 +701,9 @@
         },
         {
             "type": "file",
-            "name": "snipplets/product/product-payment-details.tpl",
-            "size": 2333,
-            "hash": "372298c9db309af35b636476133f7727702cadc249611c72ace7cf378b936fc1"
+            "name": "snipplets/product/product-related.tpl",
+            "size": 6202,
+            "hash": "218640ea28155781ac0b36f828e6b9f63709a25af79ce89bde29bc688e010856"
         },
         {
             "type": "file",
@@ -710,12 +716,6 @@
             "name": "snipplets/product/product-video.tpl",
             "size": 1243,
             "hash": "b65d00bdac5d88b95bba03f707a317b0c027ac47a8f8ed781ed1733aad564bdd"
-        },
-        {
-            "type": "file",
-            "name": "snipplets/product/product-related.tpl",
-            "size": 6202,
-            "hash": "218640ea28155781ac0b36f828e6b9f63709a25af79ce89bde29bc688e010856"
         },
         {
             "type": "file",
@@ -791,21 +791,33 @@
         },
         {
             "type": "file",
-            "name": "static/css/style-critical.scss",
-            "size": 107722,
-            "hash": "27ca5f401d884081621ae065957c83c9a3c6b83e3e7561e183a7a6af45a3836b"
-        },
-        {
-            "type": "file",
             "name": "static/css/style-colors.scss",
             "size": 43329,
             "hash": "6e5fd471ca8f4bffd6d3e9961bf884a5455e3ecf870e85636ad42ec86692c611"
         },
         {
             "type": "file",
+            "name": "static/css/style-critical.scss",
+            "size": 107722,
+            "hash": "27ca5f401d884081621ae065957c83c9a3c6b83e3e7561e183a7a6af45a3836b"
+        },
+        {
+            "type": "file",
             "name": "static/css/style-tokens.tpl",
             "size": 7675,
             "hash": "21aab91b58d9bbcef199e93187f64edd430876b29650f911bd127b82a2646d66"
+        },
+        {
+            "type": "file",
+            "name": "static/images/julia-spruce-bg-logo.jpg",
+            "size": 90810,
+            "hash": "649b9a7025b2631fabfa388040e429aed4d8efd48d7a1b2500f0ddfb9794f225"
+        },
+        {
+            "type": "file",
+            "name": "static/images/julia-spruce-hero-logo.png",
+            "size": 38126,
+            "hash": "abeccb3c55f0a4e346d679a7f0e17e121fd7603750264077b856c201e740e1a8"
         },
         {
             "type": "file",
@@ -833,39 +845,27 @@
         },
         {
             "type": "file",
-            "name": "static/js/spruce-carousel.js",
-            "size": 4516,
-            "hash": "9a82f29fdde7817d36685f0dcdf57c2c00b3f8a1efbd63fa15aa20f8efb78bca"
-        },
-        {
-            "type": "file",
             "name": "static/js/store.js.tpl",
             "size": 148692,
             "hash": "ccaa2cb318e39f00322f516de71c2dd6d88c6fc3afcfe98bb3aacd5578cb3ad2"
         },
         {
             "type": "file",
-            "name": "static/images/julia-spruce-bg-logo.jpg",
-            "size": 90810,
-            "hash": "649b9a7025b2631fabfa388040e429aed4d8efd48d7a1b2500f0ddfb9794f225"
-        },
-        {
-            "type": "file",
-            "name": "static/images/julia-spruce-hero-logo.png",
-            "size": 38126,
-            "hash": "abeccb3c55f0a4e346d679a7f0e17e121fd7603750264077b856c201e740e1a8"
-        },
-        {
-            "type": "file",
-            "name": "templates/account/address.tpl",
-            "size": 9156,
-            "hash": "0e43bac79b47efeb6ea6c1bee73a6ba3ed9b553605496fc2c8ca6946003a77d7"
+            "name": "static/js/spruce-carousel.js",
+            "size": 4516,
+            "hash": "9a82f29fdde7817d36685f0dcdf57c2c00b3f8a1efbd63fa15aa20f8efb78bca"
         },
         {
             "type": "file",
             "name": "templates/account/addresses.tpl",
             "size": 1996,
             "hash": "19ca756f3a22e0f287459355ee592b88549b499ace247e9cfaef406a9e1e880d"
+        },
+        {
+            "type": "file",
+            "name": "templates/account/address.tpl",
+            "size": 9156,
+            "hash": "0e43bac79b47efeb6ea6c1bee73a6ba3ed9b553605496fc2c8ca6946003a77d7"
         },
         {
             "type": "file",
@@ -947,12 +947,6 @@
         },
         {
             "type": "file",
-            "name": "snipplets/defaults/home/main_categories_help.tpl",
-            "size": 2572,
-            "hash": "a5f0ec49bf7b112c1248fab9a8acc9cfb562dbd38de11d2886e5cbce34208939"
-        },
-        {
-            "type": "file",
             "name": "snipplets/defaults/home/main_category_item_help.tpl",
             "size": 524,
             "hash": "6d7440865228a75abcab1e75cb2c98ab86be7d3a27aa5d6c24b27561290adb87"
@@ -974,6 +968,12 @@
             "name": "snipplets/defaults/home/slider_help.tpl",
             "size": 2112,
             "hash": "6757ae284335ec55f09d06925a14f3d0c187f43162595e0447bfa37d3b705de1"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/defaults/home/main_categories_help.tpl",
+            "size": 2572,
+            "hash": "a5f0ec49bf7b112c1248fab9a8acc9cfb562dbd38de11d2886e5cbce34208939"
         },
         {
             "type": "file",
