@@ -1,13 +1,13 @@
 {
     "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
     "version": "1.0.0",
-    "generatedTime": 1774035038344,
+    "generatedTime": 1774037315968,
     "data": [
         {
             "type": "file",
             "name": ".ftp-deploy-sync-state.json",
             "size": 34839,
-            "hash": "3bdd76176911a6b907e0596f1d8044c50448f4d5fc40aae6bb2cc1864c41d1ff"
+            "hash": "9a6a22a512289bc2e41b5525c60eabf31d018441a479a2f2d930400b0a29c203"
         },
         {
             "type": "folder",
@@ -124,14 +124,14 @@
             "hash": "c02b5f8e756454b42f871dc0c29e082ae36d616894b89938a37457efbcba543f"
         },
         {
+            "type": "folder",
+            "name": "snipplets/defaults"
+        },
+        {
             "type": "file",
             "name": "snipplets/cross-selling.tpl",
             "size": 1495,
             "hash": "3ae43b5c26fdba0d26d1e0901810ea79b766dd4b9e6294495240ded1f9b106ad"
-        },
-        {
-            "type": "folder",
-            "name": "snipplets/defaults"
         },
         {
             "type": "folder",
@@ -147,11 +147,11 @@
         },
         {
             "type": "folder",
-            "name": "snipplets/header"
+            "name": "snipplets/home"
         },
         {
             "type": "folder",
-            "name": "snipplets/home"
+            "name": "snipplets/header"
         },
         {
             "type": "file",
@@ -183,15 +183,15 @@
         },
         {
             "type": "file",
-            "name": "snipplets/page-header.tpl",
-            "size": 805,
-            "hash": "1f28ec0601e292e2d1bfef73021e509d37aeb7c433754d564593b3f3d0735908"
-        },
-        {
-            "type": "file",
             "name": "snipplets/notification.tpl",
             "size": 1912,
             "hash": "b87d9a39be4f32c16453dfc65251249d5502de2318d3da8f79d33a9929aca30c"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/page-header.tpl",
+            "size": 805,
+            "hash": "1f28ec0601e292e2d1bfef73021e509d37aeb7c433754d564593b3f3d0735908"
         },
         {
             "type": "folder",
@@ -208,14 +208,14 @@
             "name": "snipplets/product"
         },
         {
+            "type": "folder",
+            "name": "snipplets/shipping"
+        },
+        {
             "type": "file",
             "name": "snipplets/product_grid.tpl",
             "size": 390,
             "hash": "49db6ce099998e041f53f205b736a4adff5b147ca1c7c4d1cb817e1ec8b86ce6"
-        },
-        {
-            "type": "folder",
-            "name": "snipplets/shipping"
         },
         {
             "type": "file",
@@ -255,11 +255,11 @@
         },
         {
             "type": "folder",
-            "name": "static/css"
+            "name": "static/images"
         },
         {
             "type": "folder",
-            "name": "static/images"
+            "name": "static/css"
         },
         {
             "type": "folder",
@@ -272,26 +272,26 @@
             "hash": "34ab77e28eb3abd563e4f936a93ec1f14da793d167cd392e531e36d65f30737d"
         },
         {
-            "type": "folder",
-            "name": "templates/account"
-        },
-        {
             "type": "file",
             "name": "templates/blog-post.tpl",
             "size": 662,
             "hash": "90dae8ba3463cf7fa4c195894327bca7f0258df0d7d17ad31237267a10699236"
         },
         {
-            "type": "file",
-            "name": "templates/cart.tpl",
-            "size": 3885,
-            "hash": "d84d92563d474ec664f9256c65326738cc7bc41de0fd698a62b64da6f7c3e3c3"
+            "type": "folder",
+            "name": "templates/account"
         },
         {
             "type": "file",
             "name": "templates/blog.tpl",
             "size": 1278,
             "hash": "fdb79c81ea2bd29d610d60efac24d4044021f250cd6a0680730aa11cc71f1861"
+        },
+        {
+            "type": "file",
+            "name": "templates/cart.tpl",
+            "size": 3885,
+            "hash": "d84d92563d474ec664f9256c65326738cc7bc41de0fd698a62b64da6f7c3e3c3"
         },
         {
             "type": "file",
@@ -455,42 +455,6 @@
         },
         {
             "type": "file",
-            "name": "snipplets/header/header-advertising.tpl",
-            "size": 2837,
-            "hash": "11133cb36866ca8d74413b5ceaa8f47ce6a96ab9fd057cc292d8c3dce54ddfa1"
-        },
-        {
-            "type": "file",
-            "name": "snipplets/header/header-modals.tpl",
-            "size": 3499,
-            "hash": "061caa07cf5c3130c02d5fe9be0f823c8e919c4e255a253d8f924276a40d5a07"
-        },
-        {
-            "type": "file",
-            "name": "snipplets/header/header-search.tpl",
-            "size": 914,
-            "hash": "4b8008981a6c351fad36f765f921cd339d4d7f7ff8f906a6f77867a26a73a993"
-        },
-        {
-            "type": "file",
-            "name": "snipplets/header/header-utilities.tpl",
-            "size": 3288,
-            "hash": "6ce6538528d8ab81290f6d3565918450d83b9df32a6f1286b5c17fbd561652da"
-        },
-        {
-            "type": "file",
-            "name": "snipplets/header/header.tpl",
-            "size": 3905,
-            "hash": "0fa0f440d2d648284953075b81ecd1d1f7c66eb9e9211abd7009348c3ee7238f"
-        },
-        {
-            "type": "file",
-            "name": "snipplets/header/julia-spruce-nav-links.tpl",
-            "size": 651,
-            "hash": "141b3cd1ab10272956ff5cb1ee06abc7aee6097b0a0feddc06e9893eac88fc71"
-        },
-        {
-            "type": "file",
             "name": "snipplets/home/home-banners-grid.tpl",
             "size": 12929,
             "hash": "ec9719e104de07c0da37e8703cc69f13d8fc7068cf78c36708db3df7d94eb7ea"
@@ -533,15 +497,15 @@
         },
         {
             "type": "file",
-            "name": "snipplets/home/home-instafeed.tpl",
-            "size": 1605,
-            "hash": "49cbdd1b41488daf9c13e6734dc9e7d56ca797f5ecd43bb822ab3a82f22b88e6"
-        },
-        {
-            "type": "file",
             "name": "snipplets/home/home-institutional-message.tpl",
             "size": 1029,
             "hash": "b79ce9193827866e218075f9451402d8b5d32829f854557ba93b51e3bac5aab9"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/home/home-instafeed.tpl",
+            "size": 1605,
+            "hash": "49cbdd1b41488daf9c13e6734dc9e7d56ca797f5ecd43bb822ab3a82f22b88e6"
         },
         {
             "type": "file",
@@ -623,6 +587,42 @@
         },
         {
             "type": "file",
+            "name": "snipplets/header/header-advertising.tpl",
+            "size": 2837,
+            "hash": "11133cb36866ca8d74413b5ceaa8f47ce6a96ab9fd057cc292d8c3dce54ddfa1"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/header/header-modals.tpl",
+            "size": 3499,
+            "hash": "061caa07cf5c3130c02d5fe9be0f823c8e919c4e255a253d8f924276a40d5a07"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/header/header-search.tpl",
+            "size": 914,
+            "hash": "4b8008981a6c351fad36f765f921cd339d4d7f7ff8f906a6f77867a26a73a993"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/header/header-utilities.tpl",
+            "size": 3288,
+            "hash": "6ce6538528d8ab81290f6d3565918450d83b9df32a6f1286b5c17fbd561652da"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/header/header.tpl",
+            "size": 3905,
+            "hash": "0fa0f440d2d648284953075b81ecd1d1f7c66eb9e9211abd7009348c3ee7238f"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/header/julia-spruce-nav-links.tpl",
+            "size": 651,
+            "hash": "141b3cd1ab10272956ff5cb1ee06abc7aee6097b0a0feddc06e9893eac88fc71"
+        },
+        {
+            "type": "file",
             "name": "snipplets/navigation/navigation-foot.tpl",
             "size": 311,
             "hash": "8e78bbc9f8b9b12b5e783a2f71f9fa2f88184e7b23be06daf58385540e28c0fc"
@@ -653,15 +653,15 @@
         },
         {
             "type": "file",
-            "name": "snipplets/placeholders/button-placeholder.tpl",
-            "size": 1389,
-            "hash": "da3e81fbc0b5aeb65ffb32805015f48ff06b3d125215bcbf74ffc511327d5952"
-        },
-        {
-            "type": "file",
             "name": "snipplets/placeholders/shipping-placeholder.tpl",
             "size": 950,
             "hash": "829568838c763855f5939cf5b426c751644636743184a5b22bcc025dfc73b373"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/placeholders/button-placeholder.tpl",
+            "size": 1389,
+            "hash": "da3e81fbc0b5aeb65ffb32805015f48ff06b3d125215bcbf74ffc511327d5952"
         },
         {
             "type": "file",
@@ -695,15 +695,15 @@
         },
         {
             "type": "file",
-            "name": "snipplets/product/product-quantity.tpl",
-            "size": 1764,
-            "hash": "2b2760b1902f6ea08c2a4ba35e1eafaec17f18de99a8c7621d5571d53078228e"
-        },
-        {
-            "type": "file",
             "name": "snipplets/product/product-related.tpl",
             "size": 6202,
             "hash": "218640ea28155781ac0b36f828e6b9f63709a25af79ce89bde29bc688e010856"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/product/product-quantity.tpl",
+            "size": 1764,
+            "hash": "2b2760b1902f6ea08c2a4ba35e1eafaec17f18de99a8c7621d5571d53078228e"
         },
         {
             "type": "file",
@@ -779,6 +779,18 @@
         },
         {
             "type": "file",
+            "name": "static/images/julia-spruce-bg-logo.jpg",
+            "size": 90810,
+            "hash": "649b9a7025b2631fabfa388040e429aed4d8efd48d7a1b2500f0ddfb9794f225"
+        },
+        {
+            "type": "file",
+            "name": "static/images/julia-spruce-hero-logo.png",
+            "size": 38126,
+            "hash": "abeccb3c55f0a4e346d679a7f0e17e121fd7603750264077b856c201e740e1a8"
+        },
+        {
+            "type": "file",
             "name": "static/css/julia-spruce-theme.tpl",
             "size": 14563,
             "hash": "512e96ec540a76a869ac9ff4ddc5db692355c598448d441c7930e94822346aba"
@@ -809,18 +821,6 @@
         },
         {
             "type": "file",
-            "name": "static/images/julia-spruce-bg-logo.jpg",
-            "size": 90810,
-            "hash": "649b9a7025b2631fabfa388040e429aed4d8efd48d7a1b2500f0ddfb9794f225"
-        },
-        {
-            "type": "file",
-            "name": "static/images/julia-spruce-hero-logo.png",
-            "size": 38126,
-            "hash": "abeccb3c55f0a4e346d679a7f0e17e121fd7603750264077b856c201e740e1a8"
-        },
-        {
-            "type": "file",
             "name": "static/js/external-no-dependencies.js.tpl",
             "size": 95842,
             "hash": "8921bcfb97845b6556886e148917b1a3e616fe99fe1dcb3fa8d26d0678461385"
@@ -845,27 +845,27 @@
         },
         {
             "type": "file",
-            "name": "static/js/store.js.tpl",
-            "size": 148692,
-            "hash": "ccaa2cb318e39f00322f516de71c2dd6d88c6fc3afcfe98bb3aacd5578cb3ad2"
-        },
-        {
-            "type": "file",
             "name": "static/js/spruce-carousel.js",
             "size": 4516,
             "hash": "9a82f29fdde7817d36685f0dcdf57c2c00b3f8a1efbd63fa15aa20f8efb78bca"
         },
         {
             "type": "file",
-            "name": "templates/account/addresses.tpl",
-            "size": 1996,
-            "hash": "19ca756f3a22e0f287459355ee592b88549b499ace247e9cfaef406a9e1e880d"
+            "name": "static/js/store.js.tpl",
+            "size": 148692,
+            "hash": "ccaa2cb318e39f00322f516de71c2dd6d88c6fc3afcfe98bb3aacd5578cb3ad2"
         },
         {
             "type": "file",
             "name": "templates/account/address.tpl",
             "size": 9156,
             "hash": "0e43bac79b47efeb6ea6c1bee73a6ba3ed9b553605496fc2c8ca6946003a77d7"
+        },
+        {
+            "type": "file",
+            "name": "templates/account/addresses.tpl",
+            "size": 1996,
+            "hash": "19ca756f3a22e0f287459355ee592b88549b499ace247e9cfaef406a9e1e880d"
         },
         {
             "type": "file",
@@ -923,18 +923,6 @@
         },
         {
             "type": "file",
-            "name": "snipplets/defaults/home/featured_products_help.tpl",
-            "size": 960,
-            "hash": "bbe64a1bd916aae587840722144f6391f0fec302755a39dbe7c69af93aa0d7ae"
-        },
-        {
-            "type": "file",
-            "name": "snipplets/defaults/home/informative_banners_help.tpl",
-            "size": 1683,
-            "hash": "7bd92fe450d9fc19f0e1878be7fb31ba49c8dc174da9c36037d637c1fa840aec"
-        },
-        {
-            "type": "file",
             "name": "snipplets/defaults/home/instafeed_help.tpl",
             "size": 1446,
             "hash": "b0b33e812e4b5e11d1835ec74c170003cfa3aebcf94c8854f9cdadcfab758399"
@@ -944,6 +932,12 @@
             "name": "snipplets/defaults/home/institutional_message_help.tpl",
             "size": 629,
             "hash": "90065c58ffb11071f9a35553699c98b1966fbaf2b0d9c289d72229b485838c2e"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/defaults/home/main_categories_help.tpl",
+            "size": 2572,
+            "hash": "a5f0ec49bf7b112c1248fab9a8acc9cfb562dbd38de11d2886e5cbce34208939"
         },
         {
             "type": "file",
@@ -959,21 +953,27 @@
         },
         {
             "type": "file",
+            "name": "snipplets/defaults/home/informative_banners_help.tpl",
+            "size": 1683,
+            "hash": "7bd92fe450d9fc19f0e1878be7fb31ba49c8dc174da9c36037d637c1fa840aec"
+        },
+        {
+            "type": "file",
             "name": "snipplets/defaults/home/modules_help.tpl",
             "size": 2238,
             "hash": "d16d5cca637731efc002808742ef34ec2966916fc34aea1c78da15474eb1eb68"
         },
         {
             "type": "file",
-            "name": "snipplets/defaults/home/slider_help.tpl",
-            "size": 2112,
-            "hash": "6757ae284335ec55f09d06925a14f3d0c187f43162595e0447bfa37d3b705de1"
+            "name": "snipplets/defaults/home/featured_products_help.tpl",
+            "size": 960,
+            "hash": "bbe64a1bd916aae587840722144f6391f0fec302755a39dbe7c69af93aa0d7ae"
         },
         {
             "type": "file",
-            "name": "snipplets/defaults/home/main_categories_help.tpl",
-            "size": 2572,
-            "hash": "a5f0ec49bf7b112c1248fab9a8acc9cfb562dbd38de11d2886e5cbce34208939"
+            "name": "snipplets/defaults/home/slider_help.tpl",
+            "size": 2112,
+            "hash": "6757ae284335ec55f09d06925a14f3d0c187f43162595e0447bfa37d3b705de1"
         },
         {
             "type": "file",
