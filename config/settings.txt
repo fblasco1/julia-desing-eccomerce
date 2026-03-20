@@ -400,16 +400,26 @@ Encabezado
 		name = ad_bar_03_url
 		description = Link (opcional)
 
-Página de inicio
+Julia Design
 	meta
 		icon = home
-		advanced = true
-		default = home_order_position
-	collapse
-		title = Julia Design — Inicio (hero, carrusel y bloques)
-		backto = home_order_position
+		advanced = false
+	description
+		description = <strong>Home Julia:</strong> hero, carrusel de productos, beneficios y editorial. La lista con íconos de ojo bajo «Página de inicio» es el orden del diseño base (slider, bienvenida, etc.); en Julia el inicio real se arma con los bloques de abajo y el carrusel usa los <strong>productos destacados</strong> del administrador.
 	subtitle
-		subtitle = Personalizá textos e imágenes del home Julia. Si dejás un campo vacío, se muestra el valor por defecto del diseño.
+		subtitle = Qué bloques mostrar en el inicio
+	checkbox
+		name = julia_home_show_hero
+		description = Mostrar hero (imagen + título y botones)
+	checkbox
+		name = julia_home_show_benefits
+		description = Mostrar bloque «Beneficios»
+	checkbox
+		name = julia_home_show_carousel
+		description = Mostrar carrusel de productos destacados
+	checkbox
+		name = julia_home_show_editorial
+		description = Mostrar bloque editorial (dos columnas)
 	subtitle
 		subtitle = Hero — imágenes
 	image
@@ -544,6 +554,14 @@ Página de inicio
 		original = julia_editorial_02.jpg
 		width = 1000
 		height = 563
+
+Página de inicio
+	meta
+		icon = home
+		advanced = true
+		default = home_order_position
+	description
+		description = <strong>Julia Design:</strong> el contenido principal del inicio (hero, textos, imágenes del carrusel de productos, etc.) se configura en la sección <strong>«Julia Design»</strong> del menú lateral (no en esta lista). Acá ajustás slider clásico, orden y visibilidad de módulos del theme base por si los usás en otro contexto o como respaldo.
 	collapse
 		title = Carrusel de imágenes
 		backto = home_order_position
@@ -1453,6 +1471,9 @@ Pie de página
 		title = Imagen del logo
 		width = 60
 		height = 40
+	checkbox
+		name = julia_footer_show_logo
+		description = Mostrar en el pie la imagen de «Logo» de arriba (si no está activo, no se muestra aunque hayas subido una imagen; útil para Julia sin logo duplicado)
 	title
 		title = Idiomas y monedas
 	checkbox

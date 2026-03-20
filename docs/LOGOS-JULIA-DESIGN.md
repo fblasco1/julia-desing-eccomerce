@@ -8,7 +8,7 @@
 
 ## 2. Home Julia — preferentemente desde el panel (recomendado)
 
-En **Diseño → Editar diseño → Página de inicio → Julia Design — Inicio (hero, carrusel y bloques)** subís las imágenes con nombres fijos que genera el theme. Detalle en **`docs/JULIA-PANEL-SETTINGS.md`**.
+En **Diseño → Editar diseño** abrís la sección lateral **«Julia Design»** (aparece como ítem aparte, no dentro de «Página de inicio») y subís las imágenes. Detalle en **`docs/JULIA-PANEL-SETTINGS.md`**.
 
 ## 3. Archivos por FTP (respaldo / migración)
 

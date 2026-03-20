@@ -1,7 +1,7 @@
 {% set has_social_network = store.facebook or store.twitter or store.pinterest or store.instagram or store.tiktok or store.youtube %}
 {% set has_footer_contact_info = (store.whatsapp or store.phone or store.email or store.address or store.blog) and settings.footer_contact_show %}
 
-{% set has_footer_logo = "footer_logo.jpg" | has_custom_image %}
+{% set has_footer_logo = "footer_logo.jpg" | has_custom_image and settings.julia_footer_show_logo %}
 {% set has_footer_menu = settings.footer_menu and settings.footer_menu_show %}
 {% set has_payment_logos = settings.payments %}
 {% set has_shipping_logos = settings.shipping %}
