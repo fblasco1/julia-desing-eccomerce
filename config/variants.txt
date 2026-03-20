@@ -21,7 +21,7 @@ Fashion
 	banner_services_colors = 1
 	banner_services_background_color = #D2D0D0
 	banner_services_foreground_color = #54463D
-	font_headings = "HK Grotesk", sans-serif
+	font_headings = "Hanken Grotesk", sans-serif
 	font_rest = "Montserrat", sans-serif
 	logo_position_mobile = below
 	logo_position_desktop = center
@@ -81,7 +81,7 @@ Deco
 	banner_services_colors = 0
 	banner_services_background_color = #D2D0D0
 	banner_services_foreground_color = #54463D
-	font_headings = "HK Grotesk", sans-serif
+	font_headings = "Hanken Grotesk", sans-serif
 	font_rest = "Montserrat", sans-serif
 	logo_position_mobile = below
 	logo_position_desktop = center
@@ -142,7 +142,7 @@ Clothing
 	banner_services_colors = 0
 	banner_services_background_color = #D2D0D0
 	banner_services_foreground_color = #54463D
-	font_headings = "HK Grotesk", sans-serif
+	font_headings = "Hanken Grotesk", sans-serif
 	font_rest = "Montserrat", sans-serif
 	logo_position_mobile = left
 	logo_position_desktop = left
@@ -203,7 +203,7 @@ Food
 	banner_services_colors = 0
 	banner_services_background_color = #D2D0D0
 	banner_services_foreground_color = #54463D
-	font_headings = "HK Grotesk", sans-serif
+	font_headings = "Hanken Grotesk", sans-serif
 	font_rest = "Montserrat", sans-serif
 	logo_position_mobile = left
 	logo_position_desktop = left
@@ -267,7 +267,7 @@ Fashion-2
 	home_news_foreground_color = #54463D
 	banner_services_background_color = #D2D0D0
 	banner_services_foreground_color = #54463D
-	font_headings = "HK Grotesk", sans-serif
+	font_headings = "Hanken Grotesk", sans-serif
 	font_rest = "Montserrat", sans-serif
 	logo_position_mobile = center
 	logo_position_desktop = center
@@ -358,7 +358,7 @@ Custom-hide
 	banner_services_03_description_es = Cambios y devoluciones dentro de los 7 días
 	banner_services_03_description_en = Exchanges and returns within 7 days
 	banner_services_03_description_pt = Trocas e devoluções em até 7 dias
-	font_headings = "HK Grotesk", sans-serif
+	font_headings = "Hanken Grotesk", sans-serif
 	font_rest = "Montserrat", sans-serif
 	logo_position_mobile = left
 	logo_position_desktop = left
