@@ -406,6 +406,145 @@ Página de inicio
 		advanced = true
 		default = home_order_position
 	collapse
+		title = Julia Design — Inicio (hero, carrusel y bloques)
+		backto = home_order_position
+	subtitle
+		subtitle = Personalizá textos e imágenes del home Julia. Si dejás un campo vacío, se muestra el valor por defecto del diseño.
+	subtitle
+		subtitle = Hero — imágenes
+	image
+		title = Foto principal del hero (recomendado 1200×800 px)
+		original = julia_home_hero.jpg
+		width = 1200
+		height = 800
+	image
+		title = Logo / gráfico sobre el texto del hero (PNG con transparencia)
+		original = julia_home_hero_logo.png
+		width = 600
+		height = 400
+	subtitle
+		subtitle = Hero — textos y enlaces
+	i18n_input
+		name = julia_hero_title_line1
+		description = Título — primera línea
+	i18n_input
+		name = julia_hero_title_line2
+		description = Título — segunda línea
+	i18n_input
+		name = julia_hero_lead
+		description = Párrafo debajo del título
+	i18n_input
+		name = julia_hero_btn_catalog
+		description = Texto del botón principal
+	i18n_input
+		name = julia_hero_btn_catalog_url
+		description = Enlace del botón principal (dejá vacío para usar el ancla al catálogo en la misma página)
+	i18n_input
+		name = julia_hero_link_secondary
+		description = Texto del enlace secundario
+	i18n_input
+		name = julia_hero_link_secondary_url
+		description = URL del enlace secundario (dejá vacío para la página de contacto)
+	subtitle
+		subtitle = Carrusel de productos — fondo y decoración
+	image
+		title = Imagen de fondo de la sección (sutil, pantalla completa)
+		original = julia_catalog_section_bg.jpg
+		width = 1920
+		height = 1080
+	image
+		title = Imagen decorativa grande detrás del carrusel (marca / watermark)
+		original = julia_catalog_watermark.png
+		width = 1200
+		height = 800
+	image
+		title = [Opcional] Segunda imagen decorativa de fondo
+		original = julia_catalog_deco_extra.png
+		width = 800
+		height = 600
+	subtitle
+		subtitle = Textos grandes de fondo (opcional, detrás del carrusel)
+	i18n_input
+		name = julia_catalog_highlight_1
+		description = Palabra o frase 1
+	i18n_input
+		name = julia_catalog_highlight_2
+		description = Palabra o frase 2
+	i18n_input
+		name = julia_catalog_highlight_3
+		description = Palabra o frase 3
+	i18n_input
+		name = julia_catalog_highlight_4
+		description = Palabra o frase 4
+	i18n_input
+		name = julia_catalog_cta_label
+		description = Texto del botón “Ver todo el catálogo”
+	subtitle
+		subtitle = Bloque “Beneficios”
+	i18n_input
+		name = julia_benefits_title_1
+		description = Título — línea 1
+	i18n_input
+		name = julia_benefits_title_2
+		description = Título — línea 2
+	i18n_input
+		name = julia_benefits_lead
+		description = Subtítulo bajo el título
+	i18n_input
+		name = julia_benefits_intro
+		description = Párrafo introductorio (columna derecha)
+	i18n_input
+		name = julia_benefits_item_1
+		description = Ítem de lista 1
+	i18n_input
+		name = julia_benefits_item_2
+		description = Ítem de lista 2
+	i18n_input
+		name = julia_benefits_item_3
+		description = Ítem de lista 3
+	i18n_input
+		name = julia_benefits_item_4
+		description = Ítem de lista 4
+	i18n_input
+		name = julia_benefits_item_5
+		description = Ítem de lista 5
+	subtitle
+		subtitle = Bloque editorial (dos columnas)
+	i18n_input
+		name = julia_editorial_1_title
+		description = Columna 1 — título
+	i18n_input
+		name = julia_editorial_1_text
+		description = Columna 1 — texto
+	i18n_input
+		name = julia_editorial_1_link_label
+		description = Columna 1 — texto del enlace
+	text
+		name = julia_editorial_1_link_url
+		description = Columna 1 — URL del enlace
+	image
+		title = Columna 1 — imagen
+		original = julia_editorial_01.jpg
+		width = 1000
+		height = 563
+	i18n_input
+		name = julia_editorial_2_title
+		description = Columna 2 — título
+	i18n_input
+		name = julia_editorial_2_text
+		description = Columna 2 — texto
+	i18n_input
+		name = julia_editorial_2_link_label
+		description = Columna 2 — texto del enlace
+	text
+		name = julia_editorial_2_link_url
+		description = Columna 2 — URL del enlace
+	image
+		title = Columna 2 — imagen
+		original = julia_editorial_02.jpg
+		width = 1000
+		height = 563
+	collapse
 		title = Carrusel de imágenes
 		backto = home_order_position
 	checkbox
@@ -1341,6 +1480,22 @@ Pie de página
 	checkbox
 		name = footer_contact_show
 		description = Mostrar datos de contacto
+	title
+		title = Julia Design — Pie de página
+	description
+		description = Títulos de columnas (opcional). El mapa: en Google Maps, “Compartir” → “Insertar un mapa” y pegá solo el código iframe acá.
+	i18n_input
+		name = julia_footer_menu_title
+		description = Título de la columna del menú / índice
+	i18n_input
+		name = julia_footer_contact_title
+		description = Título de la columna de contacto
+	i18n_input
+		name = julia_footer_showroom_title
+		description = Título de la columna del showroom (mapa)
+	textarea
+		name = julia_footer_map_embed
+		description = Código HTML del mapa (iframe de Google Maps u otro)
 	title
 		title = Medios de envío
 	checkbox_global

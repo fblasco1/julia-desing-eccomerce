@@ -1,4 +1,4 @@
-{# Carrusel infinito — productos destacados (sections.primary) + spruce-carousel.js #}
+{# Carrusel infinito — fondos y textos desde el panel + productos destacados #}
 {% set julia_products = [] %}
 {% if sections is defined and sections.primary is defined and sections.primary.products is defined %}
     {% set julia_products = sections.primary.products %}
@@ -6,7 +6,38 @@
 
 {% if julia_products | length > 0 %}
     <section id="julia-catalogo" class="julia-home__catalog" aria-label="{{ 'Productos destacados' | translate }}">
-        {% if 'julia-spruce-bg-logo.png' | has_custom_image %}
+        {% if 'julia_catalog_section_bg.jpg' | has_custom_image %}
+            <div class="julia-home__catalog-section-bg" aria-hidden="true" style="background-image: url('{{ 'images/julia_catalog_section_bg.jpg' | static_url }}');"></div>
+        {% endif %}
+
+        {% if settings.julia_catalog_highlight_1 | default('') | trim != '' or settings.julia_catalog_highlight_2 | default('') | trim != '' or settings.julia_catalog_highlight_3 | default('') | trim != '' or settings.julia_catalog_highlight_4 | default('') | trim != '' %}
+            <div class="julia-home__catalog-highlights" aria-hidden="true">
+                {% if settings.julia_catalog_highlight_1 | default('') | trim != '' %}
+                    <span class="julia-home__catalog-highlight-item">{{ settings.julia_catalog_highlight_1 }}</span>
+                {% endif %}
+                {% if settings.julia_catalog_highlight_2 | default('') | trim != '' %}
+                    <span class="julia-home__catalog-highlight-item">{{ settings.julia_catalog_highlight_2 }}</span>
+                {% endif %}
+                {% if settings.julia_catalog_highlight_3 | default('') | trim != '' %}
+                    <span class="julia-home__catalog-highlight-item">{{ settings.julia_catalog_highlight_3 }}</span>
+                {% endif %}
+                {% if settings.julia_catalog_highlight_4 | default('') | trim != '' %}
+                    <span class="julia-home__catalog-highlight-item">{{ settings.julia_catalog_highlight_4 }}</span>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        {% if 'julia_catalog_deco_extra.png' | has_custom_image %}
+            <div class="julia-home__catalog-deco-extra" aria-hidden="true">
+                <img src="{{ 'images/julia_catalog_deco_extra.png' | static_url }}" alt="" />
+            </div>
+        {% endif %}
+
+        {% if 'julia_catalog_watermark.png' | has_custom_image %}
+            <div class="julia-home__catalog-logo-bg">
+                <img src="{{ 'images/julia_catalog_watermark.png' | static_url }}" alt="" />
+            </div>
+        {% elseif 'julia-spruce-bg-logo.png' | has_custom_image %}
             <div class="julia-home__catalog-logo-bg">
                 <img src="{{ 'images/julia-spruce-bg-logo.png' | static_url }}" alt="" />
             </div>
@@ -62,7 +93,13 @@
         </div>
 
         <div class="text-center mt-5">
-            <a class="julia-btn-solid" href="{{ store.products_url }}">{{ 'Ver todo el catálogo' | translate }}</a>
+            <a class="julia-btn-solid" href="{{ store.products_url }}">
+                {% if settings.julia_catalog_cta_label | default('') | trim != '' %}
+                    {{ settings.julia_catalog_cta_label }}
+                {% else %}
+                    {{ 'Ver todo el catálogo' | translate }}
+                {% endif %}
+            </a>
         </div>
     </section>
 {% endif %}

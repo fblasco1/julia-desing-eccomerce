@@ -1,5 +1,5 @@
 {% set has_social_network = store.facebook or store.twitter or store.pinterest or store.instagram or store.tiktok or store.youtube %}
-{% set has_footer_contact_info = (store.whatsapp or store.phone or store.email or store.address or store.blog) and settings.footer_contact_show %}          
+{% set has_footer_contact_info = (store.whatsapp or store.phone or store.email or store.address or store.blog) and settings.footer_contact_show %}
 
 {% set has_footer_logo = "footer_logo.jpg" | has_custom_image %}
 {% set has_footer_menu = settings.footer_menu and settings.footer_menu_show %}
@@ -10,7 +10,11 @@
 
 {% set has_seal_logos = store.afip or ebit or settings.custom_seal_code or ("seal_img.jpg" | has_custom_image) %}
 {% set show_help = not has_products and not has_social_network %}
-<footer class="js-footer js-hide-footer-while-scrolling display-when-content-ready overflow-none {% if settings.footer_colors %}footer-colors{% endif %}" data-store="footer">
+
+{% set julia_footer_map = settings.julia_footer_map_embed | default('') | trim != '' %}
+{% set julia_footer_show_columns = template != 'password' and (has_footer_menu or has_footer_contact_info or julia_footer_map) %}
+
+<footer class="js-footer js-hide-footer-while-scrolling display-when-content-ready overflow-none julia-footer {% if settings.footer_colors %}footer-colors{% endif %}" data-store="footer">
 	<div class="container text-center">
 		{% if has_footer_logo and template != 'password' %}
 			<div class="mb-4 pb-2">
@@ -23,24 +27,55 @@
 			</div>
 		{% endif %}
 
-		{% if template != 'password' %}
-
-			{# Foot Nav #}
-			{% if has_footer_menu %}
-				<div class="mb-3">
-					{% include "snipplets/navigation/navigation-foot.tpl" %}
+		{% if julia_footer_show_columns %}
+			<div class="julia-footer__body">
+				<div class="row julia-footer__columns text-md-left">
+					{% if has_footer_menu %}
+						<div class="col-md-4 mb-4 mb-md-0">
+							<h3 class="julia-footer__heading">
+								{% if settings.julia_footer_menu_title | default('') | trim != '' %}
+									{{ settings.julia_footer_menu_title }}
+								{% else %}
+									{{ 'Menú' | translate }}
+								{% endif %}
+							</h3>
+							{% include "snipplets/navigation/navigation-foot.tpl" %}
+						</div>
+					{% endif %}
+					{% if has_footer_contact_info %}
+						<div class="col-md-4 mb-4 mb-md-0">
+							<h3 class="julia-footer__heading">
+								{% if settings.julia_footer_contact_title | default('') | trim != '' %}
+									{{ settings.julia_footer_contact_title }}
+								{% else %}
+									{{ 'Contacto' | translate }}
+								{% endif %}
+							</h3>
+							{% include "snipplets/contact-links.tpl" with {footer: true, with_icons: true} %}
+						</div>
+					{% endif %}
+					{% if julia_footer_map %}
+						<div class="col-md-4 mb-4 mb-md-0">
+							<h3 class="julia-footer__heading">
+								{% if settings.julia_footer_showroom_title | default('') | trim != '' %}
+									{{ settings.julia_footer_showroom_title }}
+								{% else %}
+									Showroom
+								{% endif %}
+							</h3>
+							<div class="julia-footer__map">
+								{{ settings.julia_footer_map_embed | raw }}
+							</div>
+						</div>
+					{% endif %}
 				</div>
-			{% endif %}
-
-			{% if settings.news_show %}
-				<div class="mb-4">
-					{% include 'snipplets/newsletter.tpl' %}
-				</div>
-			{% endif %}
+			</div>
 		{% endif %}
 
-		{# Contact info #}
-		{% if has_footer_contact_info %}
+		{# Newsletter desactivado en este diseño (Julia Design no usa newsletter) #}
+
+		{# Contacto duplicado: solo si no usamos columnas Julia (p. ej. password) #}
+		{% if has_footer_contact_info and not julia_footer_show_columns %}
 			<div class="mb-3">
 				{% include "snipplets/contact-links.tpl" with {footer: true} %}
 			</div>
@@ -119,33 +154,35 @@
 			{% endif %}
 		{% endif %}
 
-		<div class="my-2">
-			{#
-			La leyenda que aparece debajo de esta linea de código debe mantenerse
-			con las mismas palabras y con su apropiado link a Tienda Nube;
-			como especifican nuestros términos de uso: http://www.tiendanube.com/terminos-de-uso .
-			Si quieres puedes modificar el estilo y posición de la leyenda para que se adapte a
-			tu sitio. Pero debe mantenerse visible para los visitantes y con el link funcional.
-			Os créditos que aparece debaixo da linha de código deverá ser mantida com as mesmas
-			palavras e com seu link para Nuvem Shop; como especificam nossos Termos de Uso:
-			http://www.nuvemshop.com.br/termos-de-uso. Se você quiser poderá alterar o estilo
-			e a posição dos créditos para que ele se adque ao seu site. Porém você precisa
-			manter visivél e com um link funcionando.
-			#}
-			{{ new_powered_by_link }}
+		<div class="julia-footer__legal">
+			<div class="my-2">
+				{#
+				La leyenda que aparece debajo de esta linea de código debe mantenerse
+				con las mismas palabras y con su apropiado link a Tienda Nube;
+				como especifican nuestros términos de uso: http://www.tiendanube.com/terminos-de-uso .
+				Si quieres puedes modificar el estilo y posición de la leyenda para que se adapte a
+				tu sitio. Pero debe mantenerse visible para los visitantes y con el link funcional.
+				Os créditos que aparece debaixo da linha de código deverá ser mantida com as mesmas
+				palavras e com seu link para Nuvem Shop; como especificam nossos Termos de Uso:
+				http://www.nuvemshop.com.br/terminos-de-uso. Se você quiser poderá alterar o estilo
+				e a posição dos créditos para que ele se adque ao seu site. Porém você precisa
+				manter visivél e com um link funcionando.
+				#}
+				{{ new_powered_by_link }}
+			</div>
+			<div class="d-inline-block mr-md-2 font-smallest">
+				{{ "Copyright {1} - {2}. Todos los derechos reservados." | translate( (store.business_name ? store.business_name : store.name) ~ (store.business_id ? ' - ' ~ store.business_id : ''), "now" | date('Y') ) }}
+			</div>
+			{{ component('claim-info', {
+					container_classes: "d-md-inline-block mt-md-0 mt-3 font-smallest",
+					divider_classes: "mx-1 d-none d-md-inline-block",
+					text_classes: {text_consumer_defense: 'd-inline-block mb-2'},
+					link_classes: {
+						link_consumer_defense: "btn-link font-smallest",
+						link_order_cancellation: "btn-link font-smallest d-md-inline-block d-block mb-2 w-100 w-md-auto",
+					},
+				})
+			}}
 		</div>
-		<div class="d-inline-block mr-md-2 font-smallest">
-			{{ "Copyright {1} - {2}. Todos los derechos reservados." | translate( (store.business_name ? store.business_name : store.name) ~ (store.business_id ? ' - ' ~ store.business_id : ''), "now" | date('Y') ) }}
-		</div>
-		{{ component('claim-info', {
-				container_classes: "d-md-inline-block mt-md-0 mt-3 font-smallest",
-				divider_classes: "mx-1 d-none d-md-inline-block",
-				text_classes: {text_consumer_defense: 'd-inline-block mb-2'},
-				link_classes: {
-					link_consumer_defense: "btn-link font-smallest",
-					link_order_cancellation: "btn-link font-smallest d-md-inline-block d-block mb-2 w-100 w-md-auto",
-				},
-			}) 
-		}}
 	</div>
 </footer>
