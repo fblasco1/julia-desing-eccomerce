@@ -250,13 +250,13 @@ Encabezado
 		name = ad_bar_03_url
 		description = Link (opcional)
 
-Página de inicio
+Julia Design
 	meta
 		icon = home
 		advanced = true
 		default = home_order_position
 	description
-		description = <strong>Home Julia:</strong> 
+		description = <strong>Home Julia</strong> 
 	subtitle
 		subtitle = Hero
 	image
