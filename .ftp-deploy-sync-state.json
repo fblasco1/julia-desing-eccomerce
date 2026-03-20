@@ -1,13 +1,13 @@
 {
     "description": "DO NOT DELETE THIS FILE. This file is used to keep track of which files have been synced in the most recent deployment. If you delete this file a resync will need to be done (which can take a while) - read more: https://github.com/SamKirkland/FTP-Deploy-Action",
     "version": "1.0.0",
-    "generatedTime": 1773972362376,
+    "generatedTime": 1773973807390,
     "data": [
         {
             "type": "file",
             "name": ".ftp-deploy-sync-state.json",
             "size": 34839,
-            "hash": "c62d5881e384b288f2af804f40a7a515ad06579dc67402d76eae7649c5127356"
+            "hash": "ad267419e373dde72f7ed1e795bcffe1e01543487f74f67d70fca479005e183b"
         },
         {
             "type": "folder",
@@ -68,8 +68,8 @@
         {
             "type": "file",
             "name": "layouts/layout.tpl",
-            "size": 8031,
-            "hash": "4d10ce078be075b273fc70c362b6917c03654a191d12ce5bf2cccc9b51095b24"
+            "size": 8403,
+            "hash": "b41569f20e01cfd09e74dae3701d4bb8d9248b92a2d596949a3010ff62c55dd5"
         },
         {
             "type": "folder",
@@ -150,14 +150,14 @@
             "name": "snipplets/header"
         },
         {
-            "type": "folder",
-            "name": "snipplets/home"
-        },
-        {
             "type": "file",
             "name": "snipplets/labels.tpl",
             "size": 699,
             "hash": "98533fe2d3fb6b3a065deae327f02f09974287870e55a99ab22670d8a537720f"
+        },
+        {
+            "type": "folder",
+            "name": "snipplets/home"
         },
         {
             "type": "file",
@@ -214,14 +214,14 @@
             "hash": "49db6ce099998e041f53f205b736a4adff5b147ca1c7c4d1cb817e1ec8b86ce6"
         },
         {
-            "type": "folder",
-            "name": "snipplets/shipping"
-        },
-        {
             "type": "file",
             "name": "snipplets/shipping_options.tpl",
             "size": 5948,
             "hash": "7308f20396f350dc84f281f0c93f322a3d624a4ab9022564696fd9c58140b228"
+        },
+        {
+            "type": "folder",
+            "name": "snipplets/shipping"
         },
         {
             "type": "folder",
@@ -255,15 +255,15 @@
         },
         {
             "type": "folder",
-            "name": "static/css"
-        },
-        {
-            "type": "folder",
             "name": "static/images"
         },
         {
             "type": "folder",
             "name": "static/js"
+        },
+        {
+            "type": "folder",
+            "name": "static/css"
         },
         {
             "type": "file",
@@ -360,12 +360,6 @@
             "hash": "e70c7e233c10a35abf9f4818132202ee7878547610bb55c7b43a26dddfc08dc3"
         },
         {
-            "type": "file",
-            "name": "snipplets/defaults/help_item.tpl",
-            "size": 9183,
-            "hash": "0179e916414faa62dc0bfcaf1b9571214e958402a861ad41d22f94981a5f6402"
-        },
-        {
             "type": "folder",
             "name": "snipplets/defaults/home"
         },
@@ -374,6 +368,12 @@
             "name": "snipplets/defaults/show_help_category.tpl",
             "size": 1104,
             "hash": "d68e436378b2e1caea1e61ac975930c5a50aab71faaa3c01d52d4bd292035aba"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/defaults/help_item.tpl",
+            "size": 9183,
+            "hash": "0179e916414faa62dc0bfcaf1b9571214e958402a861ad41d22f94981a5f6402"
         },
         {
             "type": "file",
@@ -413,15 +413,15 @@
         },
         {
             "type": "file",
-            "name": "snipplets/grid/filters.tpl",
-            "size": 4678,
-            "hash": "10b44aab73eb4db88ab276628949ca16923493691ca99394f0ab8c99b8a233b6"
-        },
-        {
-            "type": "file",
             "name": "snipplets/grid/filters-modals.tpl",
             "size": 3696,
             "hash": "f2377509810002800d200cf8aaa5b418a7d519d7ac625b5275432c2a7d19e9a5"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/grid/filters.tpl",
+            "size": 4678,
+            "hash": "10b44aab73eb4db88ab276628949ca16923493691ca99394f0ab8c99b8a233b6"
         },
         {
             "type": "file",
@@ -527,15 +527,15 @@
         },
         {
             "type": "file",
-            "name": "snipplets/home/home-featured-products.tpl",
-            "size": 934,
-            "hash": "064f6a3eeee4899eb2df5061b016a53b9db286a6139acf22427bb6d76488dd1a"
-        },
-        {
-            "type": "file",
             "name": "snipplets/home/home-instafeed.tpl",
             "size": 1605,
             "hash": "49cbdd1b41488daf9c13e6734dc9e7d56ca797f5ecd43bb822ab3a82f22b88e6"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/home/home-featured-products.tpl",
+            "size": 934,
+            "hash": "064f6a3eeee4899eb2df5061b016a53b9db286a6139acf22427bb6d76488dd1a"
         },
         {
             "type": "file",
@@ -569,15 +569,15 @@
         },
         {
             "type": "file",
-            "name": "snipplets/home/home-testimonials.tpl",
-            "size": 3374,
-            "hash": "0e7b0f883d336b94879bcb679d78a64b465ee965313aded062f54e1f4e411197"
-        },
-        {
-            "type": "file",
             "name": "snipplets/home/home-slider.tpl",
             "size": 4715,
             "hash": "66b3ed48a5626ec2faa47393f7fe489a88f94ac058a27cc26915f1d4b4e4b921"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/home/home-testimonials.tpl",
+            "size": 3374,
+            "hash": "0e7b0f883d336b94879bcb679d78a64b465ee965313aded062f54e1f4e411197"
         },
         {
             "type": "file",
@@ -593,15 +593,15 @@
         },
         {
             "type": "file",
-            "name": "snipplets/home/julia-home-beneficios.tpl",
-            "size": 3560,
-            "hash": "5e836b0a41c826da42c6e45bf04ab56555970f9e9db7922edb2b0532c5cf6f0a"
-        },
-        {
-            "type": "file",
             "name": "snipplets/home/julia-home-carousel.tpl",
             "size": 6079,
             "hash": "7ec09d1d47074b972509181af296a7abac2ad086896d9eb3a44e8fdc31a3a033"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/home/julia-home-beneficios.tpl",
+            "size": 3560,
+            "hash": "5e836b0a41c826da42c6e45bf04ab56555970f9e9db7922edb2b0532c5cf6f0a"
         },
         {
             "type": "file",
@@ -612,8 +612,8 @@
         {
             "type": "file",
             "name": "snipplets/home/julia-home-hero.tpl",
-            "size": 3734,
-            "hash": "ac9e82763c31a752992e37f530ac551358bfc73df63f7b9e7b6fa07b524b92e7"
+            "size": 3721,
+            "hash": "cdfbdb211764cc94d1ec24a6a5a22c3e45515cb016afbdefe4ea65ffff512230"
         },
         {
             "type": "file",
@@ -683,21 +683,9 @@
         },
         {
             "type": "file",
-            "name": "snipplets/product/product-image.tpl",
-            "size": 5092,
-            "hash": "e6c9a20fcd2b0f6ad92f729278b94a8d19dba2a33bf764a437b899c5e73bb6bd"
-        },
-        {
-            "type": "file",
             "name": "snipplets/product/product-payment-details.tpl",
             "size": 2333,
             "hash": "372298c9db309af35b636476133f7727702cadc249611c72ace7cf378b936fc1"
-        },
-        {
-            "type": "file",
-            "name": "snipplets/product/product-related.tpl",
-            "size": 6202,
-            "hash": "218640ea28155781ac0b36f828e6b9f63709a25af79ce89bde29bc688e010856"
         },
         {
             "type": "file",
@@ -707,9 +695,15 @@
         },
         {
             "type": "file",
-            "name": "snipplets/product/product-variants.tpl",
-            "size": 6206,
-            "hash": "ee226aaafad852d4b6ea8e4c6f50db405acc70145c7526039007c926191fcce2"
+            "name": "snipplets/product/product-related.tpl",
+            "size": 6202,
+            "hash": "218640ea28155781ac0b36f828e6b9f63709a25af79ce89bde29bc688e010856"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/product/product-image.tpl",
+            "size": 5092,
+            "hash": "e6c9a20fcd2b0f6ad92f729278b94a8d19dba2a33bf764a437b899c5e73bb6bd"
         },
         {
             "type": "file",
@@ -722,6 +716,12 @@
             "name": "snipplets/shipping/branches.tpl",
             "size": 4099,
             "hash": "28faf1bd3d6c20c08e255403431d14abe0c62729a899c75f718a5136de0ee411"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/product/product-variants.tpl",
+            "size": 6206,
+            "hash": "ee226aaafad852d4b6ea8e4c6f50db405acc70145c7526039007c926191fcce2"
         },
         {
             "type": "file",
@@ -779,36 +779,6 @@
         },
         {
             "type": "file",
-            "name": "static/css/julia-spruce-theme.tpl",
-            "size": 14097,
-            "hash": "577a85901b3686b00e61ac13699824c701c2d1fea6d0346ac8ecf55d834ab848"
-        },
-        {
-            "type": "file",
-            "name": "static/css/style-async.scss",
-            "size": 47653,
-            "hash": "b6482f887bf580932e495be8175e3874830ea497baa577a4a9cebcfb949b1de7"
-        },
-        {
-            "type": "file",
-            "name": "static/css/style-colors.scss",
-            "size": 43329,
-            "hash": "6e5fd471ca8f4bffd6d3e9961bf884a5455e3ecf870e85636ad42ec86692c611"
-        },
-        {
-            "type": "file",
-            "name": "static/css/style-critical.scss",
-            "size": 107722,
-            "hash": "27ca5f401d884081621ae065957c83c9a3c6b83e3e7561e183a7a6af45a3836b"
-        },
-        {
-            "type": "file",
-            "name": "static/css/style-tokens.tpl",
-            "size": 7675,
-            "hash": "21aab91b58d9bbcef199e93187f64edd430876b29650f911bd127b82a2646d66"
-        },
-        {
-            "type": "file",
             "name": "static/images/julia-spruce-bg-logo.jpg",
             "size": 90810,
             "hash": "649b9a7025b2631fabfa388040e429aed4d8efd48d7a1b2500f0ddfb9794f225"
@@ -846,14 +816,44 @@
         {
             "type": "file",
             "name": "static/js/spruce-carousel.js",
-            "size": 3882,
-            "hash": "67f358cfc595ad884f08c4298d4aa9841c472c212cea9f53d6bd53b87c748a02"
+            "size": 4516,
+            "hash": "9a82f29fdde7817d36685f0dcdf57c2c00b3f8a1efbd63fa15aa20f8efb78bca"
         },
         {
             "type": "file",
             "name": "static/js/store.js.tpl",
             "size": 148692,
             "hash": "ccaa2cb318e39f00322f516de71c2dd6d88c6fc3afcfe98bb3aacd5578cb3ad2"
+        },
+        {
+            "type": "file",
+            "name": "static/css/style-async.scss",
+            "size": 47653,
+            "hash": "b6482f887bf580932e495be8175e3874830ea497baa577a4a9cebcfb949b1de7"
+        },
+        {
+            "type": "file",
+            "name": "static/css/style-colors.scss",
+            "size": 43329,
+            "hash": "6e5fd471ca8f4bffd6d3e9961bf884a5455e3ecf870e85636ad42ec86692c611"
+        },
+        {
+            "type": "file",
+            "name": "static/css/style-critical.scss",
+            "size": 107722,
+            "hash": "27ca5f401d884081621ae065957c83c9a3c6b83e3e7561e183a7a6af45a3836b"
+        },
+        {
+            "type": "file",
+            "name": "static/css/style-tokens.tpl",
+            "size": 7675,
+            "hash": "21aab91b58d9bbcef199e93187f64edd430876b29650f911bd127b82a2646d66"
+        },
+        {
+            "type": "file",
+            "name": "static/css/julia-spruce-theme.tpl",
+            "size": 14560,
+            "hash": "c60a9ca9e8edf74d7a8acf8dec0b93e592f7b53683a7c745acec65643136551b"
         },
         {
             "type": "file",
@@ -917,15 +917,15 @@
         },
         {
             "type": "file",
-            "name": "snipplets/defaults/home/brands_help.tpl",
-            "size": 2153,
-            "hash": "ef32a5b03bbdd255262cc3a65e661100f75a672320fb3be3733ab64ac54c56c0"
-        },
-        {
-            "type": "file",
             "name": "snipplets/defaults/home/featured_products_help.tpl",
             "size": 960,
             "hash": "bbe64a1bd916aae587840722144f6391f0fec302755a39dbe7c69af93aa0d7ae"
+        },
+        {
+            "type": "file",
+            "name": "snipplets/defaults/home/brands_help.tpl",
+            "size": 2153,
+            "hash": "ef32a5b03bbdd255262cc3a65e661100f75a672320fb3be3733ab64ac54c56c0"
         },
         {
             "type": "file",
