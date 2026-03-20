@@ -448,13 +448,7 @@ Julia Design
 		description = Texto del botón principal
 	i18n_input
 		name = julia_hero_btn_catalog_url
-		description = Enlace del botón principal (dejá vacío para usar el ancla al catálogo en la misma página)
-	i18n_input
-		name = julia_hero_link_secondary
-		description = Texto del enlace secundario
-	i18n_input
-		name = julia_hero_link_secondary_url
-		description = URL del enlace secundario (dejá vacío para la página de contacto)
+		description = Enlace del botón "Ver Catálogo" (dejá vacío para ir al catálogo de la misma página)
 	subtitle
 		subtitle = Carrusel de productos — fondo y decoración
 	image

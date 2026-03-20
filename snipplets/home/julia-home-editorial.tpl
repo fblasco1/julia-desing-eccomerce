@@ -27,7 +27,7 @@
             <div class="julia-home__editorial-media">
                 {% if 'julia_editorial_01.jpg' | has_custom_image %}
                     <img
-                        src="{{ 'images/julia_editorial_01.jpg' | static_url }}"
+                        src="{{ 'julia_editorial_01.jpg' | static_url }}"
                         alt=""
                         loading="lazy"
                         width="1000"
@@ -71,7 +71,7 @@
             <div class="julia-home__editorial-media">
                 {% if 'julia_editorial_02.jpg' | has_custom_image %}
                     <img
-                        src="{{ 'images/julia_editorial_02.jpg' | static_url }}"
+                        src="{{ 'julia_editorial_02.jpg' | static_url }}"
                         alt=""
                         loading="lazy"
                         width="1000"
