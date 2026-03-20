@@ -62,8 +62,10 @@
 
         <link rel="stylesheet" href="{{ 'css/style-async.scss' | static_url }}" media="print" onload="this.media='all'">
 
-        {# Julia Design — tipografías marca (Hanken Grotesk ≈ HK Grotesk + Montserrat) + estilos Spruce Simple #}
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700&amp;family=Montserrat:wght@300;400;500&amp;display=swap" />
+        {# Julia Design — tipografías marca (Hanken Grotesk + Montserrat), carga async para no bloquear LCP #}
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" media="print" onload="this.media='all'" />
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" /></noscript>
 
         {% include "static/css/julia-spruce-theme.tpl" %}
 

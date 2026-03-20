@@ -99,12 +99,6 @@
     }
 }
 
-@media (min-width: 768px) {
-    .julia-theme-spruce .julia-spruce-header__utils {
-        gap: 0.5rem;
-    }
-}
-
 /* Iconos utilitarios: contraste sobre marrón */
 .julia-theme-spruce .julia-spruce-header .btn-utility {
     color: var(--julia-white);
@@ -135,6 +129,7 @@
     font-family: var(--julia-font-body);
     color: var(--julia-white);
     background: var(--julia-brown);
+    overflow-x: hidden;
 }
 
 .julia-home__hero {
@@ -176,10 +171,16 @@
     position: relative;
     overflow: hidden;
     background: var(--julia-brown);
-    padding: 4rem 2rem;
+    padding: 2.5rem 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .julia-home__hero-content {
+        padding: 3.5rem 3rem;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -375,9 +376,21 @@
     position: relative;
     background: var(--julia-white);
     color: var(--julia-brown);
-    padding: 6rem 0;
+    padding: 3rem 0;
     overflow: hidden;
-    min-height: 80vh;
+}
+
+@media (min-width: 768px) {
+    .julia-home__catalog {
+        padding: 5rem 0;
+    }
+}
+
+@media (min-width: 1024px) {
+    .julia-home__catalog {
+        padding: 6rem 0;
+        min-height: 80vh;
+    }
 }
 
 .julia-home__catalog-section-bg {
@@ -403,12 +416,14 @@
     padding: 2rem;
     pointer-events: none;
     overflow: hidden;
+    /* clip-path evita que los items rotados escapen el bounding-box en Safari */
+    clip-path: inset(0);
 }
 
 .julia-home__catalog-highlight-item {
     font-family: var(--julia-font-title);
     font-weight: 700;
-    font-size: clamp(2.5rem, 12vw, 7rem);
+    font-size: clamp(2rem, 10vw, 7rem);
     line-height: 0.95;
     color: var(--julia-brown);
     opacity: 0.06;
@@ -466,7 +481,7 @@
 
 .spruce-carousel-track {
     transform: translate3d(0, 0, 0);
-    will-change: transform;
+    /* will-change se aplica/libera dinámicamente por spruce-carousel.js */
 }
 
 .spruce-carousel-item {
@@ -568,18 +583,24 @@
     flex-direction: column;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
     .julia-home__editorial-grid {
         flex-direction: row;
     }
 }
 
 .julia-home__editorial-col {
-    padding: 2rem;
+    padding: 2.5rem 1.5rem;
     border-bottom: 1px solid rgba(129, 117, 108, 0.35);
 }
 
 @media (min-width: 768px) {
+    .julia-home__editorial-col {
+        padding: 3.5rem 3rem;
+    }
+}
+
+@media (min-width: 1024px) {
     .julia-home__editorial-col {
         width: 50%;
         padding: 6rem;

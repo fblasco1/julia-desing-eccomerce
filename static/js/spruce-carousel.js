@@ -1,6 +1,6 @@
-// Julia Design - Spruce Simple
-// Carrusel infinito (marquee) con seam imperceptible usando JS vanilla.
-// Objetivo: que el track se deslice de forma continua moviendo el primer item al final.
+// Julia Design — Spruce Simple
+// Carrusel infinito (marquee) continuo con seam imperceptible.
+// Mejoras v2: touch/swipe pause en mobile, will-change dinámico.
 
 (function () {
   "use strict";
@@ -34,10 +34,13 @@
     var originalHTML = track.innerHTML;
     var originalCount = track.children.length;
 
+    // Touch state
+    var touchStartX = 0;
+    var touchActive = false;
+
     function stepForFirstItem() {
       var first = track.children[0];
       if (!first) return 0;
-
       var computed = window.getComputedStyle(first);
       var mr = parseFloat(computed.marginRight || "0") || 0;
       return first.offsetWidth + mr;
@@ -46,8 +49,6 @@
     function ensureCoverage() {
       var viewportWidth = viewport.getBoundingClientRect().width;
       var safetyIterations = 0;
-
-      // Clonamos hasta que haya suficiente contenido para que no aparezcan huecos.
       while (track.scrollWidth < viewportWidth * 2 && safetyIterations < 20) {
         safetyIterations++;
         for (var i = 0; i < originalCount; i++) {
@@ -72,7 +73,6 @@
         rafId = null;
         return;
       }
-
       if (lastTs === null) lastTs = ts;
       var dt = (ts - lastTs) / 1000;
       lastTs = ts;
@@ -83,7 +83,6 @@
         var step = stepForFirstItem();
         if (!step || offsetPx < step) break;
         offsetPx -= step;
-        // La "pieza" que sale por la izquierda pasa al final.
         track.appendChild(track.firstElementChild);
       }
 
@@ -95,6 +94,7 @@
       if (rafId !== null) return;
       lastTs = null;
       paused = false;
+      track.style.willChange = "transform";
       rafId = window.requestAnimationFrame(tick);
     }
 
@@ -102,24 +102,47 @@
       paused = true;
       if (rafId !== null) window.cancelAnimationFrame(rafId);
       rafId = null;
+      // Liberar la capa GPU cuando el carrusel está detenido
+      track.style.willChange = "auto";
     }
 
     function resume() {
+      if (touchActive) return; // no reanudar si hay dedo en pantalla
       paused = false;
       start();
     }
 
-    // Inicial: asegurar cobertura inicial y arrancar.
+    // Inicial
     reset();
     start();
 
-    // Pausa al hover (desktop) y al foco/teclado.
+    // Pausa hover (desktop)
     root.addEventListener("mouseenter", stop);
     root.addEventListener("mouseleave", resume);
+
+    // Pausa foco teclado (accesibilidad)
     root.addEventListener("focusin", stop);
     root.addEventListener("focusout", resume);
 
-    // Recalcular en resize (los anchos cambian en responsive).
+    // Touch: pausa mientras el dedo está sobre el carrusel
+    root.addEventListener("touchstart", function (e) {
+      touchActive = true;
+      touchStartX = e.touches[0].clientX;
+      stop();
+    }, { passive: true });
+
+    root.addEventListener("touchend", function () {
+      touchActive = false;
+      // Pequeño delay para que la inercia visual sea suave
+      window.setTimeout(resume, 300);
+    }, { passive: true });
+
+    root.addEventListener("touchcancel", function () {
+      touchActive = false;
+      window.setTimeout(resume, 300);
+    }, { passive: true });
+
+    // Recalcular en resize
     var resizeTimer = null;
     window.addEventListener("resize", function () {
       window.clearTimeout(resizeTimer);
@@ -133,7 +156,6 @@
   function init() {
     var roots = document.querySelectorAll("[data-spruce-carousel]");
     if (!roots || roots.length === 0) return;
-
     roots.forEach(initOne);
   }
 
@@ -143,4 +165,3 @@
     init();
   }
 })();
-

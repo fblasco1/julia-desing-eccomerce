@@ -5,7 +5,7 @@
 {% elseif 'julia-spruce-hero.jpg' | has_custom_image %}
     {% set hero_image_url = 'images/julia-spruce-hero.jpg' | static_url %}
 {% elseif settings.slider is defined and settings.slider is not empty %}
-    {% set hero_image_url = settings.slider[0].image | static_url | settings_image_url('large') %}
+    {% set hero_image_url = settings.slider[0].image | settings_image_url('large') %}
 {% endif %}
 
 {% set hero_catalog_href = store.url ~ '#julia-catalogo' %}
