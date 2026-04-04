@@ -441,6 +441,9 @@ Página de inicio
 	i18n_input
 		name = julia_home_exhibitor_catalog_url
 		description = URL del botón (vacío = Información o catálogo de la tienda)
+	collapse
+		title = Página de inicio
+		backto = _top
 	section_order
 		name = home_order_position
 		start_index = 0
