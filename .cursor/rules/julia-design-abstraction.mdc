@@ -1,0 +1,13 @@
+---
+description: Identificación y creación de snipplets para evitar código duplicado.
+globs: "**/*.tpl"
+---
+
+# Julia Design: Refactor de Abstracción
+
+1. **Detección de Patrones:** Antes de generar código, busca bloques HTML similares que se repitan más de dos veces (ej. tarjetas de producto, botones, banners).
+2. **Extracción a Snipplets:** - Mueve el código repetido a la carpeta `snipplets/`.
+   - Nombra el archivo de forma descriptiva: `snipplets/components/julia-[nombre].tpl`.
+   - Sustituye el bloque original por `{% include 'snipplets/components/julia-[nombre].tpl' %}`.
+3. **Parametrización:** Si los bloques repetidos solo cambian en contenido (texto/imagen), crea variables en el snipplet y pásalas como parámetros:
+   `{% include 'snipplets/component.tpl' with {'title': 'Ejemplo', 'img': product.image} %}`.

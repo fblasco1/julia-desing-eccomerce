@@ -1,14 +1,21 @@
 ---
-description: Implementación frontend para “Spruce Simple”.
-globs: "**/*.css **/*.scss **/*.scss.tpl **/*.js **/*.tpl.js **/*.html **/static/**"
-alwaysApply: false
+description: Estándares de desarrollo Frontend (CSS/JS) para el ecosistema Tienda Nube.
+globs: "**/*.{css,js,tpl,html}"
 ---
 
-# Julia Design: Frontend (CSS/JS vanilla)
+# Julia Design: Frontend Architecture
 
-1. Tipografías: HK Grotesk en títulos; Montserrat en cuerpo. No usar fuentes del sistema.
-2. Colores: usar las variables/paleta definidas; evitar grises/negros “random”.
-3. Carrusel infinito: usar lógica de duplicación/clonado (o loop) para que el scroll/seam sea imperceptible y no rompa en mobile.
-4. Imágenes: asumir fondos transparentes; aplicar `object-fit: contain` y `mix-blend-mode`/drop-shadows sutiles cuando mejore la integración.
-5. Performance: priorizar carga inicial; evitar DOM excesivo; JS liviano y progresivo.
-
+1. **Cero Frameworks:** PROHIBIDO React, Vue o Tailwind. Solo CSS puro (Variables), JS Vanilla y Twig (.tpl).
+2. **Performance de Imágenes:**
+   - Usar filtros nativos: `{{ product.featured_image | product_image_url('large') }}`.
+   - Implementar `loading="lazy"` en todas las imágenes fuera del primer scroll.
+   - Usar `object-fit: cover` para mantener la estética editorial sin deformar fotos.
+3. **JS Moderno & Liviano:**
+   - No usar jQuery (aunque el Theme Base lo incluya, Julia Design usa Vanilla).
+   - Usar `IntersectionObserver` para animaciones de entrada y para el logo flotante.
+   - Optimizar scroll con `passive: true`.
+4. **CSS Moderno:**
+   - Evitar `overflow: hidden` en el `body` (rompe el `sticky`). Usar `overflow-x: clip`.
+   - Layouts de producto: Usar `display: grid` con `sticky` en la columna de información (`align-items: start`).
+5. **Accesibilidad (a11y):** - Contraste alto obligatorio. 
+   - Uso de `<details>` y `<summary>` para acordeones de descripción y FAQs.

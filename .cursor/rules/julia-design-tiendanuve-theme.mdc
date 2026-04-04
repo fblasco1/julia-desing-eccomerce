@@ -1,17 +1,18 @@
 ---
-description: Convenciones para adaptar el Theme Base de Tienda Nube.
-globs: "**/*.tpl **/*.twig **/layouts/** **/templates/** **/snipplets/** **/static/**"
-alwaysApply: false
+description: Convenciones técnicas para el motor de plantillas .tpl y estructura de Tienda Nube.
+globs: "**/*.tpl, **/layouts/**, **/templates/**, **/snipplets/**, config.xml, settings.txt"
 ---
 
-# Julia Design: Adaptación del Theme Base
+# Julia Design: Tienda Nube Core Logic
 
-1. Prioridad: respetar la estructura de `Theme Base` (carpetas `layouts/`, `templates/`, `snipplets/`, `static/`) y no “inventar” componentes.
-2. Variables nativas: **no alucinar** variables `.tpl`. Si no existe certeza sobre la variable/campo, preguntar o buscar en el repo/documentación antes de usarla.
-3. Separación de responsabilidades:
-   - `.tpl`: armado del layout y proyección de datos.
-   - `static/css/*.tpl` y `static/*.tpl`: estilos pesados/async cuando aplique.
-   - JS vanilla: lógica de carrusel, scroll e interacción (sin dependencias extra).
-4. Render correcto: mantener semantic HTML y accesibilidad básica (foco, botones, labels cuando aplique).
-5. Checkout/campos nativos: si un bloque de checkout viene “hard-coded” por Tienda Nube y rompe el estilo, envolver con contenedores y ajustar por CSS desde el `.tpl`.
-
+1. **Estructura Obligatoria:** Respetar estrictamente `layouts/`, `templates/`, `snipplets/` y `static/`.
+2. **Seguridad en Variables (Anti-Hallucination):**
+   - No inventar tags. Usar solo objetos documentados: `product`, `category`, `cart`, `contact`, `store`, `order`.
+   - Si no estás seguro de una variable, usa el comentario: `{# TODO: Confirmar variable nativa de TN #}`.
+3. **Lógica de Compra (Crítico):**
+   - El formulario de compra DEBE tener `data-store="product-form"`.
+   - Los inputs de variantes deben llamarse `variation[{{ variant.id }}]`.
+   - No modificar el ID de los botones de "Agregar al carrito" si el JS nativo depende de ellos.
+4. **Traducciones:** - Todo texto estático debe pasar por el filtro: `{{ "Texto" | translate }}`.
+5. **Configuración (config.xml / settings.txt):**
+   - Al crear una nueva funcionalidad visual, define siempre su entrada en `config.xml` para que aparezca en el administrador de la tienda.

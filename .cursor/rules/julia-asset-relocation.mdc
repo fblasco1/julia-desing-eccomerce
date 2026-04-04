@@ -1,0 +1,13 @@
+---
+description: Limpieza de CSS y JS inline para moverlos a archivos estáticos.
+globs: "**/*.{html,tpl}"
+---
+
+# Julia Design: Asset Cleaner
+
+1. **CSS Inline:** Todo bloque `<style>` encontrado en un archivo `.html` o `.tpl` debe ser extraído.
+   - Si es CSS global: Mover a `static/custom-style.css.tpl`[cite: 10].
+   - Si es específico de un componente: Envolver en un bloque `{% if manual_css %}` o colocarlo al final del snipplet debidamente comentado.
+2. **JS Inline:** Todo bloque `<script>` debe ser movido a `static/custom-scripts.js`[cite: 16].
+   - **Prohibido:** No dejes eventos `onclick="..."` en el HTML. Cámbialos por listeners en el archivo JS usando `querySelectorAll` e `IntersectionObserver`[cite: 17].
+3. **Conversión de URLs:** Sustituir rutas locales (ej. `src="img/foto.jpg"`) por el filtro nativo `| static_url` de Tienda Nube[cite: 6].

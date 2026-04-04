@@ -1,33 +1,43 @@
 ---
-name: julia-static-html-to-tn-tpl
-description: Convierte HTML/Tailwind/JS estático (Home/Producto/Categorías/Checkout) a plantillas Tienda Nube en `.tpl/.twig`, creando/ajustando `layouts`, `templates` y `snipplets`. Usar cuando el usuario pide “llevar el diseño a .tpl”, “adaptar al Theme Base”, o “refactor de static HTML a Tienda Nube”.
+name: julia-pro-html-to-tpl
+description: Refactor profesional de prototipos HTML/CSS/JS estáticos a arquitectura modular de Tienda Nube (.tpl), aplicando la identidad de Julia Design.
 ---
 
-# Julia Static HTML -> Tienda Nube `.tpl`
+# Skill: Julia HTML-to-TPL Professional Refactor
 
-## Instrucciones (workflow)
+## 1. Deconstrucción y Limpieza de Assets
+- [cite_start]**Extracción de CSS**: Identificar bloques `<style>` y moverlos a `static/custom-style.css.tpl`[cite: 8, 10].
+    - [cite_start]Sustituir valores fijos por variables de Julia Design: `--mink: #81756C;`, `--brown: #54463D;`, `--gray-light: #D2D0D0;`, `--white: #FFFFFF;`, `--cream: #ece8e4;`, `--dark-text: #1c1a16;`[cite: 3].
+    - [cite_start]Convertir tamaños de fuente y gaps a funciones `clamp()` para garantizar un diseño mobile-first y responsivo[cite: 9, 10].
+- [cite_start]**Extracción de JS**: Mover bloques `<script>` a `static/custom-scripts.js`[cite: 17].
+    - [cite_start]**Refactor Vanilla**: Eliminar cualquier uso de jQuery y convertir a Vanilla JS puro[cite: 16].
+    - [cite_start]Optimizar eventos de scroll y visibilidad usando `IntersectionObserver` o `requestAnimationFrame` para animaciones y logos flotantes[cite: 17].
+- [cite_start]**Rutas de Archivos**: Cambiar rutas locales de imágenes por el filtro nativo `{{ "nombre.jpg" | static_url }}`[cite: 16].
 
-1. Identificar la vista destino
-   - Home, Detalle de Producto, Categorías o Checkout.
-   - Listar secciones/componentes del prototipo (hero split, beneficios, carrusel, etc.).
+## 2. Abstracción de Componentes (Snipplets)
+- [cite_start]**Identificación de Patrones**: Localizar bloques HTML repetidos como tarjetas de producto, banners o acordeones[cite: 19].
+- [cite_start]**Creación de Snipplets**: Mover el código repetido a la carpeta `snipplets/` con nombres descriptivos (ej: `snipplets/grid/julia-product-card.tpl`)[cite: 8, 19].
+- [cite_start]**Parametrización Twig**: Utilizar `{% include '...' with {...} %}` para inyectar datos dinámicos en los componentes sin duplicar código[cite: 20].
 
-2. Diseñar la estructura Tienda Nube
-   - Mapping: secciones -> `snipplets/` y page wrapper -> `templates/` (o `layouts/` si corresponde).
-   - Mantener includes/partials consistentes con el Theme Base.
+## 3. Dinamización de Datos (Mapeo Tienda Nube)
+- [cite_start]**Variables de Tienda**: Sustituir textos e imágenes dummy por objetos reales: `product`, `category`, `cart`, `store`[cite: 20].
+- **Filtros Obligatorios**:
+    - [cite_start]**Precios**: Aplicar `| money` a valores numéricos[cite: 21].
+    - [cite_start]**Traducciones**: Usar `{{ "Texto" | translate }}` para todo texto estático[cite: 21].
+    - [cite_start]**Imágenes**: Usar `{{ product.featured_image | product_image_url('huge') }}` con `object-fit: cover`[cite: 15].
+- [cite_start]**Lógica de Bucles**: Reemplazar bloques manuales por loops `{% for product in products %}` manteniendo las clases CSS del prototipo[cite: 20].
 
-3. Reemplazar contenido por variables nativas (sin alucinaciones)
-   - Convertir texto/iteraciones estáticas en datos reales usando variables `.tpl`/fields de Tienda Nube.
-   - Si no hay certeza sobre una variable/campo exacto: marcarlo como `TODO: confirmar variable` y/o pedir confirmación antes de “inventar”.
+## 4. Alineación de Marca y UX
+- [cite_start]**Tipografía**: Aplicar **'Hanken Grotesk'** para títulos y botones, y **'Montserrat'** para el cuerpo de texto[cite: 4].
+- [cite_start]**UI Nativa**: Priorizar el uso de etiquetas `<details>` y `<summary>` para acordeones y dropdowns para minimizar el JS[cite: 7].
+- [cite_start]**Configuración**: Identificar elementos editables y proponer su estructura en `config.xml` y `settings.txt` para el administrador[cite: 20].
 
-4. CSS/JS vanilla
-   - Trasladar CSS al lugar correcto (`static/css/*.tpl` si aplica).
-   - Integrar JS vanilla existente (carrusel infinito, eventos, scroll) en `static/` con nombres consistentes.
+## 5. Integración del Flujo de Compra
+- [cite_start]**Product Form**: El formulario de compra DEBE tener el atributo `data-store="product-form"`[cite: 23].
+- [cite_start]**Variantes**: Asegurar que los selectores de variantes usen los inputs `name` nativos requeridos por Tienda Nube[cite: 23, 24].
+- [cite_start]**Layouts**: Respetar la jerarquía de `layouts/`, `templates/` y `snipplets/` del Theme Base[cite: 19].
 
-5. Ajustes visuales “Spruce Simple”
-   - Mantener split 50/50, logo gigante translúcido, tipografías y spacing.
-   - Validar mobile-first (breakpoints mínimos, sin scrollbar visible en carruseles).
-
-6. Entrega
-   - Responder indicando qué archivos se crearon/editaron y cómo se conectan entre sí.
-   - Recordar que cambios en TN pueden requerir el paso “publicar/deploy” (según el flujo del proyecto).
-
+## Comandos de Activación en Cursor
+- *"@julia-pro-html-to-tpl: Limpia este HTML y separa los componentes repetidos en snipplets."*
+- *"Dinamiza esta sección de productos usando variables de Tienda Nube y aplica la escala clamp() de Julia Design."*
+- *"Extrae el JS de este prototipo a un archivo vanilla optimizado siguiendo las reglas de Julia Design."*

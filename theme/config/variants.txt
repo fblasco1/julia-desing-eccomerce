@@ -1,0 +1,26 @@
+Clothing
+	base = true
+	vertical = clothing
+	primary_color = #54463D
+	background_color = #FFFFFF
+	text_color = #81756C
+	accent_color = #54463D
+	font_headings = "Hanken Grotesk", sans-serif
+	font_rest = "Montserrat", sans-serif
+	head_background = dark
+	head_transparent = 1
+	head_fix = 1
+	banners_full = 0
+	modules_full = 1
+	video_full = 1
+	home_order_position_0 = julia_hero
+	home_order_position_1 = slider
+	home_order_position_2 = welcome
+	home_order_position_3 = categories
+	home_order_position_4 = video
+	home_order_position_5 = products
+	home_order_position_6 = instafeed
+	home_order_position_7 = modules
+	home_order_position_8 = informatives
+	grid_columns = 1
+	news_show = 1

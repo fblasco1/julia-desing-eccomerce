@@ -1,0 +1,458 @@
+Colores de tu marca
+	meta
+		icon = paint-brush
+		advanced = false
+	color
+		name = primary_color
+		description = Color principal
+	subtitle
+		subtitle = <div class='js-color-description'>Aplica a los botones.</div>
+	color
+		name = accent_color
+		description = Color de acento
+	subtitle
+		subtitle = <div class='js-color-description'>Aplica a promociones y a mensajes de descuento, envío gratis y cuotas sin interés.</div>
+	title
+		title = Colores de contraste
+	color
+		name = background_color
+		description = Color de fondo
+	color
+		name = text_color
+		description = Color de textos
+	description
+		description = Para facilitar la lectura, asegurate de que los colores contrasten entre sí.
+	title
+		title = Combinaciones predeterminadas
+	description
+		description = Ideales para restablecer los colores por defecto del diseño.
+	palettes
+		palettes
+			palette_1
+				primary_color = #FFFFFF
+				background_color = #54463D
+				text_color = #D2D0D0
+				accent_color = #81756C
+			palette_2
+				primary_color = #54463D
+				background_color = #FFFFFF
+				text_color = #81756C
+				accent_color = #54463D
+			palette_3
+				primary_color = #54463D
+				background_color = #D2D0D0
+				text_color = #54463D
+				accent_color = #81756C
+
+Tipo de letra
+	meta
+		icon = font
+		advanced = false
+	description
+		description = Los tamaños son fluidos (mobile-first): el tema usa clamp() en CSS entre mínimo en móvil y máximo en escritorio, según la jerarquía Julia Design.
+	title
+		title = Jerarquía tipográfica (referencia)
+	subtitle
+		subtitle = <div class='js-color-description' style='text-align:left'>H1/Hero: HK Grotesk Bold, 32–38px → 48–60px, interlineado 1.1–1.2 · H2: bold, 24–28px → 32–40px, letter-spacing -0.02em · Subtítulos: 16–22px · Cuerpo Montserrat: 14–16px · Legal/detalle Montserrat Light: 12–14px · Botones y menú HK Bold: 14px móvil, 13–15px escritorio.</div>
+	font
+		name = font_headings
+		description = Títulos (H1, H2, hero) y componentes que heredan la fuente de encabezado
+		values
+			"Hanken Grotesk", sans-serif = Hanken Grotesk
+			"Almarai", sans-serif = Almarai
+			"Archivo", sans-serif = Archivo
+			"Archivo Black", sans-serif = Archivo Black
+			"Arimo", sans-serif = Arimo
+			"Arvo", serif = Arvo
+			"Big Shoulders Display", sans-serif = Big Shoulders Display
+			"Bitter", serif = Bitter
+			"Braah One", sans-serif = Braah One
+			"Bree Serif", serif = Bree Serif
+			"Buenard", serif = Buenard
+			"Chakra Petch", sans-serif = Chakra Petch
+			"Chivo", sans-serif = Chivo
+			"Corben", serif = Corben
+			"DM Sans", sans-serif = DM Sans
+			"Domine", serif = Domine
+			"Droid Sans", Sans-serif = Droid Sans
+			"Droid Serif", serif = Droid Serif
+			"Figtree", sans-serif = Figtree
+			"Fraunces", serif = Fraunces
+			"Fredoka One", sans-serif = Fredoka One
+			"Gabarito", sans-serif = Gabarito
+			"Golos Text", sans-serif = Golos Text
+			"Handlee", cursive = Handlee
+			"IBM Plex Sans", sans-serif = IBM Plex Sans
+			"IBM Plex Serif", serif = IBM Plex Serif
+			"Instrument Sans", sans-serif = Instrument Sans
+			"Inter", sans-serif = Inter
+			"Istok Web", sans-serif = Istok Web
+			"Italiana", serif = Italiana
+			"Josefin Sans", sans-serif = Josefin Sans
+			"Kanit", sans-serif = Kanit
+			"Karla", sans-serif = Karla
+			"Lato", sans-serif = Lato
+			"Lexend", sans-serif = Lexend
+			"Lexend Exa", sans-serif = Lexend Exa
+			"Libre Baskerville", serif = Libre Baskerville
+			"Libre Franklin", sans-serif = Libre Franklin
+			"Literata", serif = Literata
+			"Lora", serif = Lora
+			"Manrope", sans-serif = Manrope
+			"Marcellus", serif = Marcellus
+			"Montserrat", sans-serif = Montserrat
+			"Muli", sans-serif = Muli
+			"Neuton", serif = Neuton
+			"Niramit", sans-serif = Niramit
+			"Nunito", sans-serif = Nunito
+			"Onest", sans-serif = Onest
+			"Oooh Baby", cursive = Oooh Baby
+			"Open Sans",sans-serif = Open Sans
+			"Oswald", sans-serif = Oswald
+			"Outfit", sans-serif = Outfit
+			"Paytone One", sans-serif = Paytone One
+			"Piazzolla", serif = Piazzolla
+			"Playfair Display", Helvetica, Arial, sans-serif = Playfair
+			"Plus Jakarta Sans", sans-serif = Plus Jakarta Sans
+			"Poppins", sans-serif = Poppins
+			"Prata", serif = Prata
+			"PT Sans Narrow", sans-serif = PT Sans Narrow
+			"Public Sans", sans-serif = Public Sans
+			"Raleway", sans-serif = Raleway
+			"Readex Pro", sans-serif = Readex Pro
+			"Red Hat Display", sans-serif = Red Hat Display
+			"Roboto", sans-serif = Roboto
+			"Roboto Condensed", sans-serif = Roboto Condensed
+			"Roboto Mono", sans-serif = Roboto Mono
+			"Rubik", sans-serif = Rubik
+			"Slabo 27px", serif = Slabo 27px
+			"Sofia Sans Extra Condensed", sans-serif = Sofia Sans Extra Condensed
+			"Sora", sans-serif = Sora
+			"Source Sans Pro", sans-serif = Source Sans Pro
+			"Space Grotesk", sans-serif = Space Grotesk
+			"Tenor Sans", sans-serif = Tenor Sans
+			"Ubuntu", sans-serif = Ubuntu
+			"Ubuntu Mono", monospace = Ubuntu Mono
+			"Ultra", serif = Ultra
+			"Unna", serif = Unna
+			"Work Sans", sans-serif = Work Sans
+			"Zen Kaku Gothic New", sans-serif = Zen Kaku Gothic New
+			"Zilla Slab", serif = Zilla Slab
+	font
+		name = font_rest
+		description = Cuerpo de texto, formularios y descripciones (Montserrat por defecto)
+		values
+			"Hanken Grotesk", sans-serif = Hanken Grotesk
+			"Almarai", sans-serif = Almarai
+			"Archivo", sans-serif = Archivo
+			"Archivo Black", sans-serif = Archivo Black
+			"Arimo", sans-serif = Arimo
+			"Arvo", serif = Arvo
+			"Big Shoulders Display", sans-serif = Big Shoulders Display
+			"Bitter", serif = Bitter
+			"Braah One", sans-serif = Braah One
+			"Bree Serif", serif = Bree Serif
+			"Buenard", serif = Buenard
+			"Chakra Petch", sans-serif = Chakra Petch
+			"Chivo", sans-serif = Chivo
+			"Corben", serif = Corben
+			"DM Sans", sans-serif = DM Sans
+			"Domine", serif = Domine
+			"Droid Sans", Sans-serif = Droid Sans
+			"Droid Serif", serif = Droid Serif
+			"Figtree", sans-serif = Figtree
+			"Fraunces", serif = Fraunces
+			"Fredoka One", sans-serif = Fredoka One
+			"Gabarito", sans-serif = Gabarito
+			"Golos Text", sans-serif = Golos Text
+			"Handlee", cursive = Handlee
+			"IBM Plex Sans", sans-serif = IBM Plex Sans
+			"IBM Plex Serif", serif = IBM Plex Serif
+			"Instrument Sans", sans-serif = Instrument Sans
+			"Inter", sans-serif = Inter
+			"Istok Web", sans-serif = Istok Web
+			"Italiana", serif = Italiana
+			"Josefin Sans", sans-serif = Josefin Sans
+			"Kanit", sans-serif = Kanit
+			"Karla", sans-serif = Karla
+			"Lato", sans-serif = Lato
+			"Lexend", sans-serif = Lexend
+			"Lexend Exa", sans-serif = Lexend Exa
+			"Libre Baskerville", serif = Libre Baskerville
+			"Libre Franklin", sans-serif = Libre Franklin
+			"Literata", serif = Literata
+			"Lora", serif = Lora
+			"Manrope", sans-serif = Manrope
+			"Marcellus", serif = Marcellus
+			"Montserrat", sans-serif = Montserrat
+			"Muli", sans-serif = Muli
+			"Neuton", serif = Neuton
+			"Niramit", sans-serif = Niramit
+			"Nunito", sans-serif = Nunito
+			"Onest", sans-serif = Onest
+			"Oooh Baby", cursive = Oooh Baby
+			"Open Sans",sans-serif = Open Sans
+			"Oswald", sans-serif = Oswald
+			"Outfit", sans-serif = Outfit
+			"Paytone One", sans-serif = Paytone One
+			"Piazzolla", serif = Piazzolla
+			"Playfair Display", Helvetica, Arial, sans-serif = Playfair
+			"Plus Jakarta Sans", sans-serif = Plus Jakarta Sans
+			"Poppins", sans-serif = Poppins
+			"Prata", serif = Prata
+			"PT Sans Narrow", sans-serif = PT Sans Narrow
+			"Public Sans", sans-serif = Public Sans
+			"Raleway", sans-serif = Raleway
+			"Readex Pro", sans-serif = Readex Pro
+			"Red Hat Display", sans-serif = Red Hat Display
+			"Roboto", sans-serif = Roboto
+			"Roboto Condensed", sans-serif = Roboto Condensed
+			"Roboto Mono", sans-serif = Roboto Mono
+			"Rubik", sans-serif = Rubik
+			"Slabo 27px", serif = Slabo 27px
+			"Sofia Sans Extra Condensed", sans-serif = Sofia Sans Extra Condensed
+			"Sora", sans-serif = Sora
+			"Source Sans Pro", sans-serif = Source Sans Pro
+			"Space Grotesk", sans-serif = Space Grotesk
+			"Tenor Sans", sans-serif = Tenor Sans
+			"Ubuntu", sans-serif = Ubuntu
+			"Ubuntu Mono", monospace = Ubuntu Mono
+			"Ultra", serif = Ultra
+			"Unna", serif = Unna
+			"Work Sans", sans-serif = Work Sans
+			"Zen Kaku Gothic New", sans-serif = Zen Kaku Gothic New
+			"Zilla Slab", serif = Zilla Slab
+
+Encabezado
+	meta
+		icon = arrow-up
+		advanced = true
+	dropdown
+		name = head_background
+		description = Color de fondo del encabezado
+		values
+			light = Color de fondo
+			dark = Color de textos
+	checkbox
+		name = head_transparent
+		description = Encabezado transparente sobre el carrusel de imágenes
+	checkbox
+		name = head_fix
+		description = Encabezado siempre visible al navegar la tienda
+	checkbox
+		name = languages_header
+		description = Mostrar idiomas y monedas en el encabezado
+	description
+		description = Dos archivos distintos (logo claro y logo oscuro). Cada uno se sube por separado.
+	image
+		original = logo-blanco-placeholder.png
+		title = Logo claro (blanco — para fondo oscuro)
+		description = Barra de encabezado oscura, hero marrón y mega menú
+		width = 520
+		height = 160
+	image
+		original = logo-negro-placeholder.png
+		title = Logo oscuro (negro — para fondo claro)
+		description = Barra de encabezado clara, catálogo y exhibidor sobre crema
+		width = 520
+		height = 160
+	title
+		title = Barra de anuncio
+	checkbox
+		name = ad_bar
+		description = Mostrar barra de anuncio
+	i18n_input
+		name = ad_text
+		description = Mensaje
+	i18n_input
+		name = ad_url
+		description = Link (opcional)
+
+
+Pie de página (Julia)
+	meta
+		icon = arrow-down
+		advanced = true
+	description
+		description = Pie editorial de dos columnas, sello central, redes e información legal. Los enlaces de columnas y legales salen de los menús que elijas (Navegación en el admin); no uses URLs sueltas salvo WhatsApp abajo. El sello del pie es un archivo aparte (marca minificada); no usa los logos del encabezado. Instagram y Facebook usan los datos de la tienda.
+	image
+		original = footer-stamp-placeholder.png
+		name = footer_stamp_logo
+		title = Sello del pie (marca minificada, opcional)
+		description = Imagen propia para el centro del pie (distinta del Logo claro/oscuro del encabezado). Si está vacío, se muestra solo la letra de respaldo. Debe tener original distinto en el tema (footer-stamp-placeholder.png) para que el panel no lo sincronice con el header.
+		width = 160
+		height = 160
+	i18n_input
+		name = footer_stamp_letter
+		description = Letra de respaldo si no cargaste imagen en «Sello del pie» (una letra, ej. j)
+	subtitle
+		subtitle = Títulos de las columnas
+	i18n_input
+		name = footer_heading_muebles
+		description = Título de la primera columna (categorías del menú principal; por defecto «Categorías»)
+	i18n_input
+		name = footer_heading_info
+		description = Título de la segunda columna (ej. Información)
+	subtitle
+		subtitle = Menús (columna información y legales)
+	description
+		description = La primera columna lista las categorías del primer ítem de tu menú principal que tenga submenú (igual que el mega menú). Para columna 2 y legales, elegí menús en el admin (Navegación).
+	menu
+		name = footer_julia_menu_info
+		description = Menú de la segunda columna (ej. páginas institucionales, contacto)
+	menu
+		name = footer_julia_menu_legal
+		description = Menú de enlaces legales (términos, privacidad, cookies); los textos son los nombres de cada ítem del menú
+	subtitle
+		subtitle = Redes sociales en el pie
+	checkbox
+		name = footer_social_show_instagram
+		description = Mostrar Instagram (requiere URL en datos de la tienda)
+	checkbox
+		name = footer_social_show_facebook
+		description = Mostrar Facebook (requiere URL en datos de la tienda)
+	checkbox
+		name = footer_social_show_whatsapp
+		description = Mostrar WhatsApp
+	i18n_input
+		name = footer_whatsapp_url
+		description = Enlace WhatsApp (ej. https://wa.me/5491123456789)
+
+
+Página de inicio
+	meta
+		icon = home
+		advanced = true
+		default = home_order_position
+	collapse
+		title = Hero principal (Julia)
+		backto = home_order_position
+	description
+		description = Sección dividida en dos columnas como la maqueta: imagen a la izquierda (banda superior marrón + foto) y texto a la derecha. Activala en "Orden de secciones" eligiendo Hero principal (Julia).
+	image
+		original = julia_hero.jpg
+		title = Imagen (columna izquierda)
+		width = 1400
+		height = 1800
+	i18n_input
+		name = julia_hero_title
+		description = Título
+	i18n_input
+		name = julia_hero_subtitle
+		description = Subtítulo
+	i18n_input
+		name = julia_hero_cta_label
+		description = Texto del botón
+	i18n_input
+		name = julia_hero_cta_url
+		description = Enlace del botón (opcional; si está vacío lleva al catálogo)
+	i18n_input
+		name = julia_hero_secondary_label
+		description = Texto del enlace secundario junto al botón (ej. Saber más). Dejalo vacío para ocultarlo.
+	i18n_input
+		name = julia_hero_secondary_url
+		description = URL del enlace secundario (opcional; si está vacío usa #)
+	i18n_input
+		name = julia_home_wordmark
+		description = Solo si no cargaste Logo claro u oscuro en Encabezado: texto visible sobre el hero (ej. JULIA). Con logo en el panel, se usa la imagen.
+	collapse
+		title = Información + acordeón (Julia)
+		backto = home_order_position
+	description
+		description = Segunda sección de la home: dos columnas (titular + enlace al catálogo | frase introductoria + hasta 4 desplegables). Fondo visón (--mink).
+	checkbox
+		name = julia_home_info_show
+		description = Mostrar esta sección en la página de inicio
+	i18n_input
+		name = julia_home_info_title
+		description = Título (una línea por renglón en el panel = salto de línea en la tienda)
+	i18n_input
+		name = julia_home_info_subtitle
+		description = Subtítulo / bajada
+	i18n_input
+		name = julia_home_info_catalog_label
+		description = Texto del enlace al catálogo (ej. Ver catálogo completo)
+	i18n_input
+		name = julia_home_info_catalog_url
+		description = URL del catálogo (opcional; vacío = página de productos de la tienda)
+	i18n_input
+		name = julia_home_info_intro
+		description = Frase en la columna derecha (arriba del acordeón)
+	subtitle
+		subtitle = Desplegable 1 (opcional)
+	i18n_input
+		name = julia_home_info_acc_1_title
+		description = Título
+	i18n_input
+		name = julia_home_info_acc_1_body
+		description = Texto
+	subtitle
+		subtitle = Desplegable 2 (opcional)
+	i18n_input
+		name = julia_home_info_acc_2_title
+		description = Título
+	i18n_input
+		name = julia_home_info_acc_2_body
+		description = Texto
+	subtitle
+		subtitle = Desplegable 3 (opcional)
+	i18n_input
+		name = julia_home_info_acc_3_title
+		description = Título
+	i18n_input
+		name = julia_home_info_acc_3_body
+		description = Texto
+	subtitle
+		subtitle = Desplegable 4 (opcional)
+	i18n_input
+		name = julia_home_info_acc_4_title
+		description = Título
+	i18n_input
+		name = julia_home_info_acc_4_body
+		description = Texto
+	collapse
+		title = Exhibidor más vendidos (Julia)
+		backto = home_order_position
+	description
+		description = Carrusel sobre el logo. Hasta 10 productos desde la sección Destacados del admin (ordená los primeros como «más vendidos»).
+	checkbox
+		name = julia_home_exhibitor_show
+		description = Mostrar exhibidor en la página de inicio
+	dropdown
+		name = julia_home_exhibitor_logo_mode
+		description = Logo de fondo (crema)
+		values
+			auto = Automático (solo Logo oscuro del encabezado; si falta, texto)
+			negro = Solo Logo oscuro
+			blanco = Solo Logo claro
+	dropdown
+		name = julia_home_exhibitor_logo_opacity
+		description = Opacidad del logo de fondo
+		values
+			opacity_50 = 50%
+			opacity_65 = 65%
+			opacity_80 = 80%
+			opacity_100 = 100%
+	i18n_input
+		name = julia_home_exhibitor_heading
+		description = Título opcional sobre el carrusel (vacío = no se muestra)
+	i18n_input
+		name = julia_home_exhibitor_catalog_label
+		description = Texto del botón inferior (vacío = usa el de Información + acordeón)
+	i18n_input
+		name = julia_home_exhibitor_catalog_url
+		description = URL del botón (vacío = Información o catálogo de la tienda)
+	collapse
+		title = Página de inicio
+		backto = _top
+	section_order
+		name = home_order_position
+		start_index = 0
+		sections
+			julia_hero = Hero principal (Julia)
+			julia_home_info = Información + acordeón (Julia)
+			julia_home_exhibitor = Exhibidor más vendidos (Julia)
+			
+	link
+		text = Pop-up promocional
+		linkto = home_promotional_popup

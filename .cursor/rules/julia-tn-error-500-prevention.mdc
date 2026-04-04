@@ -1,0 +1,33 @@
+---
+alwaysApply: true
+---
+# Julia Design: prevención error 500 (TN)
+
+En Tienda Nube el **500** suele ser **fallo al compilar** plantillas Twig (`.tpl`) o SCSS en el servidor, no JS del navegador.
+
+## Datos de secciones / home (exhibidor, destacados)
+
+- Antes de `| length` o iterar, comprobar que la propiedad existe.
+- **Correcto:** `sections.primary.products is defined and sections.primary.products | length > 0`
+- **Evitar:** `sections.primary.products | length` si `products` puede no existir.
+
+## Pie / navegación (`footer-julia`, columnas desde `navigation`)
+
+- Preferir condiciones con **objeto truthy** y **cortocircuito** (`and`), no cadenas largas con `is not same as(false)` + accesos encadenados si no hace falta.
+- En bucles: `{% if not footer_cat_parent and nav_item.subitems %}` para tomar solo el primer menú con subítems.
+- `has_cat_col`: `footer_cat_parent and footer_cat_parent.subitems is defined and (footer_cat_parent.subitems | length > 0)`.
+
+## Imágenes desde settings (`footer_stamp_logo`, logos)
+
+- El macro/valor puede devolver **ruta de tema** o **URL absoluta** (`http://` / `https://`).
+- **No** encadenar `static_url` y `settings_image_url` sobre una URL absoluta; usar la URL tal cual en `src` / `srcset`.
+- Patrón: detectar prefijo `http://` o `https://` con `slice` y ramificar (igual que logo del exhibidor).
+
+## Layout y SCSS
+
+- En `layout.tpl`, `<head>` sin texto corrupto (`{<link`); comentarios Twig `{# ... #}` siempre cerrados.
+- En `.scss.tpl`, tras Twig queda SCSS válido; comentarios `{# #}` no sustituyen llaves `{}` mal balanceadas.
+
+## Diagnóstico rápido
+
+- ¿Solo home o todo el sitio? Aislar: comentar include del exhibidor, o `<link>` a `style-async`, según `docs/THEME-DIAGNOSTICO-500.md` / `DEBUG-ERROR-500.md` si existen en el repo.

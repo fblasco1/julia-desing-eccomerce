@@ -1,16 +1,18 @@
 ---
-description: Guía de marca y UX para Julia Design (Spruce Simple).
+description: Identidad visual editorial y lógica de diseño para Julia Design.
 alwaysApply: true
 ---
 
-# Julia Design: Reglas de marca y estilo
+# Julia Design: Brand & UX System
 
-- Responder SIEMPRE en español.
-- Paleta (usar tal cual): `#D2D0D0` (gris claro), `#FFFFFF` (blanco), `#81756C` (visón intermedio), `#54463D` (marrón oscuro).
-- Tipografías: **HK Grotesk** para títulos (bold) y **Montserrat** para cuerpo (light/regular/medium).
-- Estética: editorial/minimalista con contraste alto, split screen 50/50, logo gigante translúcido (aprox. `opacity: 0.2`), imágenes recortadas sin fondo integradas con sombras/drop-shadows sutiles.
-- Interacciones: animaciones suaves (transiciones/scroll) y carrusel “infinito” con apariencia continua.
-- Mobile-first: cada componente debe verse impecable en móvil antes que en desktop.
-- Arquitectura Tienda Nube: no usar frameworks (React/Vue/Next). Solo `.tpl/.twig`, `static` (CSS/JS vanilla) y estructura de `layouts/templates/snipplets`.
-- Si un componente nativo rompe el diseño, ocultarlo con CSS o reemplazarlo desde el `.tpl` (sin cambiar lógica si no hace falta).
-
+- **Idioma:** Responder SIEMPRE en español.
+- **Paleta de Colores (CSS Variables):** - Usar estrictamente: `--gray-light: #D2D0D0;`, `--white: #FFFFFF;`, `--mink: #81756C;`, `--brown: #54463D;`, `--cream: #ece8e4;`, `--dark-text: #1c1a16;`.
+- **Tipografías & Jerarquía:**
+  - **Títulos/Botones:** 'Hanken Grotesk' (negrita/semibold). Espaciado de letras ligeramente negativo (-0.02em).
+  - **Cuerpo:** 'Montserrat' (Light/Regular). 
+  - **Implementación:** Usar `clamp()` para escalas fluidas. Ej: `font-size: clamp(2rem, 5vw, 3.5rem);`.
+- **Layout Signature:** - Estética editorial minimalista. 
+  - Hero en desktop con split-screen 50/50.
+  - Logo de fondo translúcido (opacity: 0.05 - 0.1) con `position: fixed` o `sticky`.
+- **Integración con Administrador:** - Al sugerir estilos, priorizar variables de Tienda Nube: `{{ settings.font_headings }}`, `{{ settings.primary_color }}`. 
+  - Si una propiedad debe ser editable, indicar qué línea agregar a `settings.txt`.
