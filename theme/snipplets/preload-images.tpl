@@ -73,23 +73,21 @@
     {% set category_banner = (category.images is not empty) or ("banner-products.jpg" | has_custom_image) %}
     
     {% if category_banner %}
-
-        {% set image_sizes = ['large', 'huge', 'original', '1080p'] %}
-        {% set category_images = [] %}
+        {# Sin merge({(size): ...}) ni [] para compatibilidad Twig TN (evita 500 al compilar). #}
         {% set has_category_images = category.images is not empty %}
-
-        {% for size in image_sizes %}
-            {% if has_category_images %}
-                {# Define images for admin categories #}
-                {% set category_images = category_images|merge({(size):(category.images | first | category_image_url(size))}) %}
-            {% else %}
-                {# Define images for general banner #}
-                {% set category_images = category_images|merge({(size):('banner-products.jpg' | static_url | settings_image_url(size))}) %}
-            {% endif %}
-        {% endfor %}
-
-        <link rel="preload" as="image" href="{{ category_images['large'] }}" imagesrcset="{{ category_images['large'] }} 480w, {{ category_images['huge'] }} 640w, {{ category_images['original'] }} 1024w, {{ category_images['1080p'] }} 1920w">
-
+        {% if has_category_images %}
+            {% set cat0 = category.images | first %}
+            {% set cat_url_large = cat0 | category_image_url('large') %}
+            {% set cat_url_huge = cat0 | category_image_url('huge') %}
+            {% set cat_url_orig = cat0 | category_image_url('original') %}
+            {% set cat_url_1080 = cat0 | category_image_url('1080p') %}
+        {% else %}
+            {% set cat_url_large = 'banner-products.jpg' | static_url | settings_image_url('large') %}
+            {% set cat_url_huge = 'banner-products.jpg' | static_url | settings_image_url('huge') %}
+            {% set cat_url_orig = 'banner-products.jpg' | static_url | settings_image_url('original') %}
+            {% set cat_url_1080 = 'banner-products.jpg' | static_url | settings_image_url('1080p') %}
+        {% endif %}
+        <link rel="preload" as="image" href="{{ cat_url_large }}" imagesrcset="{{ cat_url_large }} 480w, {{ cat_url_huge }} 640w, {{ cat_url_orig }} 1024w, {{ cat_url_1080 }} 1920w">
     {% endif %}
 
 {% endif %}

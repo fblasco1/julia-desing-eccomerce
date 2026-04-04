@@ -33,7 +33,7 @@
 	</div>
 	<div class="mega-mobile-links">
 		{% for p in pages %}
-			{% if p.handle in ['quienes-somos', 'como-trabajamos'] %}
+			{% if p.handle is defined and (p.handle == 'quienes-somos' or p.handle == 'como-trabajamos') %}
 				<a href="{{ p.url }}" class="mega-link">{{ p.title }}</a>
 			{% endif %}
 		{% endfor %}
