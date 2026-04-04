@@ -2476,6 +2476,8 @@ footer {
 
 {# /* Julia — pie editorial (footer-julia.tpl) */ #}
 .julia-footer {
+  width: 100%;
+  box-sizing: border-box;
   margin-top: 0;
   padding: clamp(2.5rem, 4vw, 4rem) clamp(1.25rem, 4vw, 3rem) clamp(1.75rem, 3vw, 2.5rem);
   background-color: var(--brown);
@@ -2494,8 +2496,10 @@ footer {
   }
 }
 .julia-footer__inner {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  box-sizing: border-box;
 }
 .julia-footer .footer-cols {
   display: grid;
@@ -2533,6 +2537,25 @@ footer {
   a {
     font-weight: 600;
     opacity: 0.95;
+  }
+}
+.julia-footer .footer-catalog-all {
+  margin: 1.25rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  a {
+    font-family: var(--julia-font-heading);
+    font-size: var(--julia-text-btn);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--cream);
+    opacity: 0.95;
+    &:hover,
+    &:focus-visible {
+      color: var(--white);
+      opacity: 1;
+    }
   }
 }
 .julia-footer .footer-social {

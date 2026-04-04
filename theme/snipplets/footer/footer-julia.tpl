@@ -48,6 +48,9 @@
 								</li>
 							{% endfor %}
 						</ul>
+						<p class="footer-catalog-all">
+							<a href="{{ store.products_url }}">{{ 'Ver todo el catálogo' | translate }}</a>
+						</p>
 					</div>
 				{% endif %}
 				{% if show_col2 %}

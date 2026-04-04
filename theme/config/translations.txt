@@ -459,6 +459,11 @@ pt "Todos os produtos"
 en "All products"
 es_mx "Todos los productos"
 
+es "Ver todo el catálogo"
+pt "Ver todo o catálogo"
+en "View full catalog"
+es_mx "Ver todo el catálogo"
+
 es "de"
 pt "de"
 en "of"
