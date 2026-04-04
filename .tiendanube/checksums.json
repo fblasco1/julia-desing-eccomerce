@@ -1,13 +1,13 @@
 [
   {
     "remotePath": "/config/defaults.txt",
-    "hash": "63cc24742beed9dc1a0ac5fd9a1f9cf1",
-    "timestamp": 1775338808736
+    "hash": "41861aae37f6cc90de15d596859ef03b",
+    "timestamp": 1775339815491
   },
   {
     "remotePath": "/config/translations.txt",
-    "hash": "f843dbb0bd0d3700843dc6647311ab54",
-    "timestamp": 1775338802161
+    "hash": "0022eca257ac3e5716ffff500883c365",
+    "timestamp": 1775341275412
   },
   {
     "remotePath": "/config/variants.txt",
@@ -321,8 +321,8 @@
   },
   {
     "remotePath": "/snipplets/navigation/navigation-mega-panel.tpl",
-    "hash": "e55434c0b3aa189f06ba8e1984c4141e",
-    "timestamp": 1775338837851
+    "hash": "3bc58d706ca6d005fa61325385d38cb0",
+    "timestamp": 1775340909337
   },
   {
     "remotePath": "/snipplets/navigation/navigation-mega-root.tpl",
@@ -376,8 +376,8 @@
   },
   {
     "remotePath": "/snipplets/preload-images.tpl",
-    "hash": "c9995240aa77901840d72bb2294cac6e",
-    "timestamp": 1775338832687
+    "hash": "f3dc2ae753db7426b7b47c19203480fe",
+    "timestamp": 1775340911132
   },
   {
     "remotePath": "/snipplets/product/product-form.tpl",
@@ -696,8 +696,8 @@
   },
   {
     "remotePath": "/static/css/style-async.scss.tpl",
-    "hash": "ddd218e2093300fb59565ea814b71325",
-    "timestamp": 1775338856870
+    "hash": "4710d6de7ecd8fdde0fe1d86c392f60e",
+    "timestamp": 1775342054379
   },
   {
     "remotePath": "/static/css/style-colors.scss.tpl",
@@ -846,8 +846,8 @@
   },
   {
     "remotePath": "/snipplets/footer/footer-julia.tpl",
-    "hash": "ab8845ebc53c9c3a273e782ea5498349",
-    "timestamp": 1775338820283
+    "hash": "e3fa793600aaa6a3aa38202c5d8cb8ef",
+    "timestamp": 1775342051868
   },
   {
     "remotePath": "/snipplets/home/home-exhibitor-card.tpl",
@@ -891,8 +891,8 @@
   },
   {
     "remotePath": "/layouts/layout.tpl",
-    "hash": "16c99fa73e0909e3be8022a2bc5db033",
-    "timestamp": 1775338808746
+    "hash": "7839ac0550afc0754c1cf60be56c9bb3",
+    "timestamp": 1775340907259
   },
   {
     "remotePath": "/static/js/store-full.js.tpl",
@@ -953,5 +953,20 @@
     "remotePath": "/snipplets/home/home-julia-exhibitor.tpl",
     "hash": "92784f305080a11f9cb8627338154d7b",
     "timestamp": 1775337053255
+  },
+  {
+    "remotePath": "/config/data.json",
+    "hash": "3eed5194c1ab4502f50d8b2bfd50fa4d",
+    "timestamp": 1775339405428
+  },
+  {
+    "remotePath": "/config/sections.txt",
+    "hash": "ac18de09a44fd844bc7f712f15dc028c",
+    "timestamp": 1775339406594
+  },
+  {
+    "remotePath": "/config/settings.txt",
+    "hash": "0024758b98f80f49cb24960b1a5a9112",
+    "timestamp": 1775340417931
   }
 ]

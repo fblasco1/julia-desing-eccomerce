@@ -43,14 +43,14 @@
 						<span class="footer-col-label">{% if h_muebles %}{{ h_muebles }}{% else %}{{ "Categorías" | translate }}{% endif %}</span>
 						<ul class="footer-nav">
 							{% for sub in footer_cat_parent.subitems %}
-								<li{% if loop.last %} class="footer-nav-extra"{% endif %}>
+								<li>
 									<a href="{% if sub.url %}{{ sub.url | setting_url }}{% else %}#{% endif %}">{{ sub.name }}</a>
 								</li>
 							{% endfor %}
+							<li>
+								<a href="{{ store.products_url }}">{{ 'Ver todo el catálogo' | translate }}</a>
+							</li>
 						</ul>
-						<p class="footer-catalog-all">
-							<a href="{{ store.products_url }}">{{ 'Ver todo el catálogo' | translate }}</a>
-						</p>
 					</div>
 				{% endif %}
 				{% if show_col2 %}

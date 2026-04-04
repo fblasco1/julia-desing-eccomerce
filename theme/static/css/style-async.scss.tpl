@@ -2506,7 +2506,6 @@ footer {
   grid-template-columns: 1fr;
   gap: clamp(2rem, 4vw, 3.5rem);
   padding-bottom: clamp(1.75rem, 3vw, 2.5rem);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
@@ -2530,32 +2529,18 @@ footer {
   padding: 0;
   li {
     margin: 0 0 0.65rem;
-  }
-}
-.julia-footer .footer-nav-extra {
-  margin-top: 1rem !important;
-  a {
-    font-weight: 600;
-    opacity: 0.95;
-  }
-}
-.julia-footer .footer-catalog-all {
-  margin: 1.25rem 0 0;
-  padding-top: 1.25rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  a {
-    font-family: var(--julia-font-heading);
-    font-size: var(--julia-text-btn);
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--cream);
-    opacity: 0.95;
-    &:hover,
-    &:focus-visible {
-      color: var(--white);
-      opacity: 1;
+    &:last-child {
+      margin-bottom: 0;
     }
+  }
+  a {
+    font-family: var(--julia-font-body);
+    font-size: var(--julia-text-body);
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline;
   }
 }
 .julia-footer .footer-social {
@@ -2615,7 +2600,6 @@ footer {
   align-items: center;
   gap: 1rem;
   padding-top: 0.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
   @media (min-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
@@ -2624,7 +2608,6 @@ footer {
   }
 }
 .julia-footer .footer-legal-row--copy-only {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 1rem;
 }
 .julia-footer .footer-legal {
@@ -2664,7 +2647,6 @@ footer {
 .julia-footer__powered {
   margin-top: 1.5rem;
   padding-top: 1.25rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
   font-size: var(--julia-text-legal);
   text-align: center;
   opacity: 0.85;
