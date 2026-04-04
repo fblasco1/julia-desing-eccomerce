@@ -277,7 +277,6 @@ Pie de página (Julia)
 		description = Pie editorial de dos columnas, sello central, redes e información legal. Los enlaces de columnas y legales salen de los menús que elijas (Navegación en el admin); no uses URLs sueltas salvo WhatsApp abajo. El sello del pie es un archivo aparte (marca minificada); no usa los logos del encabezado. Instagram y Facebook usan los datos de la tienda.
 	image
 		original = footer-stamp-placeholder.png
-		name = footer_stamp_logo
 		title = Sello del pie (marca minificada, opcional)
 		description = Imagen propia para el centro del pie (distinta del Logo claro/oscuro del encabezado). Si está vacío, se muestra solo la letra de respaldo. Debe tener original distinto en el tema (footer-stamp-placeholder.png) para que el panel no lo sincronice con el header.
 		width = 160
@@ -442,9 +441,6 @@ Página de inicio
 	i18n_input
 		name = julia_home_exhibitor_catalog_url
 		description = URL del botón (vacío = Información o catálogo de la tienda)
-	collapse
-		title = Página de inicio
-		backto = _top
 	section_order
 		name = home_order_position
 		start_index = 0
@@ -452,7 +448,3 @@ Página de inicio
 			julia_hero = Hero principal (Julia)
 			julia_home_info = Información + acordeón (Julia)
 			julia_home_exhibitor = Exhibidor más vendidos (Julia)
-			
-	link
-		text = Pop-up promocional
-		linkto = home_promotional_popup

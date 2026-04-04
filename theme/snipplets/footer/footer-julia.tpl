@@ -1,7 +1,5 @@
-{# Pie editorial Julia: enlaces desde menús (Navegación); redes y WhatsApp aparte.
-   Sello = solo footer_stamp_logo (nunca logo_blanco del header; mismos "original" en settings duplicaban la imagen en TN). #}
-{% import "snipplets/julia-macros.tpl" as julia %}
-{% set stamp_upload = julia.setting_image_value(attribute(settings, 'footer_stamp_logo') | default(null)) | trim %}
+{# Pie editorial Julia: sello = imagen tipo TN por original (footer-stamp-placeholder.png), igual que logos del header. #}
+{% set stamp_has = 'footer-stamp-placeholder.png' | has_custom_image %}
 {% set letter_fb = (settings.footer_stamp_letter | default('j') | trim) | slice(0, 1) %}
 {% if not letter_fb %}
 	{% set letter_fb = 'j' %}
@@ -90,17 +88,12 @@
 
 		<div class="footer-logo-row">
 			<div class="footer-stamp">
-				{% if stamp_upload %}
-					{% set stamp_http = (stamp_upload | slice(0, 8) == 'https://') or (stamp_upload | slice(0, 7) == 'http://') %}
+				{% if stamp_has %}
+					{% set stamp_file = 'footer-stamp-placeholder.png' %}
 					<img
 						class="footer-stamp__img"
-						{% if stamp_http %}
-						src="{{ stamp_upload }}"
-						srcset="{{ stamp_upload }} 1x, {{ stamp_upload }} 2x"
-						{% else %}
-						src="{{ stamp_upload | static_url | settings_image_url('large') }}"
-						srcset="{{ stamp_upload | static_url | settings_image_url('large') }} 1x, {{ stamp_upload | static_url | settings_image_url('huge') }} 2x"
-						{% endif %}
+						src="{{ stamp_file | static_url | settings_image_url('large') }}"
+						srcset="{{ stamp_file | static_url | settings_image_url('large') }} 1x, {{ stamp_file | static_url | settings_image_url('huge') }} 2x"
 						alt="{{ store.name }}"
 						loading="lazy"
 						decoding="async"
