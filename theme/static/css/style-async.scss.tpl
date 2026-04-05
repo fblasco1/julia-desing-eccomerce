@@ -1638,9 +1638,20 @@ body.template-cart .julia-head-bar .cart-summary a .cart-widget-amount {
   .logo-img {
     margin-top: 8px;
     margin-bottom: 8px;
-    max-height: 48px;
-    max-width: 170px;
+    max-height: 32px;
+    max-width: 160px;
     width: auto;
+  }
+
+  {# Misma escala que el logo dock de la home (≈28px alto) — sin saltos entre páginas #}
+  .logo-text,
+  h1.logo-text,
+  h1 {
+    font-size: clamp(0.78rem, 1.15vw, 1rem) !important;
+    font-weight: 700 !important;
+    line-height: 1.1 !important;
+    margin: 0 !important;
+    letter-spacing: -0.02em;
   }
 }
 
@@ -1963,9 +1974,9 @@ li.menu-open .nav-arrow {
   padding: 64px 20px 26px;
   list-style: none;
   display: block;
-  background: rgba(14, 11, 9, 0.97);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
+  background: #121212;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-14px);
@@ -1973,7 +1984,7 @@ li.menu-open .nav-arrow {
     visibility 0.35s;
   pointer-events: none;
   z-index: 1050;
-  overflow-y: auto;
+  overflow: hidden;
   box-sizing: border-box;
 }
 
@@ -1986,8 +1997,7 @@ li.menu-open .nav-arrow {
     height: calc(100vh - var(--julia-nav-h, 60px));
     padding: 0;
     z-index: 490;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: hidden;
   }
 }
 
@@ -2008,20 +2018,26 @@ li.menu-open .nav-arrow {
   background: rgba(255, 255, 255, 0.08);
 }
 
+{# Wordmark: prototipo — ocupa ~cuadrante inferior derecho, muy sutil, recortado por el borde #}
 .julia-mega-menu.mega-menu::before {
   content: "julia";
+  display: block;
   position: absolute;
-  bottom: -6vh;
-  right: -2vw;
+  bottom: clamp(-1rem, -2vh, 5.5rem);
+  right: -3vw;
   font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: min(28vw, 420px);
+  font-size: clamp(7rem, 32vw, 22rem);
   font-weight: 400;
-  letter-spacing: -0.02em;
-  color: rgba(255, 255, 255, 0.055);
-  line-height: 1;
+  letter-spacing: -0.045em;
+  color: rgba(255, 255, 255, 0.048);
+  line-height: 0.78;
   pointer-events: none;
   user-select: none;
   z-index: 0;
+  text-transform: lowercase;
+  white-space: nowrap;
+  text-align: right;
+  max-width: none;
 }
 
 {# Carril derecho: cerrar + Ver todo (solo desktop visible el segundo) #}
@@ -2070,8 +2086,8 @@ li.menu-open .nav-arrow {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #fff;
-  opacity: 0.55;
+  color: rgba(210, 208, 208, 0.82);
+  opacity: 1;
   text-decoration: none;
   align-items: center;
   gap: 8px;
@@ -2079,7 +2095,7 @@ li.menu-open .nav-arrow {
 }
 
 .mega-view-all--desktop:hover {
-  opacity: 1;
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .mega-view-all--desktop svg {
@@ -2106,8 +2122,8 @@ li.menu-open .nav-arrow {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #fff;
-  opacity: 0.55;
+  color: rgba(210, 208, 208, 0.82);
+  opacity: 1;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -2116,7 +2132,7 @@ li.menu-open .nav-arrow {
 }
 
 .mega-view-all--mobile a:hover {
-  opacity: 1;
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .mega-view-all--mobile svg {
@@ -2139,8 +2155,8 @@ li.menu-open .nav-arrow {
   width: 100%;
   max-width: 42rem;
   box-sizing: border-box;
-  padding: 52px clamp(16px, 3.5vw, 44px) 48px;
-  padding-right: clamp(100px, 14vw, 200px);
+  padding: 48px clamp(20px, 4vw, 48px) 40px;
+  padding-right: clamp(56px, 12vw, 140px);
 }
 
 @media (max-width: 767px) {
@@ -2157,8 +2173,8 @@ li.menu-open .nav-arrow {
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #81756c;
-  margin: 0 0 28px;
+  color: rgba(210, 208, 208, 0.72);
+  margin: 0 0 22px;
   display: block;
   text-align: left;
 }
@@ -2169,29 +2185,30 @@ li.menu-open .nav-arrow {
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 4px 0;
+  gap: 0;
   width: 100%;
   max-width: none;
 }
 
+{# Prototipo: categorías más chicas, bloque compacto (interlineado cerrado) #}
 .julia-mega-menu.mega-menu .julia-mega-cat-links a.mega-link {
   display: block;
   font-family: var(--julia-font-heading, "Hanken Grotesk", sans-serif);
-  font-size: clamp(1.35rem, 2.4vw, 2.25rem);
+  font-size: clamp(1.2rem, 2.15vw, 1.95rem);
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #fff;
+  color: rgba(236, 232, 228, 0.92);
   text-decoration: none;
-  opacity: 0.52;
-  line-height: 1.35;
-  margin-bottom: 2px;
-  padding: 4px 0;
-  transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+  line-height: 1.05;
+  margin: 0;
+  padding: 0;
+  transition: color 0.2s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .julia-mega-menu.mega-menu .julia-mega-cat-links a.mega-link:hover {
-  opacity: 1;
+  color: rgba(255, 255, 255, 0.98);
 }
 
 @media (min-width: 768px) {
@@ -2202,12 +2219,13 @@ li.menu-open .nav-arrow {
 
 .mega-mobile-links .mega-link {
   font-family: var(--julia-font-heading, "Hanken Grotesk", sans-serif);
-  font-size: clamp(1.2rem, 7.5vw, 1.8rem);
+  font-size: clamp(1.15rem, 5.5vw, 1.65rem);
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.08;
+  color: rgba(236, 232, 228, 0.92);
   text-decoration: none;
   display: block;
-  padding: 6px 0;
+  padding: 2px 0;
   transition: opacity 0.2s ease, color 0.2s ease;
 }
 
@@ -2261,7 +2279,7 @@ body.julia-no-scroll-mega {
 
   .mega-mobile-links {
     display: grid;
-    gap: 4px;
+    gap: 2px;
     margin: 6px 0 10px;
   }
 
@@ -2288,14 +2306,17 @@ body.julia-no-scroll-mega {
   }
 
   .julia-mega-menu.mega-menu .julia-mega-cat-links a.mega-link {
-    font-size: clamp(1.2rem, 7.5vw, 1.8rem);
-    opacity: 0.8;
+    font-size: clamp(1.1rem, 5.2vw, 1.75rem);
+    line-height: 1.06;
+    color: rgba(236, 232, 228, 0.92);
   }
 
   .julia-mega-menu.mega-menu::before {
-    font-size: 42vw;
-    right: -16px;
-    bottom: -24px;
+    font-size: clamp(5rem, 38vw, 14rem);
+    right: -8vw;
+    bottom: clamp(1.5rem, 5vh, 3.5rem);
+    max-width: none;
+    text-transform: lowercase;
   }
 
   {# En mobile el panel es el mega: ocultamos enlaces sueltos del navbar y el botón categoría #}
@@ -2326,6 +2347,8 @@ body.julia-head-mode--catalog .head-main {
   background: transparent !important;
   border-bottom: 0;
   box-shadow: none;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 @media (min-width: 768px) {
@@ -2342,12 +2365,12 @@ body.julia-head-mode--catalog .head-main {
     top: 0;
     z-index: 480;
     margin-bottom: 0 !important;
-    padding: 10px 28px 14px;
-    background: rgba(236, 236, 236, 0.97);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(28, 26, 22, 0.08);
-    box-shadow: 0 6px 24px rgba(28, 26, 22, 0.06);
+    padding: 10px clamp(16px, 3.5vw, 44px) 14px;
+    background: rgba(236, 232, 228, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(28, 26, 22, 0.07);
+    box-shadow: 0 6px 24px rgba(28, 26, 22, 0.05);
   }
 
   body.julia-catalog-compact .nav-hamburger.modal-open {
@@ -2362,8 +2385,606 @@ body.julia-head-mode--catalog .head-main {
   transition: height 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+{# /* Catálogo: fondo cream; barra superior transparente sin velo; texto marrón legible sobre cream */ #}
+body.julia-head-mode--catalog {
+  background-color: var(--cream, #ece8e4);
+}
+
+body.julia-head-mode--catalog .julia-head-bar .julia-nav-desktop-link,
+body.julia-head-mode--catalog .julia-head-bar .julia-nav-plain-link,
+body.julia-head-mode--catalog .julia-head-bar .julia-nav-desktop-summary,
+body.julia-head-mode--catalog .julia-head-bar .nav-muebles-btn {
+  color: rgba(84, 70, 61, 0.88) !important;
+}
+
+body.julia-head-mode--catalog .julia-head-bar .svg-icon-text,
+body.julia-head-mode--catalog .julia-head-bar .cart-widget-amount,
+body.julia-head-mode--catalog .julia-head-bar .nav-arrow {
+  color: rgba(84, 70, 61, 0.88) !important;
+  fill: rgba(84, 70, 61, 0.88) !important;
+  stroke: rgba(84, 70, 61, 0.88);
+}
+
+body.julia-head-mode--catalog .julia-head-bar .julia-nav-desktop-link:hover,
+body.julia-head-mode--catalog .julia-head-bar .julia-nav-plain-link:hover,
+body.julia-head-mode--catalog .julia-head-bar .julia-nav-desktop-summary:hover,
+body.julia-head-mode--catalog .julia-head-bar .nav-muebles-btn:hover,
+body.julia-head-mode--catalog .julia-head-bar .julia-nav-desktop-link:focus-visible,
+body.julia-head-mode--catalog .julia-head-bar .julia-nav-plain-link:focus-visible,
+body.julia-head-mode--catalog .julia-head-bar .julia-nav-desktop-summary:focus-visible,
+body.julia-head-mode--catalog .julia-head-bar .nav-muebles-btn:focus-visible {
+  color: rgba(84, 70, 61, 0.98) !important;
+}
+
+body.julia-head-mode--catalog .julia-head-bar .utilities-item a:hover .svg-icon-text,
+body.julia-head-mode--catalog .julia-head-bar .utilities-item a:focus-visible .svg-icon-text,
+body.julia-head-mode--catalog .julia-head-bar .utilities-item a:hover .cart-widget-amount,
+body.julia-head-mode--catalog .julia-head-bar .utilities-item a:focus-visible .cart-widget-amount {
+  color: rgba(84, 70, 61, 0.98) !important;
+  fill: rgba(84, 70, 61, 0.98) !important;
+}
+
+body.julia-head-mode--catalog .julia-head-bar .julia-nav-desktop-link--current,
+body.julia-head-mode--catalog .julia-head-bar .julia-nav-desktop-summary.julia-nav-desktop-link--current,
+body.julia-head-mode--catalog .julia-head-bar .nav-muebles-btn--current,
+body.julia-head-mode--catalog .julia-head-bar .julia-nav-desktop-link[aria-current="page"],
+body.julia-head-mode--catalog .julia-head-bar .nav-muebles-btn[aria-current="page"] {
+  color: rgba(84, 70, 61, 1) !important;
+}
+
+body.julia-head-mode--catalog .julia-head-bar .julia-nav-desktop-details[open] .julia-nav-desktop-summary .svg-icon-text,
+body.julia-head-mode--catalog .julia-head-bar .julia-nav-desktop-summary.julia-nav-desktop-link--current .svg-icon-text,
+body.julia-head-mode--catalog .julia-head-bar .julia-nav-desktop-summary:hover .svg-icon-text {
+  color: rgba(84, 70, 61, 0.96) !important;
+  fill: rgba(84, 70, 61, 0.96) !important;
+}
+
+{# Catálogo: aire bajo navbar antes del título (~48px) + nav-h; laterales 28px; abajo 52px #}
+.julia-catalog-page {
+  color: var(--dark-text, #1c1a16);
+  min-height: 100dvh;
+  box-sizing: border-box;
+  padding: calc(var(--julia-nav-h, 60px) + 48px) 28px 52px;
+}
+
+.julia-catalog-page__inner {
+  width: 100%;
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .julia-catalog-page {
+    padding: calc(var(--julia-nav-h, 56px) + 32px) 16px 42px;
+  }
+}
+
+.julia-catalog-title {
+  font-family: var(--julia-font-heading);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 0 clamp(14px, 2.5vw, 22px);
+  text-align: left;
+}
+
+.julia-catalog-lead {
+  font-family: var(--julia-font-heading);
+  font-size: clamp(0.88rem, 1.2vw, 1rem);
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(28, 26, 22, 0.72);
+  max-width: 62ch;
+  margin: 0 0 clamp(20px, 3vw, 28px);
+}
+
+.julia-catalog-toolbar-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px 24px;
+  width: 100%;
+}
+
+.julia-catalog-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  align-items: center;
+}
+
+.julia-catalog-tab {
+  font-family: var(--julia-font-heading);
+  font-size: 0.84rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(28, 26, 22, 0.72);
+  text-decoration: none;
+  padding: 2px 0;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s, opacity 0.2s;
+  opacity: 0.85;
+}
+
+.julia-catalog-tab:hover,
+.julia-catalog-tab:focus-visible {
+  color: var(--dark-text, #1c1a16);
+  opacity: 1;
+}
+
+.julia-catalog-tab--active {
+  color: var(--dark-text, #1c1a16);
+  border-bottom-color: var(--dark-text, #1c1a16);
+  opacity: 1;
+}
+
+.julia-catalog-controls {
+  margin-left: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: stretch;
+  justify-content: flex-end;
+  overflow: visible;
+}
+
+{# Ordenar y Filtros: mismo ancho y altura (pastilla) #}
+.julia-catalog-pill,
+.julia-catalog-dropdown--filters {
+  flex: 0 0 228px;
+  width: 228px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.julia-catalog-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid rgba(28, 26, 22, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.92);
+  overflow: visible;
+}
+
+.julia-catalog-pill__label {
+  font-family: var(--julia-font-heading);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(28, 26, 22, 0.75);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.julia-catalog-pill__field {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+{# Ordenar: select TN oculto; UI = details + radios (sin chevron) #}
+.julia-catalog-sort {
+  position: relative;
+}
+
+.julia-catalog-sort-ui {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.julia-catalog-sort-native {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  pointer-events: none;
+}
+
+.julia-catalog-sort-native .form-select-icon {
+  display: none !important;
+}
+
+.julia-catalog-sort-details {
+  position: relative;
+  width: 100%;
+}
+
+.julia-catalog-sort-summary {
+  list-style: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 24px;
+  font-family: var(--julia-font-heading);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(28, 26, 22, 0.92);
+}
+
+.julia-catalog-sort-summary::-webkit-details-marker {
+  display: none;
+}
+
+.julia-catalog-sort-summary__value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 118px;
+  text-align: right;
+}
+
+.julia-catalog-sort-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  left: auto;
+  z-index: 60;
+  min-width: 240px;
+  max-width: min(92vw, 280px);
+  padding: 10px 12px;
+  border: 1px solid rgba(28, 26, 22, 0.14);
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.1);
+}
+
+.julia-catalog-sort-opt {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0;
+  padding: 8px 4px;
+  font-family: var(--julia-font-heading);
+  font-size: 0.8rem;
+  color: rgba(28, 26, 22, 0.88);
+  cursor: pointer;
+}
+
+.julia-catalog-sort-opt + .julia-catalog-sort-opt {
+  border-top: 1px solid rgba(28, 26, 22, 0.08);
+}
+
+.julia-catalog-sort-opt input {
+  margin-top: 3px;
+  accent-color: var(--brown, #54463d);
+}
+
+.julia-catalog-dropdown {
+  position: relative;
+}
+
+.julia-catalog-dropdown__summary {
+  list-style: none;
+  cursor: pointer;
+  border: 1px solid rgba(28, 26, 22, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.92);
+  box-sizing: border-box;
+  height: 44px;
+  min-height: 44px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--julia-font-heading);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(28, 26, 22, 0.88);
+}
+
+.julia-catalog-dropdown__summary::-webkit-details-marker {
+  display: none;
+}
+
+.julia-catalog-dropdown[open] .julia-catalog-dropdown__summary {
+  border-color: rgba(28, 26, 22, 0.35);
+}
+
+.julia-catalog-dropdown__action {
+  opacity: 0.45;
+  transition: opacity 0.15s ease;
+}
+
+.julia-catalog-dropdown__action--active {
+  opacity: 1;
+  color: var(--brown, #54463d);
+}
+
+.julia-catalog-dropdown__body {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: min(100vw - 32px, 320px);
+  max-height: min(70vh, 420px);
+  overflow: auto;
+  border: 1px solid rgba(28, 26, 22, 0.14);
+  border-radius: 10px;
+  background: #f4f3f1;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.1);
+  padding: 18px 16px;
+  z-index: 50;
+}
+
+.julia-catalog-dropdown__body #filters {
+  margin: 0;
+}
+
+.julia-catalog-dropdown__body .filters-container {
+  margin-bottom: 1.25rem !important;
+}
+
+.julia-catalog-dropdown__body .filters-container:last-child {
+  margin-bottom: 0 !important;
+}
+
+{# Filtro precio: inputs nativos ocultos; UI = slider (JS) #}
+.julia-catalog-dropdown__body .filter-input-price-container.julia-catalog-price-native-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.julia-catalog-price-range-wrap {
+  margin-bottom: 18px;
+}
+
+.julia-catalog-price-range-hints {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-family: var(--julia-font-heading);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(84, 70, 61, 0.55);
+}
+
+.julia-catalog-price-range-hint {
+  max-width: 48%;
+  line-height: 1.35;
+}
+
+.julia-catalog-price-range-hint--max {
+  text-align: right;
+}
+
+.julia-catalog-price-range-slider {
+  display: block;
+  width: 100%;
+  height: 28px;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  accent-color: var(--brown, #54463d);
+  background: transparent;
+}
+
+.julia-catalog-price-range-slider::-webkit-slider-runnable-track {
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(84, 70, 61, 0.35);
+}
+
+.julia-catalog-price-range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--brown, #54463d);
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  margin-top: -5px;
+}
+
+.julia-catalog-price-range-slider::-moz-range-track {
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(84, 70, 61, 0.35);
+}
+
+.julia-catalog-price-range-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--brown, #54463d);
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.julia-catalog-price-range-value {
+  margin-top: 10px;
+  font-family: var(--julia-font-heading);
+  font-size: 0.8rem;
+  color: rgba(28, 26, 22, 0.72);
+}
+
+{# Sección colores: título como precio #}
+.julia-catalog-dropdown__body .filters-container .h6,
+.julia-catalog-dropdown__body .filters-container h6 {
+  font-family: var(--julia-font-heading);
+  font-size: 0.72rem !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(84, 70, 61, 0.65) !important;
+  margin-bottom: 12px !important;
+}
+
+.julia-catalog-dropdown__body .filters-container .btn,
+.julia-catalog-dropdown__body .filters-container .btn-default {
+  width: 100% !important;
+  margin-top: 14px !important;
+  margin-bottom: 0 !important;
+  display: block !important;
+  box-sizing: border-box !important;
+  padding: 10px 14px !important;
+  font-family: var(--julia-font-heading);
+  font-size: 0.72rem !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dark-text, #1c1a16) !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(28, 26, 22, 0.28) !important;
+  border-radius: 8px !important;
+}
+
+.julia-catalog-dropdown__body .checkbox-container .checkbox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0;
+}
+
+{# Orden: casilla → franja de color → nombre (maqueta) #}
+.julia-catalog-dropdown__body .checkbox-container .checkbox-icon {
+  order: 1;
+  flex-shrink: 0;
+  border-color: rgba(28, 26, 22, 0.35) !important;
+}
+
+.julia-catalog-dropdown__body .checkbox-container .checkbox-color {
+  order: 2;
+  width: 3px !important;
+  min-width: 3px;
+  height: 14px !important;
+  border-radius: 1px;
+  margin: 0 8px 0 8px !important;
+  flex-shrink: 0;
+}
+
+.julia-catalog-dropdown__body .checkbox-container .checkbox-text {
+  order: 3;
+  color: rgba(28, 26, 22, 0.82) !important;
+}
+
+.julia-catalog-empty {
+  padding: 2rem 0;
+}
+
+{# Rejilla a ancho completo con calles finas (alineado a maqueta) #}
+.julia-catalog-page .julia-catalog-grid.row {
+  margin-left: -6px;
+  margin-right: -6px;
+}
+
+.julia-catalog-page .julia-catalog-grid.row > [class*="col"] {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.template-category .julia-catalog-grid .item-product {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 6px;
+}
+
+{# Cards catálogo: título negro · categoría visón 75% · precio negro negrita #}
+.template-category .julia-catalog-grid .item-name {
+  color: var(--dark-text, #1c1a16) !important;
+}
+
+.template-category .julia-catalog-grid .item-category-label {
+  font-family: var(--julia-font-heading);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--mink, #81756c);
+  opacity: 0.75;
+}
+
+.template-category .julia-catalog-grid .item-price-container .item-price,
+.template-category .julia-catalog-grid .item-price-container .item-price-prefix {
+  color: var(--dark-text, #1c1a16) !important;
+  font-weight: 700;
+}
+
+.template-category .julia-catalog-grid .item-product:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(28, 26, 22, 0.12);
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .template-category .julia-catalog-grid > .item-product[class*="col"] {
+    flex: 0 0 33.333333% !important;
+    max-width: 33.333333% !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .template-category .julia-catalog-grid > .item-product[class*="col"] {
+    flex: 0 0 25% !important;
+    max-width: 25% !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .julia-catalog-controls {
+    margin-left: 0;
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .julia-catalog-pill,
+  .julia-catalog-dropdown--filters {
+    flex: 1 1 calc(50% - 5px);
+    width: auto;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .julia-catalog-dropdown {
+    flex: 1 1 calc(50% - 5px);
+    min-width: 0;
+  }
+
+  .julia-catalog-dropdown__body {
+    left: 0;
+    right: 0;
+    width: auto;
+  }
+
+  body.julia-catalog-compact .julia-category-toolbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: var(--julia-nav-h, 60px);
+    z-index: 480;
+    margin-bottom: 0 !important;
+    padding: 10px clamp(16px, 3.5vw, 44px) 12px;
+    background: rgba(236, 232, 228, 0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(28, 26, 22, 0.07);
+    box-shadow: 0 6px 24px rgba(28, 26, 22, 0.05);
+  }
+}
+
+{# Institucionales: barra transparente sobre el split (misma lectura que home sin scroll sólido) #}
 body.julia-head-mode--static {
-  padding-top: 60px;
+  padding-top: 0;
 }
 
 body.julia-head-mode--static .head-main {
@@ -2372,10 +2993,260 @@ body.julia-head-mode--static .head-main {
   left: 0;
   right: 0;
   z-index: 1040;
-  background: rgba(36, 28, 23, 0.96) !important;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: transparent !important;
+  border-bottom: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+{# No anular padding-top del .julia-inst-split: el offset --julia-nav-h evita que el contenido quede bajo la barra fija #}
+
+{# /* Páginas institucionales: quienes-somos / como-trabajamos (prototype split + FAQ) */ #}
+
+.julia-inst-split {
+  --julia-inst-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+  padding-top: var(--julia-nav-h, 60px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100dvh;
+  background: var(--julia-inst-panel-bg, #54463d);
+  color: var(--white, #ffffff);
+}
+
+.julia-inst-split__media {
+  min-height: calc(100dvh - var(--julia-nav-h, 60px));
+  overflow: hidden;
+  background: var(--julia-inst-media-bg, #d2d0d0);
+}
+
+.julia-inst-split__img {
+  width: 100%;
+  height: 100%;
+  min-height: calc(100dvh - var(--julia-nav-h, 60px));
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: brightness(0.92);
+}
+
+.julia-inst-split__media-ph {
+  width: 100%;
+  min-height: calc(100dvh - var(--julia-nav-h, 60px));
+  height: 100%;
+  background: linear-gradient(145deg, rgba(212, 208, 204, 1) 0%, #c4bdb5 45%, #a69f96 100%);
+}
+
+.julia-inst-split__panel {
+  padding: clamp(24px, 4vw, 56px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 18px;
+  background: var(--julia-inst-panel-bg, #54463d);
+}
+
+.julia-inst-split__title {
+  font-family: var(--julia-font-heading);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: 0 0 clamp(16px, 3vw, 28px);
+  color: var(--white, #ffffff);
+}
+
+.julia-inst-split__body--about {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+{# Contenido desde el editor de páginas (HTML) #}
+.julia-inst-split__body--about.julia-inst-user-html {
+  display: block;
+  max-width: 62ch;
+}
+
+.julia-inst-split__body--about.julia-inst-user-html > *:first-child {
+  margin-top: 0;
+}
+
+.julia-inst-split__body--about.julia-inst-user-html p,
+.julia-inst-split__body--about.julia-inst-user-html li {
+  font-family: var(--julia-font-heading);
+  font-size: clamp(0.88rem, 1.2vw, 1.05rem);
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.julia-inst-split__body--about.julia-inst-user-html a {
+  color: var(--cream, #ece8e4);
+  text-decoration: underline;
+}
+
+.julia-inst-split__body--about.julia-inst-user-html ul,
+.julia-inst-split__body--about.julia-inst-user-html ol {
+  margin: 0 0 1em;
+  padding-left: 1.25em;
+}
+
+.julia-inst-split__body--about.julia-inst-user-html h2,
+.julia-inst-split__body--about.julia-inst-user-html h3 {
+  font-family: var(--julia-font-heading);
+  color: var(--white, #ffffff);
+  font-weight: 600;
+  margin: 1.25em 0 0.5em;
+  letter-spacing: -0.02em;
+}
+
+.julia-inst-split__p {
+  font-family: var(--julia-font-heading);
+  font-size: clamp(0.88rem, 1.2vw, 1.05rem);
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0;
+  max-width: 62ch;
+}
+
+.julia-inst-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vw, 32px);
+}
+
+.julia-inst-faq-group {
+  font-family: var(--julia-font-heading);
+  font-size: clamp(0.68rem, 0.95vw, 0.82rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.48);
+  margin: clamp(12px, 2vw, 22px) 0 0;
+  padding: 0;
+  line-height: 1.3;
+}
+
+.julia-inst-faq-group:first-child {
+  margin-top: 0;
+}
+
+.julia-inst-faq-item {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  padding-top: clamp(16px, 2.2vw, 22px);
+  margin: 0;
+}
+
+.julia-inst-faq-item:last-of-type {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  padding-bottom: clamp(16px, 2.2vw, 22px);
+}
+
+.julia-inst-faq-trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  color: inherit;
+  text-align: left;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.julia-inst-faq-q {
+  display: block;
+  font-family: var(--julia-font-heading);
+  font-size: clamp(1.02rem, 1.5vw, 1.24rem);
+  font-weight: 600;
+  color: var(--white, #ffffff);
+  line-height: 1.35;
+  margin: 0;
+  text-align: left;
+}
+
+.julia-inst-faq-plus {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  position: relative;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.julia-inst-faq-plus::before,
+.julia-inst-faq-plus::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: var(--white, #ffffff);
+  transform: translate(-50%, -50%);
+  transition: transform 0.28s var(--julia-inst-ease), opacity 0.28s var(--julia-inst-ease);
+}
+
+.julia-inst-faq-plus::before {
+  width: 14px;
+  height: 1.5px;
+}
+
+.julia-inst-faq-plus::after {
+  width: 1.5px;
+  height: 14px;
+}
+
+.julia-inst-faq-item--open .julia-inst-faq-plus::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  opacity: 0;
+}
+
+.julia-inst-faq-item--open .julia-inst-faq-plus {
+  opacity: 1;
+}
+
+.julia-inst-faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s var(--julia-inst-ease);
+}
+
+.julia-inst-faq-answer {
+  font-family: var(--julia-font-heading);
+  font-size: clamp(0.88rem, 1.2vw, 1.05rem);
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.65);
+  padding-top: 10px;
+  max-width: 62ch;
+}
+
+@media (max-width: 900px) {
+  .julia-inst-split {
+    grid-template-columns: 1fr;
+  }
+
+  .julia-inst-split__media {
+    min-height: 48dvh;
+  }
+
+  .julia-inst-split__img {
+    min-height: 48dvh;
+  }
+
+  .julia-inst-split__media-ph {
+    min-height: 48dvh;
+  }
+
+  .julia-inst-split__panel {
+    padding-top: 22px;
+    padding-bottom: 42px;
+  }
 }
 
 {# /* // Search */ #}

@@ -451,3 +451,135 @@ Página de inicio
 			julia_hero = Hero principal (Julia)
 			julia_home_info = Información + acordeón (Julia)
 			julia_home_exhibitor = Exhibidor más vendidos (Julia)
+
+Páginas institucionales (Julia)
+	meta
+		icon = file-text
+		advanced = true
+	description
+		description = Páginas con URL <strong>quienes-somos</strong> y <strong>como-trabajamos</strong> (crealas en Páginas). En <strong>Quiénes somos</strong>, el texto largo y el formato salen del <strong>Contenido</strong> de esa página (editor enriquecido del admin). Acá configurás título, foto y colores; en <strong>Cómo trabajamos</strong> el copy del FAQ sigue siendo de esta sección.
+	collapse
+		title = Apariencia (ambas páginas)
+		backto = _top
+	color
+		name = julia_inst_media_bg
+		description = Fondo detrás de la foto (columna izquierda)
+	color
+		name = julia_inst_panel_bg
+		description = Fondo del texto y preguntas (columna derecha)
+	collapse
+		title = Quiénes somos
+		backto = _top
+	image
+		original = julia_inst_quienes_hero.jpg
+		title = Imagen (columna izquierda)
+		width = 1400
+		height = 1800
+	i18n_input
+		name = julia_inst_quienes_title
+		description = Título principal
+	subtitle
+		subtitle = <div class="js-description-html">El texto de la página (párrafos, negritas, listas, enlaces) se edita en <strong>Tienda → Páginas → Quienes somos → Contenido</strong>, con el editor enriquecido. Si ese campo está vacío, se muestran como respaldo los tres párrafos guardados en el tema (valores por defecto / migración).</div>
+	collapse
+		title = Cómo trabajamos
+		backto = _top
+	image
+		original = julia_inst_como_hero.jpg
+		title = Imagen (columna izquierda)
+		width = 1400
+		height = 1800
+	i18n_input
+		name = julia_inst_como_title
+		description = Título principal
+	subtitle
+		subtitle = <div class="js-description-html">Hasta <strong>10</strong> preguntas. Los slots vacíos no se muestran (equivalente a «eliminar»). <strong>Categoría</strong> opcional: mismo texto en filas seguidas agrupa bajo un solo título (ej. Envíos, Medios de pago). Tras una fila sin categoría, la siguiente categoría vuelve a mostrarse aunque repita nombre.</div>
+	i18n_input
+		name = julia_inst_como_faq_1_title
+		description = Pregunta 1 — título
+	i18n_input
+		name = julia_inst_como_faq_1_body
+		description = Pregunta 1 — respuesta
+	i18n_input
+		name = julia_inst_como_faq_1_category
+		description = Pregunta 1 — categoría (opcional)
+	i18n_input
+		name = julia_inst_como_faq_2_title
+		description = Pregunta 2 — título
+	i18n_input
+		name = julia_inst_como_faq_2_body
+		description = Pregunta 2 — respuesta
+	i18n_input
+		name = julia_inst_como_faq_2_category
+		description = Pregunta 2 — categoría (opcional)
+	i18n_input
+		name = julia_inst_como_faq_3_title
+		description = Pregunta 3 — título
+	i18n_input
+		name = julia_inst_como_faq_3_body
+		description = Pregunta 3 — respuesta
+	i18n_input
+		name = julia_inst_como_faq_3_category
+		description = Pregunta 3 — categoría (opcional)
+	i18n_input
+		name = julia_inst_como_faq_4_title
+		description = Pregunta 4 — título
+	i18n_input
+		name = julia_inst_como_faq_4_body
+		description = Pregunta 4 — respuesta
+	i18n_input
+		name = julia_inst_como_faq_4_category
+		description = Pregunta 4 — categoría (opcional)
+	i18n_input
+		name = julia_inst_como_faq_5_title
+		description = Pregunta 5 — título
+	i18n_input
+		name = julia_inst_como_faq_5_body
+		description = Pregunta 5 — respuesta
+	i18n_input
+		name = julia_inst_como_faq_5_category
+		description = Pregunta 5 — categoría (opcional)
+	i18n_input
+		name = julia_inst_como_faq_6_title
+		description = Pregunta 6 — título
+	i18n_input
+		name = julia_inst_como_faq_6_body
+		description = Pregunta 6 — respuesta
+	i18n_input
+		name = julia_inst_como_faq_6_category
+		description = Pregunta 6 — categoría (opcional)
+	i18n_input
+		name = julia_inst_como_faq_7_title
+		description = Pregunta 7 — título
+	i18n_input
+		name = julia_inst_como_faq_7_body
+		description = Pregunta 7 — respuesta
+	i18n_input
+		name = julia_inst_como_faq_7_category
+		description = Pregunta 7 — categoría (opcional)
+	i18n_input
+		name = julia_inst_como_faq_8_title
+		description = Pregunta 8 — título
+	i18n_input
+		name = julia_inst_como_faq_8_body
+		description = Pregunta 8 — respuesta
+	i18n_input
+		name = julia_inst_como_faq_8_category
+		description = Pregunta 8 — categoría (opcional)
+	i18n_input
+		name = julia_inst_como_faq_9_title
+		description = Pregunta 9 — título
+	i18n_input
+		name = julia_inst_como_faq_9_body
+		description = Pregunta 9 — respuesta
+	i18n_input
+		name = julia_inst_como_faq_9_category
+		description = Pregunta 9 — categoría (opcional)
+	i18n_input
+		name = julia_inst_como_faq_10_title
+		description = Pregunta 10 — título
+	i18n_input
+		name = julia_inst_como_faq_10_body
+		description = Pregunta 10 — respuesta
+	i18n_input
+		name = julia_inst_como_faq_10_category
+		description = Pregunta 10 — categoría (opcional)

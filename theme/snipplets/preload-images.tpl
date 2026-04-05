@@ -66,6 +66,16 @@
             <link rel="preload" as="image" href="{{ image | product_image_url('large') }}" imagesrcset="{{ image | product_image_url('large') }} 480w, {{ image | product_image_url('huge') }} 640w, {{ image | product_image_url('original') }} 1024w">
         {% endif %}
     {% endfor %}
+{% elseif template == 'page' and page is defined and page.handle is defined %}
+
+    {% if page.handle == 'quienes-somos' and ('julia_inst_quienes_hero.jpg' | has_custom_image) %}
+        {% set inst_q_src = 'julia_inst_quienes_hero.jpg' | static_url %}
+        <link rel="preload" as="image" href="{{ inst_q_src | settings_image_url('large') }}" imagesrcset="{{ inst_q_src | settings_image_url('large') }} 480w, {{ inst_q_src | settings_image_url('xlarge') }} 1400w, {{ inst_q_src | settings_image_url('1080p') }} 1920w">
+    {% elseif page.handle == 'como-trabajamos' and ('julia_inst_como_hero.jpg' | has_custom_image) %}
+        {% set inst_c_src = 'julia_inst_como_hero.jpg' | static_url %}
+        <link rel="preload" as="image" href="{{ inst_c_src | settings_image_url('large') }}" imagesrcset="{{ inst_c_src | settings_image_url('large') }} 480w, {{ inst_c_src | settings_image_url('xlarge') }} 1400w, {{ inst_c_src | settings_image_url('1080p') }} 1920w">
+    {% endif %}
+
 {% elseif template == 'category' %}
 
     {# Preload category LCP image #}

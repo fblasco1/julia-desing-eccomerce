@@ -805,4 +805,401 @@ DOMContentLoaded.addEventOrExecute(() => {
         }
     {% endif %}
 
+    {# Páginas institucionales: acordeón FAQ (Cómo trabajamos) #}
+    var instFaqItems = document.querySelectorAll(".julia-inst-faq-item");
+    if (instFaqItems.length) {
+        function juliaSetInstFaqState(item, open) {
+            var triggerEl = item.querySelector(".julia-inst-faq-trigger");
+            var content = item.querySelector(".julia-inst-faq-content");
+            if (!triggerEl || !content) {
+                return;
+            }
+            item.classList.toggle("julia-inst-faq-item--open", open);
+            triggerEl.setAttribute("aria-expanded", open ? "true" : "false");
+            content.style.maxHeight = open ? content.scrollHeight + "px" : "0px";
+        }
+        instFaqItems.forEach(function (item) {
+            var triggerEl = item.querySelector(".julia-inst-faq-trigger");
+            if (!triggerEl) {
+                return;
+            }
+            juliaSetInstFaqState(item, false);
+            triggerEl.addEventListener("click", function () {
+                var willOpen = !item.classList.contains("julia-inst-faq-item--open");
+                instFaqItems.forEach(function (it) {
+                    juliaSetInstFaqState(it, false);
+                });
+                if (willOpen) {
+                    juliaSetInstFaqState(item, true);
+                }
+            });
+        });
+        window.addEventListener("resize", function () {
+            var openItem = document.querySelector(".julia-inst-faq-item--open");
+            if (openItem) {
+                var content = openItem.querySelector(".julia-inst-faq-content");
+                if (content) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            }
+        });
+    }
+
+    {% if template == 'category' %}
+    (function () {
+        var toolbar = document.querySelector(".js-category-controls");
+        var spacer = document.querySelector(".js-category-controls-spacer");
+        if (!toolbar || !spacer) {
+            return;
+        }
+        var compactThreshold = 72;
+        function updateCatalogCompact() {
+            var y = window.scrollY || window.pageYOffset;
+            var compact = y > compactThreshold;
+            document.body.classList.toggle("julia-catalog-compact", compact);
+            if (compact) {
+                requestAnimationFrame(function () {
+                    if (document.body.classList.contains("julia-catalog-compact")) {
+                        spacer.style.height = toolbar.offsetHeight + "px";
+                    }
+                });
+            } else {
+                spacer.style.height = "0px";
+            }
+        }
+        window.addEventListener("scroll", updateCatalogCompact, { passive: true });
+        window.addEventListener("resize", updateCatalogCompact);
+        updateCatalogCompact();
+
+        var filterDetails = document.getElementById("julia-catalog-filters-panel");
+        if (filterDetails) {
+            document.addEventListener("click", function (e) {
+                if (!filterDetails.open) {
+                    return;
+                }
+                var t = e.target;
+                if (filterDetails.contains(t)) {
+                    return;
+                }
+                filterDetails.removeAttribute("open");
+            });
+        }
+
+        var sortPanel = document.getElementById("juliaCatalogSortPanel");
+        var sortSelect = document.querySelector(".julia-catalog-sort-native .js-sort-by");
+        var sortLabel = document.getElementById("juliaCatalogSortLabel");
+        var sortRadios = document.querySelectorAll(".julia-catalog-sort-rad-input");
+
+        function juliaSyncSortLabel() {
+            if (!sortSelect || !sortLabel) {
+                return;
+            }
+            var opt = sortSelect.options[sortSelect.selectedIndex];
+            sortLabel.textContent = opt ? opt.textContent.replace(/\s+/g, " ").trim() : "";
+        }
+
+        function juliaSyncSortRadios() {
+            if (!sortSelect) {
+                return;
+            }
+            for (var i = 0; i < sortRadios.length; i++) {
+                sortRadios[i].checked = sortRadios[i].value === sortSelect.value;
+            }
+        }
+
+        if (sortSelect && sortRadios.length) {
+            for (var j = 0; j < sortRadios.length; j++) {
+                sortRadios[j].addEventListener("change", function () {
+                    if (!this.checked) {
+                        return;
+                    }
+                    sortSelect.value = this.value;
+                    var ev;
+                    if (typeof Event === "function") {
+                        ev = new Event("change", { bubbles: true });
+                    } else {
+                        ev = document.createEvent("HTMLEvents");
+                        ev.initEvent("change", true, false);
+                    }
+                    sortSelect.dispatchEvent(ev);
+                    juliaSyncSortLabel();
+                    if (sortPanel) {
+                        sortPanel.removeAttribute("open");
+                    }
+                });
+            }
+            sortSelect.addEventListener("change", function () {
+                juliaSyncSortRadios();
+                juliaSyncSortLabel();
+            });
+            juliaSyncSortRadios();
+            juliaSyncSortLabel();
+        }
+
+        if (sortPanel) {
+            document.addEventListener("click", function (e) {
+                if (!sortPanel.open) {
+                    return;
+                }
+                var t = e.target;
+                if (sortPanel.contains(t)) {
+                    return;
+                }
+                sortPanel.removeAttribute("open");
+            });
+        }
+
+        function juliaFormatMoneyAr(n) {
+            try {
+                return "$" + Number(n).toLocaleString("es-AR");
+            } catch (e) {
+                return "$" + n;
+            }
+        }
+
+        /**
+         * Tienda Nube enlaza el filtro de precio con jQuery; hace falta .val() + .trigger().
+         */
+        function juliaSetFilterPriceInput(el, rawNum) {
+            if (!el) {
+                return;
+            }
+            var s = String(rawNum);
+            if (typeof jQueryNuvem !== "undefined") {
+                var $el = jQueryNuvem(el);
+                $el.val(s);
+                $el.trigger("keyup");
+                $el.trigger("input");
+                $el.trigger("change");
+            } else {
+                el.value = s;
+                el.dispatchEvent(new Event("keyup", { bubbles: true }));
+                el.dispatchEvent(new Event("input", { bubbles: true }));
+                el.dispatchEvent(new Event("change", { bubbles: true }));
+            }
+        }
+
+        function juliaFindPriceSubmitButton(scope) {
+            if (!scope) {
+                return null;
+            }
+            return (
+                scope.querySelector(".filters-container button.btn-default") ||
+                scope.querySelector(".filters-container button.btn") ||
+                scope.querySelector(".filters-container button[type='submit']") ||
+                scope.querySelector(".filters-container input[type='submit']") ||
+                scope.querySelector("button.btn-default") ||
+                scope.querySelector("button.btn")
+            );
+        }
+
+        function juliaEnablePriceSubmit(scope) {
+            var btn = juliaFindPriceSubmitButton(scope);
+            if (!btn) {
+                return;
+            }
+            btn.removeAttribute("disabled");
+            btn.disabled = false;
+            if (btn.classList) {
+                btn.classList.remove("disabled");
+            }
+        }
+
+        function juliaCatalogInitPriceRange() {
+            var filterRoot = document.getElementById("julia-catalog-filters-panel");
+            if (!filterRoot) {
+                return;
+            }
+            var body = filterRoot.querySelector(".julia-catalog-dropdown__body");
+            if (!body || body.getAttribute("data-julia-price-range") === "1") {
+                return;
+            }
+            var priceInputs = body.querySelectorAll("input.filter-input-price");
+            if (!priceInputs.length) {
+                return;
+            }
+
+            var minEl = priceInputs[0];
+            var maxEl = priceInputs.length >= 2 ? priceInputs[1] : null;
+
+            var maxAttr = (maxEl || minEl).getAttribute("max");
+            var dataMax = filterRoot.getAttribute("data-julia-listing-price-max");
+            var maxBound = maxAttr != null && maxAttr !== "" ? parseInt(maxAttr, 10) : NaN;
+            if (isNaN(maxBound) || maxBound < 0) {
+                maxBound =
+                    dataMax != null && dataMax !== "" && !isNaN(parseInt(dataMax, 10))
+                        ? parseInt(dataMax, 10)
+                        : 999999999;
+            }
+            // Rango UI: de 0 al máximo del listado (atributo max del input TN o data-julia-listing-price-max).
+            var minBound = 0;
+            var step = parseInt(minEl.getAttribute("step") || (maxEl && maxEl.getAttribute("step")) || "5000", 10);
+            if (isNaN(step) || step < 1) {
+                step = 5000;
+            }
+
+            function parseMoneyInput(el) {
+                if (!el || !el.value) {
+                    return null;
+                }
+                var n = parseInt(String(el.value).replace(/[^\d]/g, ""), 10);
+                return isNaN(n) ? null : n;
+            }
+
+            var lblDesde = "Desde";
+            var lblHasta = "Hasta";
+            var lblMax = "Máx.";
+            if (filterRoot.getAttribute("data-julia-lbl-desde")) {
+                lblDesde = filterRoot.getAttribute("data-julia-lbl-desde");
+            }
+            if (filterRoot.getAttribute("data-julia-lbl-hasta")) {
+                lblHasta = filterRoot.getAttribute("data-julia-lbl-hasta");
+            }
+            if (filterRoot.getAttribute("data-julia-lbl-max")) {
+                lblMax = filterRoot.getAttribute("data-julia-lbl-max");
+            }
+            var ariaRange =
+                filterRoot.getAttribute("data-julia-aria-rango-precio") ||
+                "Rango de precios según productos en esta categoría";
+
+            var wrap = document.createElement("div");
+            wrap.className = "julia-catalog-price-range-wrap";
+            wrap.innerHTML =
+                '<div class="julia-catalog-price-range-hints" aria-hidden="true">' +
+                '<span class="julia-catalog-price-range-hint julia-catalog-price-range-hint--min"></span>' +
+                '<span class="julia-catalog-price-range-hint julia-catalog-price-range-hint--max"></span>' +
+                "</div>" +
+                '<input type="range" class="julia-catalog-price-range-slider" />' +
+                '<div class="julia-catalog-price-range-value" aria-live="polite"></div>';
+
+            var slider = wrap.querySelector(".julia-catalog-price-range-slider");
+            var valueEl = wrap.querySelector(".julia-catalog-price-range-value");
+            var hintMin = wrap.querySelector(".julia-catalog-price-range-hint--min");
+            var hintMax = wrap.querySelector(".julia-catalog-price-range-hint--max");
+            slider.setAttribute("aria-label", ariaRange);
+            slider.min = String(minBound);
+            slider.max = String(maxBound);
+            slider.step = String(step);
+
+            hintMin.textContent = lblDesde + " " + juliaFormatMoneyAr(0);
+            hintMax.textContent = lblMax + " " + juliaFormatMoneyAr(maxBound);
+
+            for (var pi = 0; pi < priceInputs.length; pi++) {
+                var pc = priceInputs[pi].closest(".filter-input-price-container");
+                if (pc) {
+                    pc.classList.add("julia-catalog-price-native-hidden");
+                }
+            }
+
+            var priceContainer = minEl.closest(".filters-container");
+            var titleEl = priceContainer ? priceContainer.querySelector("h6") : null;
+            if (titleEl) {
+                titleEl.style.display = "none";
+                titleEl.after(wrap);
+            } else {
+                body.insertBefore(wrap, body.firstChild);
+            }
+
+            var actionSpan = filterRoot.querySelector(".julia-catalog-dropdown__action");
+
+            function syncReadout(v) {
+                valueEl.textContent = lblHasta + " " + juliaFormatMoneyAr(v);
+            }
+
+            function syncSliderFromInputs() {
+                var v;
+                if (maxEl) {
+                    v = parseMoneyInput(maxEl);
+                    if (v == null || v <= 0) {
+                        v = maxBound;
+                    }
+                } else {
+                    v = parseMoneyInput(minEl);
+                    if (v == null || v <= 0) {
+                        v = maxBound;
+                    }
+                }
+                if (v < 0) {
+                    v = 0;
+                }
+                if (v > maxBound) {
+                    v = maxBound;
+                }
+                slider.value = String(v);
+                syncReadout(v);
+            }
+
+            function onSliderMove() {
+                var v = parseInt(slider.value, 10);
+                if (isNaN(v)) {
+                    return;
+                }
+                if (maxEl && minEl) {
+                    juliaSetFilterPriceInput(minEl, 0);
+                    juliaSetFilterPriceInput(maxEl, v);
+                } else if (maxEl) {
+                    juliaSetFilterPriceInput(maxEl, v);
+                } else {
+                    juliaSetFilterPriceInput(minEl, v);
+                }
+                syncReadout(v);
+                juliaEnablePriceSubmit(body);
+                if (actionSpan) {
+                    actionSpan.classList.add("julia-catalog-dropdown__action--active");
+                }
+            }
+
+            slider.addEventListener("input", onSliderMove);
+            slider.addEventListener("change", onSliderMove);
+
+            syncSliderFromInputs();
+            if (minEl && maxEl) {
+                juliaSetFilterPriceInput(minEl, 0);
+            }
+
+            body.setAttribute("data-julia-price-range", "1");
+        }
+
+        var filterDetailsForPrice = document.getElementById("julia-catalog-filters-panel");
+        if (filterDetailsForPrice && filterDetailsForPrice.getAttribute("data-julia-filter-apply-wired") !== "1") {
+            filterDetailsForPrice.setAttribute("data-julia-filter-apply-wired", "1");
+            filterDetailsForPrice.addEventListener(
+                "click",
+                function (e) {
+                    if (!filterDetailsForPrice.open) {
+                        return;
+                    }
+                    var act = e.target.closest(".julia-catalog-dropdown__action");
+                    if (!act) {
+                        return;
+                    }
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var bodyEl = filterDetailsForPrice.querySelector(".julia-catalog-dropdown__body");
+                    var btn = juliaFindPriceSubmitButton(bodyEl);
+                    if (btn) {
+                        juliaEnablePriceSubmit(bodyEl);
+                        btn.click();
+                    }
+                },
+                true
+            );
+        }
+        if (filterDetailsForPrice) {
+            filterDetailsForPrice.addEventListener("toggle", function () {
+                if (filterDetailsForPrice.open) {
+                    setTimeout(function () {
+                        juliaCatalogInitPriceRange();
+                        var bodyOpen = filterDetailsForPrice.querySelector(".julia-catalog-dropdown__body");
+                        if (bodyOpen) {
+                            juliaEnablePriceSubmit(bodyOpen);
+                        }
+                    }, 0);
+                }
+            });
+        }
+        juliaCatalogInitPriceRange();
+    })();
+    {% endif %}
+
 });

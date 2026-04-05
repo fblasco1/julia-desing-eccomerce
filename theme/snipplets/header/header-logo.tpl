@@ -28,5 +28,5 @@
 		</a>
 	</div>
 {% else %}
-	{{ component('logos/logo', {logo_size: 'large', logo_img_classes: 'transition-soft-slow', logo_text_classes: 'h1 m-0'}) }}
+	{{ component('logos/logo', { logo_size: 'medium', logo_img_classes: 'transition-soft-slow logo-img', logo_text_classes: 'logo-text h1 m-0' }) }}
 {% endif %}

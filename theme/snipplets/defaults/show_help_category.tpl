@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col text-center">
 				{% embed "snipplets/page-header.tpl" with { breadcrumbs: false } %}
-					{% block page_header_text %}{{ category.name }}{% endblock page_header_text %}
+					{% block page_header_text %}{{ julia_category_title is defined ? julia_category_title : category.name }}{% endblock page_header_text %}
 				{% endembed %}
 			</div>
 		</div>

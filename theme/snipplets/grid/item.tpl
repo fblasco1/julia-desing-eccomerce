@@ -127,6 +127,9 @@
         <div class="item-description" data-store="product-item-info-{{ product.id }}">
             <a href="{{ product_url_with_selected_variant }}" title="{{ product.name }}" class="item-link">
                 <div class="js-item-name item-name mb-1" data-store="product-item-name-{{ product.id }}">{{ product.name }}</div>
+                {% if template == 'category' and product.category is defined and product.category.name is defined and product.category.name %}
+                    <div class="item-category-label mb-1">{{ product.category.name | upper }}</div>
+                {% endif %}
                 {% if product.display_price %}
                     <div class="item-price-container mb-1" data-store="product-item-price-{{ product.id }}">
                         {% if not reduced_item %}
@@ -135,6 +138,7 @@
                             </span>
                         {% endif %}
                         <span class="js-price-display item-price">
+                            {% if template == 'category' %}<span class="item-price-prefix">{{ "Desde" | translate }} </span>{% endif %}
                             {{ product.price | money }}
                         </span>
 
