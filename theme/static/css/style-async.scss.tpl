@@ -4111,3 +4111,602 @@ footer {
 {#/*============================================================================
   #Julia Design — estilos del prototipo estáticos integrados arriba (sin hoja aparte)
 ==============================================================================*/#}
+
+{#/*============================================================================
+  #Lusano PDP — layout editorial 3 columnas (100vh desktop, stack mobile)
+==============================================================================*/#}
+
+{# ── Header PDP: fondo sólido crema + tipografía oscura #}
+
+body.template-product {
+  overflow: hidden !important;
+}
+
+body.template-product .head-main,
+body.template-product header.julia-head-bar {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--cream, #ece8e4) !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+{# Navegación y categorías del mega: tono más oscuro que --brown #}
+body.template-product .julia-head-bar .svg-icon-text,
+body.template-product .julia-head-bar .logo-text,
+body.template-product .julia-head-bar .cart-widget-amount,
+body.template-product .julia-head-bar .julia-nav-desktop-link,
+body.template-product .julia-head-bar .julia-nav-desktop-summary,
+body.template-product .julia-head-bar .julia-nav-plain-link,
+body.template-product .julia-head-bar .nav-muebles-btn {
+  color: var(--dark-text, #1c1a16) !important;
+  fill: var(--dark-text, #1c1a16) !important;
+}
+
+body.template-product .julia-head-bar .julia-nav-desktop-link:hover,
+body.template-product .julia-head-bar .julia-nav-desktop-summary:hover,
+body.template-product .julia-head-bar .julia-nav-plain-link:hover,
+body.template-product .julia-head-bar .nav-muebles-btn:hover,
+body.template-product .julia-head-bar .utilities-item a:hover .svg-icon-text,
+body.template-product .julia-head-bar .utilities-item a:hover .cart-widget-amount {
+  color: var(--brown, #54463d) !important;
+  fill: var(--brown, #54463d) !important;
+}
+
+body.template-product .julia-head-bar .nav-arrow {
+  stroke: var(--dark-text, #1c1a16);
+}
+
+body.template-product .julia-head-bar .nav-muebles-btn:hover .nav-arrow {
+  stroke: var(--brown, #54463d);
+}
+
+body.template-product .julia-mega-menu .mega-col-title,
+body.template-product .julia-mega-menu .mega-link,
+body.template-product .julia-mega-menu .mega-view-all a,
+body.template-product .julia-mega-menu a.mega-view-all {
+  color: var(--dark-text, #1c1a16);
+}
+
+body.template-product .julia-mega-menu .mega-link:hover,
+body.template-product .julia-mega-menu .mega-view-all a:hover,
+body.template-product .julia-mega-menu a.mega-view-all:hover {
+  color: var(--brown, #54463d);
+}
+
+body.template-product .section-advertising {
+  display: none !important;
+}
+
+.lusano-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: var(--cream, #ece8e4);
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  color: var(--brown, #54463D);
+}
+
+.lusano {
+  display: grid;
+  grid-template-columns: 22% 52% 26%;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+{# ── Columna izquierda ── #}
+
+.lusano__col--left {
+  padding: 5rem 1.8rem 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.lusano__close {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.85rem;
+  cursor: crosshair;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  background: none;
+  border: none;
+  color: var(--brown, #54463D);
+  padding: 0;
+  margin-bottom: 2.5rem;
+  text-align: left;
+  width: fit-content;
+  letter-spacing: 0.02em;
+}
+
+.lusano__notes {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+.lusano__note {
+  margin-bottom: 2rem;
+}
+
+.lusano__note-ix {
+  display: block;
+  font-style: italic;
+  font-size: 0.88rem;
+  opacity: 0.65;
+  margin-bottom: 0.35rem;
+}
+
+.lusano__note-body {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  font-weight: 300;
+  margin: 0;
+}
+
+.lusano__note-body--em {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.lusano__detail {
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.lusano__detail-label {
+  display: block;
+  font-style: italic;
+  font-size: 0.75rem;
+  opacity: 0.65;
+  margin-bottom: 0.5rem;
+}
+
+.lusano__detail-thumb {
+  width: 90px;
+  height: 70px;
+  object-fit: cover;
+  cursor: crosshair;
+  transition: opacity 0.2s ease;
+  &:hover { opacity: 0.78; }
+}
+
+{# ── Columna central — galería (cada imagen ≈ alto de ventana, separación entre slides) ── #}
+
+.lusano__col--center {
+  overflow-y: scroll;
+  height: 100vh;
+  cursor: crosshair;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-top: 4.5rem;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2.5vw, 2rem);
+  &::-webkit-scrollbar { display: none; }
+}
+
+.lusano__gallery-img {
+  display: block;
+  flex-shrink: 0;
+  width: 100%;
+  height: calc(100vh - 4.5rem);
+  min-height: calc(100vh - 4.5rem);
+  max-height: calc(100vh - 4.5rem);
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+}
+
+{# ── Columna derecha — info + compra ── #}
+
+.lusano__col--right {
+  padding: 5rem 1.8rem 2rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+{# Contador de imagen #}
+
+.lusano__counter {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.lusano__counter-num {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1;
+  transition: opacity 0.25s ease;
+}
+
+.lusano__counter-meta {
+  text-align: right;
+  font-size: 0.7rem;
+  line-height: 1.4;
+}
+
+.lusano__counter-hint {
+  display: block;
+  font-style: italic;
+  margin-top: 0.2rem;
+  opacity: 0.6;
+}
+
+{# Título #}
+
+.lusano__title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 2rem;
+}
+
+{# Specs / variantes #}
+
+.lusano__specs {
+  flex: 1;
+  margin-bottom: 1rem;
+}
+
+.lusano__row {
+  border-bottom: 1px solid rgba(129, 117, 108, 0.35);
+}
+
+.lusano__row-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  font-size: 0.82rem;
+}
+
+.lusano__row-label {
+  font-style: italic;
+  color: var(--dark-text, #1c1a16);
+  opacity: 0.88;
+}
+
+.lusano__row-value {
+  text-align: right;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lusano__row-value--price {
+  font-weight: 500;
+  font-style: normal;
+  font-size: 0.95rem;
+}
+
+.lusano__price-old {
+  text-decoration: line-through;
+  opacity: 0.5;
+  margin-right: 0.4rem;
+}
+
+.lusano__row-toggle {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1rem;
+  background: none;
+  border: none;
+  color: var(--brown, #54463D);
+  cursor: pointer;
+  padding: 0 0 0 0.3rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.lusano__row-opts {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              padding 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+}
+
+.lusano__row-opts.open {
+  max-height: 75vh;
+  padding: 0 0 0.75rem;
+}
+
+.lusano__opt {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.78rem;
+  padding: 0.4rem 0.9rem;
+  background: transparent;
+  border: 1px solid rgba(129, 117, 108, 0.45);
+  color: var(--brown, #54463D);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.lusano__opt:hover,
+.lusano__opt.active {
+  background: var(--brown, #54463D);
+  color: var(--white, #fff);
+  border-color: var(--brown, #54463D);
+}
+
+.lusano__opt-swatch {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+
+.lusano__opt-swatch--neutral {
+  background: linear-gradient(135deg, var(--gray-light, #d2d0d0) 0%, var(--mink, #81756c) 100%);
+  opacity: 0.85;
+}
+
+{# ── Formulario / Compra ── #}
+
+.lusano__form {
+  margin-top: auto;
+}
+
+.lusano__form .js-lusano-hidden-select {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  padding: 0;
+}
+
+.lusano__qty {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-top: 1px solid rgba(129, 117, 108, 0.35);
+  font-size: 0.82rem;
+  font-style: italic;
+}
+
+.lusano__qty-label {
+  opacity: 0.7;
+}
+
+.lusano__qty-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.lusano__qty-btn {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.1rem;
+  background: none;
+  border: none;
+  color: var(--brown, #54463D);
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lusano__qty-input {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.85rem;
+  width: 36px;
+  text-align: center;
+  border: none;
+  background: transparent;
+  color: var(--brown, #54463D);
+  -moz-appearance: textfield;
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.lusano__payments {
+  padding: 0.5rem 0 0.75rem;
+  font-size: 0.82rem;
+}
+
+.lusano__payments-text {
+  font-style: italic;
+  opacity: 0.7;
+  margin-right: 0.5rem;
+}
+
+.lusano__payments-link {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.78rem;
+  color: var(--brown, #54463D);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.lusano__cta {
+  display: block;
+  width: 100%;
+  background: var(--brown, #54463D);
+  color: var(--cream, #ece8e4);
+  border: none;
+  padding: 1.1rem 1rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  margin-top: 0.75rem;
+  text-transform: none;
+  &:hover { opacity: 0.85; }
+  &:disabled,
+  &.nostock {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.lusano__cta-ph {
+  display: none;
+}
+
+.lusano__added-msg {
+  font-size: 0.78rem;
+  text-align: center;
+  margin-top: 0.75rem;
+  line-height: 1.5;
+}
+
+.lusano__added-link {
+  color: var(--brown, #54463D);
+  text-decoration: underline;
+}
+
+{# ── Lightbox ── #}
+
+.lusano__lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 26, 22, 0.92);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.lusano__lightbox.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lusano__lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: var(--cream, #ece8e4);
+  font-size: 0.85rem;
+  font-style: italic;
+  cursor: crosshair;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  background: none;
+  border: none;
+}
+
+.lusano__lightbox-img {
+  max-width: 88vw;
+  max-height: 88vh;
+  object-fit: contain;
+}
+
+{# ── Responsive ── #}
+
+@media (max-width: 1024px) {
+  body.template-product {
+    overflow: auto !important;
+  }
+
+  .lusano-wrap {
+    position: relative;
+    height: auto;
+    overflow-y: auto;
+  }
+
+  .lusano {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    height: auto;
+    overflow: visible;
+  }
+
+  .lusano__col--left {
+    height: auto;
+    padding: 4.5rem 1.2rem 0;
+    order: 1;
+  }
+
+  .lusano__col--center {
+    overflow-y: visible;
+    height: auto;
+    padding-top: 0;
+    order: 2;
+  }
+
+  .lusano__col--right {
+    height: auto;
+    padding: 1.2rem;
+    order: 3;
+  }
+
+  .lusano__notes {
+    display: none;
+  }
+
+  .lusano__detail {
+    display: none;
+  }
+
+  .lusano__counter {
+    margin-bottom: 1rem;
+  }
+
+  .lusano__title {
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+    margin-bottom: 1.2rem;
+  }
+
+  .lusano__gallery-img {
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .lusano__col--left {
+    padding: 1rem 1rem 0;
+  }
+
+  .lusano__col--right {
+    padding: 1rem;
+  }
+
+  .lusano__close {
+    margin-bottom: 1.5rem;
+  }
+}

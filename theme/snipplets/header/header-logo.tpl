@@ -1,6 +1,7 @@
 {# Logo encabezado — image settings TN: clave = original filename, filtro has_custom_image. #}
+{# Fondo claro (catálogo, PDP Lusano crema): logo oscuro para contraste #}
 {% set julia_catalog = template == 'category' %}
-{% set use_logo_negro = julia_catalog or (settings.head_background == 'light') %}
+{% set use_logo_negro = julia_catalog or (template == 'product') or (settings.head_background == 'light') %}
 {% if use_logo_negro %}
 	{% set logo_file = 'logo-negro-placeholder.png' %}
 	{% set logo_file_alt = 'logo-blanco-placeholder.png' %}

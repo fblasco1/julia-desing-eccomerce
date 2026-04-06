@@ -1158,6 +1158,7 @@ DOMContentLoaded.addEventOrExecute(() => {
                 titleEl = priceContainer.querySelector("h6") || priceContainer.querySelector(".h6");
             }
             if (titleEl) {
+                titleEl.style.display = "none";
                 titleEl.after(wrap);
             } else {
                 body.insertBefore(wrap, body.firstChild);
@@ -1282,3 +1283,352 @@ DOMContentLoaded.addEventOrExecute(() => {
     {% endif %}
 
 });
+
+{#/*============================================================================
+  Lusano PDP — IntersectionObserver, variantes, lightbox, cantidad
+==============================================================================#}
+
+{% if template == 'product' %}
+(function lusanoPDP() {
+    var wrap = document.querySelector(".lusano-wrap");
+    if (!wrap) return;
+
+    var rootPDP = document.getElementById("single-product") || wrap;
+    var gallery = wrap.querySelector(".js-lusano-gallery");
+    var images = wrap.querySelectorAll(".js-lusano-gallery-img");
+    var counterEl = wrap.querySelector(".js-lusano-counter");
+    var counterTotalEl = wrap.querySelector(".js-lusano-counter-total");
+    var variantLabelEl = wrap.querySelector(".js-lusano-variant-label");
+    var totalImages = images.length;
+
+    function pad(n, len) {
+        var s = String(n);
+        while (s.length < len) s = "0" + s;
+        return s;
+    }
+
+    if (counterTotalEl) {
+        counterTotalEl.textContent = pad(1, 3) + " \u2014 " + pad(totalImages, 3);
+    }
+
+    function lusanoParseVariantsJson() {
+        try {
+            var raw = rootPDP.getAttribute("data-variants");
+            if (!raw) return null;
+            return JSON.parse(raw);
+        } catch (err) {
+            return null;
+        }
+    }
+
+    function lusanoVariantsList(data) {
+        if (!data) return [];
+        if (Array.isArray(data)) return data;
+        if (typeof data === "object") {
+            return Object.keys(data).map(function (k) {
+                return data[k];
+            });
+        }
+        return [];
+    }
+
+    function lusanoGetSelectedOptionNames() {
+        var names = [];
+        var selects = wrap.querySelectorAll("#product_form select.js-lusano-hidden-select");
+        selects.forEach(function (sel) {
+            var opt = sel.options[sel.selectedIndex];
+            names.push(opt ? String(opt.textContent || "").trim() : "");
+        });
+        return names;
+    }
+
+    function lusanoVariantMatchesOptions(v, names, indexOffset) {
+        if (!v || !names.length) return false;
+        var off = indexOffset === 1 ? 1 : 0;
+        for (var j = 0; j < names.length; j++) {
+            var key = "option" + (j + off);
+            var va = v[key] != null ? String(v[key]).trim() : "";
+            var nb = names[j] != null ? String(names[j]).trim() : "";
+            if (va !== nb) return false;
+        }
+        return true;
+    }
+
+    function lusanoFindMatchingVariant(names) {
+        var list = lusanoVariantsList(lusanoParseVariantsJson());
+        var offsets = [0, 1];
+        for (var o = 0; o < offsets.length; o++) {
+            for (var i = 0; i < list.length; i++) {
+                if (lusanoVariantMatchesOptions(list[i], names, offsets[o])) return list[i];
+            }
+        }
+        return null;
+    }
+
+    function lusanoVariantImageId(v) {
+        if (!v) return null;
+        var id = v.image_id != null ? v.image_id : v.image;
+        if (id != null && id !== "") return id;
+        return null;
+    }
+
+    function lusanoUnveilGalleryImg(img) {
+        if (!img || typeof window.lazySizes === "undefined") return;
+        if (img.classList.contains("lazyload") || img.getAttribute("data-src")) {
+            try {
+                lazySizes.loader.unveil(img);
+            } catch (e1) {}
+        }
+    }
+
+    function lusanoScrollGalleryToImageId(imageId) {
+        if (!gallery || imageId == null || imageId === "") return;
+        var idStr = String(imageId);
+        var el = null;
+        var imgs = gallery.querySelectorAll(".js-lusano-gallery-img[data-image]");
+        for (var i = 0; i < imgs.length; i++) {
+            if (String(imgs[i].getAttribute("data-image")) === idStr) {
+                el = imgs[i];
+                break;
+            }
+        }
+        if (!el) return;
+        lusanoUnveilGalleryImg(el);
+        var gRect = gallery.getBoundingClientRect();
+        var eRect = el.getBoundingClientRect();
+        var nextTop = gallery.scrollTop + (eRect.top - gRect.top);
+        gallery.scrollTo({ top: Math.max(0, nextTop), behavior: "smooth" });
+        var idx = parseInt(el.getAttribute("data-index"), 10);
+        if (!isNaN(idx) && counterEl) {
+            counterEl.textContent = pad(idx, 2);
+        }
+        if (!isNaN(idx) && counterTotalEl && totalImages) {
+            counterTotalEl.textContent = pad(idx, 3) + " \u2014 " + pad(totalImages, 3);
+        }
+    }
+
+    function lusanoApplyPricesFromVariant(v) {
+        if (!v) return;
+        var priceEl = document.getElementById("price_display");
+        var compareEl = document.getElementById("compare_price_display");
+        var pText = v.price_short || v.price_long;
+        if (priceEl && pText) {
+            priceEl.textContent = pText;
+            priceEl.style.display = "";
+        }
+        if (compareEl) {
+            var cText = v.compare_at_price_short || v.compare_at_price_long;
+            if (cText) {
+                compareEl.textContent = cText;
+                compareEl.style.display = "";
+            } else {
+                compareEl.textContent = "";
+                compareEl.style.display = "none";
+            }
+        }
+    }
+
+    function lusanoUpdateDimensionsDisplay(v) {
+        var el = wrap.querySelector(".js-lusano-dimensions-value");
+        if (!el || !v) return;
+        var parts = [];
+        ["width", "height", "depth"].forEach(function (key) {
+            var x = v[key];
+            if (x != null && String(x).trim() !== "" && String(x).trim() !== "0") {
+                parts.push(String(x).trim());
+            }
+        });
+        if (parts.length) {
+            el.textContent = parts.join(" \u00D7 ") + " cm";
+        }
+    }
+
+    function lusanoSyncVariantUi(extraImageId) {
+        var names = lusanoGetSelectedOptionNames();
+        var v = lusanoFindMatchingVariant(names);
+        if (v) {
+            lusanoApplyPricesFromVariant(v);
+            lusanoUpdateDimensionsDisplay(v);
+        }
+        var imgId = extraImageId != null ? extraImageId : lusanoVariantImageId(v);
+        if (imgId) lusanoScrollGalleryToImageId(imgId);
+    }
+
+    if (gallery && counterEl && "IntersectionObserver" in window) {
+        var imgObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+                    var idx = parseInt(entry.target.dataset.index, 10);
+                    counterEl.style.opacity = "0";
+                    setTimeout(function () {
+                        counterEl.textContent = pad(idx, 2);
+                        counterEl.style.opacity = "1";
+                    }, 150);
+                    if (counterTotalEl) {
+                        counterTotalEl.textContent = pad(idx, 3) + " \u2014 " + pad(totalImages, 3);
+                    }
+                }
+            });
+        }, {
+            root: gallery,
+            threshold: 0.5
+        });
+        images.forEach(function (img) { imgObserver.observe(img); });
+    }
+
+    var backBtn = wrap.querySelector(".js-lusano-back");
+    if (backBtn) {
+        backBtn.addEventListener("click", function () {
+            var href = backBtn.getAttribute("data-lusano-back-href") || "/productos";
+            window.location.href = href;
+        });
+    }
+
+    wrap.querySelectorAll(".js-lusano-row-toggle").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+            var row = btn.closest(".js-lusano-row");
+            if (!row) return;
+            var opts = row.querySelector(".js-lusano-row-opts");
+            if (!opts) return;
+            var isOpen = opts.classList.toggle("open");
+            btn.textContent = isOpen ? "\u00D7" : "+";
+        });
+    });
+
+    wrap.querySelectorAll(".js-lusano-opt").forEach(function (opt) {
+        opt.addEventListener("click", function () {
+            var variationId = opt.dataset.variationId;
+            var optionId = opt.dataset.optionId;
+            var label = opt.dataset.label;
+            var row = opt.closest(".js-lusano-row");
+
+            if (row) {
+                row.querySelectorAll(".js-lusano-opt").forEach(function (o) {
+                    o.classList.remove("active");
+                });
+                opt.classList.add("active");
+                var selectedEl = row.querySelector(".js-lusano-row-selected");
+                if (selectedEl) selectedEl.textContent = label;
+            }
+
+            var hiddenSelect = wrap.querySelector(
+                'select.js-lusano-hidden-select[data-variation-id="' + variationId + '"]'
+            );
+            if (hiddenSelect) {
+                hiddenSelect.value = optionId;
+                var nativeEvt = new Event("change", { bubbles: true });
+                hiddenSelect.dispatchEvent(nativeEvt);
+                if (typeof jQueryNuvem !== "undefined") {
+                    jQueryNuvem(hiddenSelect).trigger("change");
+                }
+            }
+
+            lusanoUpdateVariantLabel();
+            setTimeout(function () {
+                lusanoSyncVariantUi(null);
+            }, 0);
+        });
+    });
+
+    wrap.querySelectorAll("#product_form select.js-lusano-hidden-select").forEach(function (sel) {
+        sel.addEventListener("change", function () {
+            setTimeout(function () {
+                lusanoSyncVariantUi(null);
+            }, 0);
+        });
+    });
+
+    if (typeof LS !== "undefined" && typeof LS.registerOnChangeVariant === "function") {
+        LS.registerOnChangeVariant(function (variant) {
+            if (!variant) return;
+            var imgId = variant.image_id != null ? variant.image_id : variant.image;
+            if (variant.price_short || variant.price_long) {
+                lusanoApplyPricesFromVariant(variant);
+            }
+            lusanoUpdateDimensionsDisplay(variant);
+            if (imgId) {
+                lusanoScrollGalleryToImageId(imgId);
+            } else {
+                lusanoSyncVariantUi(null);
+            }
+        });
+    }
+
+    setTimeout(function () {
+        lusanoSyncVariantUi(null);
+    }, 120);
+
+    function lusanoUpdateVariantLabel() {
+        if (!variantLabelEl) return;
+        var parts = [];
+        wrap.querySelectorAll(".js-lusano-row").forEach(function (row) {
+            var selected = row.querySelector(".js-lusano-row-selected");
+            if (selected && selected.textContent.trim()) {
+                parts.push(selected.textContent.trim());
+            }
+        });
+        variantLabelEl.textContent = parts.length ? parts.join(" \u00B7 ") : "\u2014";
+    }
+    lusanoUpdateVariantLabel();
+
+    var qtyInput = wrap.querySelector(".js-quantity-input");
+    var qtyDown = wrap.querySelector(".js-lusano-qty-down");
+    var qtyUp = wrap.querySelector(".js-lusano-qty-up");
+
+    if (qtyInput && qtyDown && qtyUp) {
+        qtyDown.addEventListener("click", function () {
+            var val = parseInt(qtyInput.value, 10) || 1;
+            if (val > 1) {
+                qtyInput.value = val - 1;
+                qtyInput.dispatchEvent(new Event("change", { bubbles: true }));
+            }
+        });
+        qtyUp.addEventListener("click", function () {
+            var val = parseInt(qtyInput.value, 10) || 1;
+            qtyInput.value = val + 1;
+            qtyInput.dispatchEvent(new Event("change", { bubbles: true }));
+        });
+    }
+
+    var lightbox = wrap.querySelector(".js-lusano-lightbox");
+    var lightboxImg = wrap.querySelector(".js-lusano-lightbox-img");
+    var lightboxClose = wrap.querySelector(".js-lusano-lightbox-close");
+    var detailThumb = wrap.querySelector(".js-lusano-detail-thumb");
+
+    if (lightbox && lightboxImg) {
+        function openLightbox(src, alt) {
+            lightboxImg.src = src;
+            lightboxImg.alt = alt || "";
+            lightbox.classList.add("active");
+            lightbox.setAttribute("aria-hidden", "false");
+        }
+        function closeLightbox() {
+            lightbox.classList.remove("active");
+            lightbox.setAttribute("aria-hidden", "true");
+            setTimeout(function () { lightboxImg.src = ""; }, 300);
+        }
+
+        if (detailThumb) {
+            detailThumb.addEventListener("click", function () {
+                openLightbox(detailThumb.dataset.full || detailThumb.src, detailThumb.alt);
+            });
+        }
+
+        images.forEach(function (img) {
+            img.addEventListener("click", function () {
+                openLightbox(img.dataset.full || img.src, img.alt);
+            });
+        });
+
+        if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
+
+        lightbox.addEventListener("click", function (e) {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" && lightbox.classList.contains("active")) closeLightbox();
+        });
+    }
+})();
+{% endif %}

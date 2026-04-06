@@ -211,8 +211,8 @@
   },
   {
     "remotePath": "/snipplets/header/header-logo.tpl",
-    "hash": "d90f4b030e68baa54303a6c4cf1a8af5",
-    "timestamp": 1775432861074
+    "hash": "792977757badcef93dcce151457ba50c",
+    "timestamp": 1775501931454
   },
   {
     "remotePath": "/snipplets/header/header-search-results.tpl",
@@ -696,8 +696,8 @@
   },
   {
     "remotePath": "/static/css/style-async.scss.tpl",
-    "hash": "f12a2f4607a3b1a31a87ef0eaecc9ded",
-    "timestamp": 1775480778750
+    "hash": "25fac5b57dbe85b559f98633eda0054b",
+    "timestamp": 1775506639927
   },
   {
     "remotePath": "/static/css/style-colors.scss.tpl",
@@ -741,8 +741,8 @@
   },
   {
     "remotePath": "/static/js/store.js.tpl",
-    "hash": "b85e8285fb0acd595498cc049bf632d9",
-    "timestamp": 1775484662063
+    "hash": "34e746c387669bd3ad35096bd7689395",
+    "timestamp": 1775507985427
   },
   {
     "remotePath": "/templates/404.tpl",
@@ -836,8 +836,8 @@
   },
   {
     "remotePath": "/templates/product.tpl",
-    "hash": "dd864fb51b579b2232bb0b7bf43a346a",
-    "timestamp": 1775338863085
+    "hash": "29979637954086047441df334ba1a4fd",
+    "timestamp": 1775507988300
   },
   {
     "remotePath": "/templates/search.tpl",
