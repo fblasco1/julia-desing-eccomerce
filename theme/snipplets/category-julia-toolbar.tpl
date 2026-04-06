@@ -77,6 +77,9 @@
 			<details
 				class="julia-catalog-dropdown julia-catalog-dropdown--filters"
 				id="julia-catalog-filters-panel"
+				{% if julia_listing_price_max is defined and julia_listing_price_max > 0 %}
+					data-julia-listing-price-max="{{ julia_listing_price_max }}"
+				{% endif %}
 				data-julia-lbl-desde="{{ 'Desde' | translate | escape('html_attr') }}"
 				data-julia-lbl-hasta="{{ 'Hasta' | translate | escape('html_attr') }}"
 				data-julia-lbl-max="{{ 'Máx.' | translate | escape('html_attr') }}"

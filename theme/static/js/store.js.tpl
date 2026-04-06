@@ -639,6 +639,27 @@ DOMContentLoaded.addEventOrExecute(() => {
         changeLang(lang_select_option);
     });
 
+    {# Orden en listado: LS.urlParams + sort_by + recarga (docs TN). Radios en category-julia-sort llaman juliaSortByNavigate sin depender del <select>. #}
+    {% if template == 'category' or template == 'search' %}
+    var juliaSortByNavigate = function (sortValue) {
+        if (typeof LS === "undefined" || !LS.urlParams) {
+            return;
+        }
+        var params = LS.urlParams;
+        params.sort_by = sortValue;
+        var sort_params_array = [];
+        for (var key in params) {
+            if (!["results_only", "page"].includes(key)) {
+                sort_params_array.push(key + "=" + params[key]);
+            }
+        }
+        window.location = window.location.pathname + "?" + sort_params_array.join("&");
+    };
+    jQueryNuvem(document).on("change", ".js-sort-by", function (e) {
+        juliaSortByNavigate(jQueryNuvem(e.currentTarget).val());
+    });
+    {% endif %}
+
     {# Home: config en home.tpl → window.__juliaStoreHomeConfig #}
     {% if template == 'home' %}
         var cfg = window.__juliaStoreHomeConfig;
@@ -849,27 +870,26 @@ DOMContentLoaded.addEventOrExecute(() => {
     (function () {
         var toolbar = document.querySelector(".js-category-controls");
         var spacer = document.querySelector(".js-category-controls-spacer");
-        if (!toolbar || !spacer) {
-            return;
-        }
-        var compactThreshold = 72;
-        function updateCatalogCompact() {
-            var y = window.scrollY || window.pageYOffset;
-            var compact = y > compactThreshold;
-            document.body.classList.toggle("julia-catalog-compact", compact);
-            if (compact) {
-                requestAnimationFrame(function () {
-                    if (document.body.classList.contains("julia-catalog-compact")) {
-                        spacer.style.height = toolbar.offsetHeight + "px";
-                    }
-                });
-            } else {
-                spacer.style.height = "0px";
+        if (toolbar && spacer) {
+            var compactThreshold = 72;
+            function updateCatalogCompact() {
+                var y = window.scrollY || window.pageYOffset;
+                var compact = y > compactThreshold;
+                document.body.classList.toggle("julia-catalog-compact", compact);
+                if (compact) {
+                    requestAnimationFrame(function () {
+                        if (document.body.classList.contains("julia-catalog-compact")) {
+                            spacer.style.height = toolbar.offsetHeight + "px";
+                        }
+                    });
+                } else {
+                    spacer.style.height = "0px";
+                }
             }
+            window.addEventListener("scroll", updateCatalogCompact, { passive: true });
+            window.addEventListener("resize", updateCatalogCompact);
+            updateCatalogCompact();
         }
-        window.addEventListener("scroll", updateCatalogCompact, { passive: true });
-        window.addEventListener("resize", updateCatalogCompact);
-        updateCatalogCompact();
 
         var filterDetails = document.getElementById("julia-catalog-filters-panel");
         if (filterDetails) {
@@ -886,9 +906,23 @@ DOMContentLoaded.addEventOrExecute(() => {
         }
 
         var sortPanel = document.getElementById("juliaCatalogSortPanel");
-        var sortSelect = document.querySelector(".julia-catalog-sort-native .js-sort-by");
+        var sortSelect =
+            document.querySelector(".julia-catalog-sort-native .js-sort-by") ||
+            document.querySelector(".js-category-controls .js-sort-by");
         var sortLabel = document.getElementById("juliaCatalogSortLabel");
         var sortRadios = document.querySelectorAll(".julia-catalog-sort-rad-input");
+
+        function juliaNotifySortSelectChange() {
+            if (!sortSelect) {
+                return;
+            }
+            if (typeof jQueryNuvem !== "undefined") {
+                jQueryNuvem(sortSelect).trigger("input").trigger("change");
+            } else {
+                sortSelect.dispatchEvent(new Event("input", { bubbles: true }));
+                sortSelect.dispatchEvent(new Event("change", { bubbles: true }));
+            }
+        }
 
         function juliaSyncSortLabel() {
             if (!sortSelect || !sortLabel) {
@@ -907,33 +941,44 @@ DOMContentLoaded.addEventOrExecute(() => {
             }
         }
 
-        if (sortSelect && sortRadios.length) {
+        if (sortRadios.length) {
             for (var j = 0; j < sortRadios.length; j++) {
                 sortRadios[j].addEventListener("change", function () {
                     if (!this.checked) {
                         return;
                     }
-                    sortSelect.value = this.value;
-                    var ev;
-                    if (typeof Event === "function") {
-                        ev = new Event("change", { bubbles: true });
-                    } else {
-                        ev = document.createEvent("HTMLEvents");
-                        ev.initEvent("change", true, false);
+                    if (typeof juliaSortByNavigate === "function") {
+                        juliaSortByNavigate(this.value);
+                    } else if (sortSelect) {
+                        if (typeof jQueryNuvem !== "undefined") {
+                            jQueryNuvem(sortSelect).val(this.value);
+                        } else {
+                            sortSelect.value = this.value;
+                        }
+                        juliaNotifySortSelectChange();
                     }
-                    sortSelect.dispatchEvent(ev);
-                    juliaSyncSortLabel();
                     if (sortPanel) {
                         sortPanel.removeAttribute("open");
                     }
                 });
             }
+        }
+        if (sortSelect) {
             sortSelect.addEventListener("change", function () {
                 juliaSyncSortRadios();
                 juliaSyncSortLabel();
             });
             juliaSyncSortRadios();
             juliaSyncSortLabel();
+        } else if (sortLabel && sortRadios.length) {
+            var checkedRad = document.querySelector(".julia-catalog-sort-rad-input:checked");
+            if (checkedRad) {
+                var lab = checkedRad.closest("label");
+                var span = lab ? lab.querySelector("span") : null;
+                if (span) {
+                    sortLabel.textContent = span.textContent.replace(/\s+/g, " ").trim();
+                }
+            }
         }
 
         if (sortPanel) {
@@ -1023,19 +1068,35 @@ DOMContentLoaded.addEventOrExecute(() => {
             var maxEl = priceInputs.length >= 2 ? priceInputs[1] : null;
 
             var maxAttr = (maxEl || minEl).getAttribute("max");
-            var dataMax = filterRoot.getAttribute("data-julia-listing-price-max");
-            var maxBound = maxAttr != null && maxAttr !== "" ? parseInt(maxAttr, 10) : NaN;
-            if (isNaN(maxBound) || maxBound < 0) {
-                maxBound =
-                    dataMax != null && dataMax !== "" && !isNaN(parseInt(dataMax, 10))
-                        ? parseInt(dataMax, 10)
-                        : 999999999;
+            var dataMaxRaw = filterRoot.getAttribute("data-julia-listing-price-max");
+            var listingMax =
+                dataMaxRaw != null && dataMaxRaw !== "" && !isNaN(parseInt(dataMaxRaw, 10))
+                    ? parseInt(dataMaxRaw, 10)
+                    : NaN;
+            var maxFromInput =
+                maxAttr != null && maxAttr !== "" && !isNaN(parseInt(maxAttr, 10))
+                    ? parseInt(maxAttr, 10)
+                    : NaN;
+            // Prioridad: máximo real del listado (Twig) > max del input TN > fallback amplio
+            var maxBound;
+            if (!isNaN(listingMax) && listingMax > 0) {
+                maxBound = listingMax;
+            } else if (!isNaN(maxFromInput) && maxFromInput >= 0) {
+                maxBound = maxFromInput;
+            } else {
+                maxBound = 999999999;
             }
-            // Rango UI: de 0 al máximo del listado (atributo max del input TN o data-julia-listing-price-max).
             var minBound = 0;
             var step = parseInt(minEl.getAttribute("step") || (maxEl && maxEl.getAttribute("step")) || "5000", 10);
             if (isNaN(step) || step < 1) {
                 step = 5000;
+            }
+            // Pasos más finos cuando el techo es el del listado (evita saltos bruscos con rangos enormes)
+            if (!isNaN(listingMax) && listingMax > 0 && maxBound === listingMax) {
+                var adaptive = Math.max(1, Math.ceil(maxBound / 200));
+                if (adaptive < step) {
+                    step = adaptive;
+                }
             }
 
             function parseMoneyInput(el) {
@@ -1092,9 +1153,11 @@ DOMContentLoaded.addEventOrExecute(() => {
             }
 
             var priceContainer = minEl.closest(".filters-container");
-            var titleEl = priceContainer ? priceContainer.querySelector("h6") : null;
+            var titleEl = null;
+            if (priceContainer) {
+                titleEl = priceContainer.querySelector("h6") || priceContainer.querySelector(".h6");
+            }
             if (titleEl) {
-                titleEl.style.display = "none";
                 titleEl.after(wrap);
             } else {
                 body.insertBefore(wrap, body.firstChild);
@@ -1200,6 +1263,22 @@ DOMContentLoaded.addEventOrExecute(() => {
         }
         juliaCatalogInitPriceRange();
     })();
+    {% endif %}
+
+    {# Infinite scroll / Mostrar más: LS.hybridScroll (docs TN category.tpl) #}
+    {% if template == 'category' or template == 'search' %}
+        {% if pages is defined and pages.current == 1 and not pages.is_last %}
+            if (typeof LS.hybridScroll === "function") {
+                LS.hybridScroll({
+                    productGridSelector: ".js-product-table",
+                    spinnerSelector: "#js-infinite-scroll-spinner",
+                    loadMoreButtonSelector: ".js-load-more",
+                    hideWhileScrollingSelector: ".js-hide-footer-while-scrolling",
+                    productsBeforeLoadMoreButton: 50,
+                    productsPerPage: 12
+                });
+            }
+        {% endif %}
     {% endif %}
 
 });

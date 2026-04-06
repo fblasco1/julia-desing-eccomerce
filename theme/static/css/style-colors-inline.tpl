@@ -20,6 +20,11 @@
   --julia-text-body: clamp(0.875rem, 0.22vw + 0.8rem, 1rem);
   --julia-text-legal: clamp(0.75rem, 0.12vw + 0.72rem, 0.875rem);
   --julia-text-btn: clamp(0.875rem, 0.2vw + 0.78rem, 0.9375rem);
+  {% if template == 'category' %}
+  {# Misma geometría que style-async hasta que cargue (evita salto de padding título/grid/navbar) #}
+  --julia-nav-h: 60px;
+  --julia-catalog-top-extra: 24px;
+  {% endif %}
 }
 
 body{
@@ -52,3 +57,22 @@ h3, .h3 { font-size: var(--julia-text-h3); line-height: 1.25; font-weight: 700; 
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
+
+{% if template == 'category' %}
+@media (max-width: 768px) {
+  :root {
+    --julia-nav-h: 56px;
+  }
+}
+body.template-category .julia-catalog-page {
+  box-sizing: border-box;
+  min-height: 100dvh;
+  color: var(--dark-text);
+  padding: calc(var(--julia-nav-h) + var(--julia-catalog-top-extra)) 28px 52px;
+}
+@media (max-width: 768px) {
+  body.template-category .julia-catalog-page {
+    padding: calc(var(--julia-nav-h) + var(--julia-catalog-top-extra)) 16px 42px;
+  }
+}
+{% endif %}

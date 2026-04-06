@@ -176,8 +176,8 @@
   },
   {
     "remotePath": "/snipplets/grid/filters.tpl",
-    "hash": "41e03dd9fa14db54e035da455e1daf69",
-    "timestamp": 1775338833991
+    "hash": "96671035b0133ed42ba21621553f5956",
+    "timestamp": 1775480765481
   },
   {
     "remotePath": "/snipplets/grid/item-colors.tpl",
@@ -696,8 +696,8 @@
   },
   {
     "remotePath": "/static/css/style-async.scss.tpl",
-    "hash": "c1eebdb57cfcf2a82d6afe2d7e2dd9dc",
-    "timestamp": 1775432862814
+    "hash": "f12a2f4607a3b1a31a87ef0eaecc9ded",
+    "timestamp": 1775480778750
   },
   {
     "remotePath": "/static/css/style-colors.scss.tpl",
@@ -741,8 +741,8 @@
   },
   {
     "remotePath": "/static/js/store.js.tpl",
-    "hash": "10a0e628d6688cdaee24cd4aa6d89660",
-    "timestamp": 1775432865317
+    "hash": "b85e8285fb0acd595498cc049bf632d9",
+    "timestamp": 1775484662063
   },
   {
     "remotePath": "/templates/404.tpl",
@@ -811,8 +811,8 @@
   },
   {
     "remotePath": "/templates/category.tpl",
-    "hash": "b2b150725731d56465bf28032718dec0",
-    "timestamp": 1775432864762
+    "hash": "b29e44149f78f6f8faaad1d272dca8fe",
+    "timestamp": 1775479233840
   },
   {
     "remotePath": "/templates/contact.tpl",
@@ -891,8 +891,8 @@
   },
   {
     "remotePath": "/layouts/layout.tpl",
-    "hash": "7839ac0550afc0754c1cf60be56c9bb3",
-    "timestamp": 1775340907259
+    "hash": "97858088ff8452f179f1b140900d5596",
+    "timestamp": 1775484664422
   },
   {
     "remotePath": "/static/js/store-full.js.tpl",
@@ -911,8 +911,8 @@
   },
   {
     "remotePath": "/static/css/style-colors-inline.tpl",
-    "hash": "3782a4164918ccfe3e3b523568da71fa",
-    "timestamp": 1774972590189
+    "hash": "f7b13453922a79f7174e211e724dd1ea",
+    "timestamp": 1775484665805
   },
   {
     "remotePath": "/snipplets/home/home-julia-home-info.tpl",
@@ -971,13 +971,13 @@
   },
   {
     "remotePath": "/snipplets/category-julia-sort.tpl",
-    "hash": "52b5635c6740df57f4b1a3a5071ca01b",
-    "timestamp": 1775432860700
+    "hash": "3d0eacb254fde21b408aa050bc10f563",
+    "timestamp": 1775480382202
   },
   {
     "remotePath": "/snipplets/category-julia-toolbar.tpl",
-    "hash": "24517c7b5ddb83c876a0ee53ffe233f4",
-    "timestamp": 1775432862471
+    "hash": "496fb920d4a0f44f59972ca0f7960300",
+    "timestamp": 1775479208871
   },
   {
     "remotePath": "/snipplets/page-institutional-quienes.tpl",

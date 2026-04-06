@@ -12,6 +12,9 @@
         <meta name="description" content="{{ page_description }}" />
         <link rel="preload" as="style" href="{{ [settings.font_headings, settings.font_rest] | google_fonts_url('300, 400, 700') }}" />
         <link rel="preload" href="{{ 'css/style-colors.scss.tpl' | static_url }}" as="style" />
+        {% if template == 'category' %}
+        <link rel="preload" href="{{ 'css/style-async.scss.tpl' | static_url }}" as="style" />
+        {% endif %}
 
         {# Preload LCP home, category and product page elements #}
 
