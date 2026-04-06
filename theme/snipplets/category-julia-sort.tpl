@@ -36,16 +36,8 @@
 			</div>
 		</details>
 	</div>
+	{# Include directo: component('sort-by') en TN puede omitir la clase .js-sort-by en el <select> #}
 	<div class="julia-catalog-sort-native">
-		{{ component(
-			'sort-by',{
-				label: false,
-				sort_by_classes: {
-					select_group: "form-group mb-0",
-					select_svg: "icon-inline icon-w-14 icon-lg svg-icon-text",
-				},
-			select_custom_icon: include("snipplets/svg/chevron-down.tpl", {svg_custom_class: "icon-inline icon-w-14 icon-lg svg-icon-text"}),
-		})
-		}}
+		{% include 'snipplets/grid/sort-by.tpl' %}
 	</div>
 </div>

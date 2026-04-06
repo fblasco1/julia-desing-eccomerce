@@ -1,5 +1,21 @@
 {% set has_filters_available = products and has_filters_enabled and ((filter_categories is defined and filter_categories is not empty) or (product_filters is defined and product_filters is not empty)) %}
 
+{# Máximo precio del listado (category.products si existe; si no, página actual) para el slider de filtros #}
+{% set julia_listing_price_max = 0 %}
+{% if category.products is defined and category.products is not empty %}
+	{% for p in category.products %}
+		{% if p.display_price and p.price is defined and p.price > julia_listing_price_max %}
+			{% set julia_listing_price_max = p.price %}
+		{% endif %}
+	{% endfor %}
+{% elseif products is defined and products is not empty %}
+	{% for p in products %}
+		{% if p.display_price and p.price is defined and p.price > julia_listing_price_max %}
+			{% set julia_listing_price_max = p.price %}
+		{% endif %}
+	{% endfor %}
+{% endif %}
+
 {# Título visible: "Muebles" si la categoría en admin se llama "Productos" (listado general). #}
 {% set julia_category_title = category.name %}
 {% if category.name is defined and category.name | trim | lower == 'productos' %}

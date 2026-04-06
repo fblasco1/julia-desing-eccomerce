@@ -2439,12 +2439,13 @@ body.julia-head-mode--catalog .julia-head-bar .julia-nav-desktop-summary:hover .
   fill: rgba(84, 70, 61, 0.96) !important;
 }
 
-{# Catálogo: aire bajo navbar antes del título (~48px) + nav-h; laterales 28px; abajo 52px #}
+{# Catálogo: aire bajo navbar = nav-h + como máximo 24px (--julia-catalog-top-extra) #}
 .julia-catalog-page {
+  --julia-catalog-top-extra: 24px;
   color: var(--dark-text, #1c1a16);
   min-height: 100dvh;
   box-sizing: border-box;
-  padding: calc(var(--julia-nav-h, 60px) + 48px) 28px 52px;
+  padding: calc(var(--julia-nav-h, 60px) + var(--julia-catalog-top-extra)) 28px 52px;
 }
 
 .julia-catalog-page__inner {
@@ -2457,7 +2458,7 @@ body.julia-head-mode--catalog .julia-head-bar .julia-nav-desktop-summary:hover .
 
 @media (max-width: 768px) {
   .julia-catalog-page {
-    padding: calc(var(--julia-nav-h, 56px) + 32px) 16px 42px;
+    padding: calc(var(--julia-nav-h, 56px) + var(--julia-catalog-top-extra)) 16px 42px;
   }
 }
 
@@ -2665,6 +2666,34 @@ body.julia-head-mode--catalog .julia-head-bar .julia-nav-desktop-summary:hover .
   accent-color: var(--brown, #54463d);
 }
 
+{# Filtros por propiedad: misma lectura visual que el panel Ordenar #}
+.julia-catalog-dropdown__body .julia-catalog-filter-opt {
+  display: block;
+  padding: 8px 4px;
+  font-family: var(--julia-font-heading);
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: rgba(28, 26, 22, 0.88);
+  cursor: pointer;
+}
+
+.julia-catalog-dropdown__body .julia-catalog-filter-opt + .julia-catalog-filter-opt {
+  border-top: 1px solid rgba(28, 26, 22, 0.08);
+}
+
+.julia-catalog-dropdown__body .js-accordion-container .julia-catalog-filter-opt:first-child {
+  border-top: 1px solid rgba(28, 26, 22, 0.08);
+}
+
+.julia-catalog-dropdown__body .julia-catalog-filter-opt .checkbox {
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.julia-catalog-dropdown__body .julia-catalog-filter-opt .checkbox-icon {
+  margin-top: 3px;
+}
+
 .julia-catalog-dropdown {
   position: relative;
 }
@@ -2732,6 +2761,74 @@ body.julia-head-mode--catalog .julia-head-bar .julia-nav-desktop-summary:hover .
 }
 
 .julia-catalog-dropdown__body .filters-container:last-child {
+  margin-bottom: 0 !important;
+}
+
+{# Bloque precio: título + slider + Aplicar (sin colapsable) #}
+.julia-catalog-dropdown__body .julia-catalog-filter-price {
+  padding-bottom: 8px;
+  margin-bottom: 1.25rem !important;
+  border-bottom: 1px solid rgba(28, 26, 22, 0.08);
+}
+
+.julia-catalog-dropdown__body .julia-catalog-filter-price:last-child {
+  margin-bottom: 0 !important;
+  border-bottom: 0;
+}
+
+{# Grupos de filtro colapsables (solo propiedades) #}
+.julia-catalog-dropdown__body .julia-catalog-filter-group {
+  margin-bottom: 1.25rem !important;
+}
+
+.julia-catalog-dropdown__body .julia-catalog-filter-group:last-child {
+  margin-bottom: 0 !important;
+}
+
+.julia-catalog-filter-group__summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 4px 10px 0;
+  font-family: var(--julia-font-heading);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(84, 70, 61, 0.88);
+  user-select: none;
+}
+
+.julia-catalog-filter-group__summary::-webkit-details-marker {
+  display: none;
+}
+
+.julia-catalog-filter-group__summary::after {
+  content: "";
+  display: block;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid rgba(28, 26, 22, 0.4);
+  border-bottom: 2px solid rgba(28, 26, 22, 0.4);
+  transform: rotate(45deg);
+  margin-top: -2px;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.julia-catalog-filter-group[open] .julia-catalog-filter-group__summary::after {
+  transform: rotate(-135deg);
+  margin-top: 4px;
+}
+
+.julia-catalog-filter-group__body {
+  padding-top: 2px;
+  padding-bottom: 4px;
+}
+
+.julia-catalog-filter-group__body .filters-container {
   margin-bottom: 0 !important;
 }
 
