@@ -129,7 +129,7 @@
 
       {# Contador de imagen sincronizado con scroll #}
       <div class="lusano__counter">
-        <span class="lusano__counter-num js-lusano-counter">01</span>
+        <span class="lusano__counter-num js-lusano-counter">001</span>
         <div class="lusano__counter-meta">
           <span class="js-lusano-counter-total"></span>
           <span class="lusano__counter-hint">(Scroll)</span>
@@ -287,7 +287,7 @@
 
   {# Lightbox fullscreen #}
   <div class="lusano__lightbox js-lusano-lightbox" aria-hidden="true">
-    <button type="button" class="lusano__lightbox-close js-lusano-lightbox-close">Close</button>
+    <button type="button" class="lusano__lightbox-close js-lusano-lightbox-close">{{ 'Cerrar' | translate }}</button>
     <img class="lusano__lightbox-img js-lusano-lightbox-img" src="" alt="" />
   </div>
 </div>

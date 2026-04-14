@@ -977,4 +977,322 @@ a {
 
 }
 
+{#/*============================================================================
+  Julia Design — checkout legible (corrige primary #fff del tema + fondo crema)
+==============================================================================*/#}
+
+{# Si primary_color es blanco o muy claro, los CTAs del checkout quedan ilegibles.
+   Forzamos tokens y botones al contraste editorial Julia. #}
+
+:root {
+  --cream: #ece8e4;
+  --dark-text: #1c1a16;
+  --brown: #54463d;
+  --gray-light: #d2d0d0;
+  --main-background: var(--cream);
+  --main-foreground: var(--dark-text);
+  --accent-color: var(--dark-text);
+  --button-background: var(--dark-text);
+  --button-foreground: var(--cream);
+  --button-border-color: var(--dark-text);
+  --header-background: var(--cream);
+  --header-foreground: var(--dark-text);
+  --footer-background: var(--cream);
+  --footer-foreground: var(--dark-text);
+  --label-background: var(--dark-text);
+  --label-foreground: var(--cream);
+  --box-border-color: rgba(28, 26, 22, 0.12);
+  --border-color: rgba(28, 26, 22, 0.15);
+  --accent-color-opacity-05: rgba(28, 26, 22, 0.05);
+  --accent-color-opacity-10: rgba(28, 26, 22, 0.1);
+  --accent-color-opacity-20: rgba(28, 26, 22, 0.2);
+  --accent-color-opacity-30: rgba(28, 26, 22, 0.3);
+  --accent-color-opacity-50: rgba(28, 26, 22, 0.5);
+  --accent-color-opacity-60: rgba(28, 26, 22, 0.6);
+  --accent-color-opacity-80: rgba(28, 26, 22, 0.8);
+  --main-foreground-opacity-05: rgba(28, 26, 22, 0.05);
+  --main-foreground-opacity-10: rgba(28, 26, 22, 0.1);
+  --main-foreground-opacity-20: rgba(28, 26, 22, 0.2);
+  --main-foreground-opacity-30: rgba(28, 26, 22, 0.3);
+  --main-foreground-opacity-50: rgba(28, 26, 22, 0.5);
+  --main-foreground-opacity-60: rgba(28, 26, 22, 0.6);
+  --main-foreground-opacity-80: rgba(28, 26, 22, 0.8);
+  --main-background-opacity-10: rgba(236, 232, 228, 0.55);
+  --main-background-opacity-20: rgba(236, 232, 228, 0.72);
+  --heading-letter-spacing: -0.02em;
+  --heading-text-transform: none;
+}
+
+body {
+  background-color: var(--cream) !important;
+  color: var(--dark-text) !important;
+  font-family: $body-font;
+  -webkit-font-smoothing: antialiased;
+}
+
+.title {
+  color: var(--dark-text) !important;
+}
+
+.header {
+  background-color: var(--cream) !important;
+  border-color: var(--gray-light) !important;
+}
+
+.headbar {
+  background: var(--cream) !important;
+}
+
+{# Logo checkout: mismo criterio que tienda (negro sobre crema). La app puede servir el PNG claro del tema; silueta oscura legible. Logos a color: subir variante oscura en el checkout o quitar este filtro. #}
+
+.headbar .logo-img,
+.header .logo-img {
+  filter: brightness(0);
+  opacity: 0.94;
+}
+
+.headbar .logo-text,
+.header .logo-text {
+  color: var(--dark-text) !important;
+}
+
+{# CTAs: nunca blanco sobre blanco #}
+
+.btn-primary,
+button.btn-primary,
+input[type="submit"].btn-primary,
+a.btn-primary {
+  background: var(--dark-text) !important;
+  background-color: var(--dark-text) !important;
+  color: var(--cream) !important;
+  border-color: var(--dark-text) !important;
+  text-transform: none;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &:focus-visible {
+    background: var(--brown) !important;
+    background-color: var(--brown) !important;
+    color: var(--cream) !important;
+    border-color: var(--brown) !important;
+    opacity: 1;
+  }
+}
+
+.btn-secondary,
+button.btn-secondary {
+  color: var(--dark-text) !important;
+  background: var(--white, #ffffff) !important;
+  border: 1px solid var(--gray-light) !important;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--dark-text) !important;
+    background: rgba(255, 255, 255, 0.92) !important;
+    border-color: var(--brown) !important;
+  }
+
+  .btn-icon-right {
+    fill: var(--dark-text) !important;
+  }
+}
+
+.btn-link {
+  color: var(--brown) !important;
+
+  &:hover {
+    color: var(--dark-text) !important;
+  }
+}
+
+.breadcrumb li .breadcrumb-step {
+  background: rgba(28, 26, 22, 0.08) !important;
+  color: rgba(28, 26, 22, 0.55) !important;
+
+  &.active {
+    background-color: var(--dark-text) !important;
+    color: var(--cream) !important;
+  }
+
+  &.visited {
+    background: rgba(28, 26, 22, 0.12) !important;
+    color: var(--dark-text) !important;
+  }
+}
+
+.panel {
+  color: var(--dark-text) !important;
+  background-color: rgba(255, 255, 255, 0.65) !important;
+  border-color: rgba(28, 26, 22, 0.12) !important;
+}
+
+.panel-header {
+  color: var(--dark-text) !important;
+  border-color: rgba(28, 26, 22, 0.12) !important;
+}
+
+.panel-header-sticky {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+}
+
+.panel-footer {
+  background: rgba(236, 232, 228, 0.85) !important;
+}
+
+.summary-container {
+  background: rgba(255, 255, 255, 0.55) !important;
+}
+
+.summary-details {
+  background: rgba(255, 255, 255, 0.75) !important;
+}
+
+.summary-total {
+  color: var(--dark-text) !important;
+  background: transparent !important;
+}
+
+.summary-title {
+  color: var(--brown) !important;
+}
+
+.input-label {
+  color: rgba(28, 26, 22, 0.72) !important;
+}
+
+.form-control {
+  color: var(--dark-text) !important;
+  background: var(--white, #ffffff) !important;
+  border-color: var(--gray-light) !important;
+}
+
+.form-options-content {
+  color: var(--dark-text) !important;
+  border-color: rgba(28, 26, 22, 0.12) !important;
+}
+
+.radio-content {
+  background: rgba(255, 255, 255, 0.6) !important;
+}
+
+{# Cupón y enlaces del resumen #}
+
+.mobile-discount-coupon_btn {
+  border-color: rgba(28, 26, 22, 0.15) !important;
+  color: var(--dark-text) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+
+  .icon {
+    color: var(--brown) !important;
+  }
+
+  &:hover {
+    color: var(--dark-text) !important;
+    border-color: var(--brown) !important;
+  }
+}
+
+{# /* Resumen lateral: el SCSS base usa lighten($foreground) sobre fondo claro → texto invisible */ #}
+
+.summary,
+.summary-container,
+.summary-details,
+.summary-sticky,
+.summary .panel,
+.summary .panel-body {
+  color: var(--dark-text) !important;
+}
+
+.summary .table,
+.summary-container .table,
+.summary-details .table,
+.table,
+.table-footer {
+  color: var(--dark-text) !important;
+  border-color: rgba(28, 26, 22, 0.12) !important;
+}
+
+.table td,
+.table th,
+.table tr,
+.summary .table td,
+.summary .table th {
+  color: var(--dark-text) !important;
+}
+
+.table small,
+.table .font-small,
+.summary-item-name,
+.summary-item-variant,
+.summary-item-quantity {
+  color: rgba(28, 26, 22, 0.82) !important;
+}
+
+.table-footer td,
+.table-footer th,
+.table .table-subtotal,
+.table-subtotal {
+  color: var(--dark-text) !important;
+  border-color: rgba(28, 26, 22, 0.15) !important;
+}
+
+.table .table-discount-coupon,
+.table .table-discount-promotion {
+  color: var(--brown) !important;
+}
+
+.summary-total,
+.summary-total *,
+.summary .summary-total {
+  color: var(--dark-text) !important;
+}
+
+.summary-title,
+.summary .summary-title {
+  color: var(--brown) !important;
+}
+
+.summary-arrow-icon {
+  fill: var(--dark-text) !important;
+}
+
+.review-block-detailed,
+.review-block-detailed-item {
+  color: var(--dark-text) !important;
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(28, 26, 22, 0.1) !important;
+}
+
+.box-discount-coupon-applied {
+  color: var(--brown) !important;
+  background-color: rgba(236, 232, 228, 0.95) !important;
+  border-color: rgba(28, 26, 22, 0.1) !important;
+
+  .coupon-icon {
+    fill: var(--brown) !important;
+  }
+}
+
+.box-discount-coupon button {
+  background: var(--dark-text) !important;
+  color: var(--cream) !important;
+  border-color: var(--dark-text) !important;
+
+  &:hover {
+    background: var(--brown) !important;
+    color: var(--cream) !important;
+    border-color: var(--brown) !important;
+  }
+}
+
+{# Precios destacados en el resumen #}
+.price--display__free,
+.summary [class*="price"] {
+  color: var(--dark-text) !important;
+}
+
 {% endif %}

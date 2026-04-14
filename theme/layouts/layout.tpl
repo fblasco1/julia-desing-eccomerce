@@ -86,6 +86,8 @@
         {% set julia_head_mode = 'julia-head-mode--home' %}
     {% elseif template == 'category' %}
         {% set julia_head_mode = 'julia-head-mode--catalog' %}
+    {% elseif template == 'cart' %}
+        {% set julia_head_mode = 'julia-head-mode--catalog' %}
     {% elseif template == 'page' and page is defined and page.handle is defined and (page.handle == 'quienes-somos' or page.handle == 'como-trabajamos') %}
         {% set julia_head_mode = 'julia-head-mode--static' %}
     {% endif %}

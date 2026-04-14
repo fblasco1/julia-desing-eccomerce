@@ -1400,7 +1400,7 @@ DOMContentLoaded.addEventOrExecute(() => {
         gallery.scrollTo({ top: Math.max(0, nextTop), behavior: "smooth" });
         var idx = parseInt(el.getAttribute("data-index"), 10);
         if (!isNaN(idx) && counterEl) {
-            counterEl.textContent = pad(idx, 2);
+            counterEl.textContent = pad(idx, 3);
         }
         if (!isNaN(idx) && counterTotalEl && totalImages) {
             counterTotalEl.textContent = pad(idx, 3) + " \u2014 " + pad(totalImages, 3);
@@ -1461,7 +1461,7 @@ DOMContentLoaded.addEventOrExecute(() => {
                     var idx = parseInt(entry.target.dataset.index, 10);
                     counterEl.style.opacity = "0";
                     setTimeout(function () {
-                        counterEl.textContent = pad(idx, 2);
+                        counterEl.textContent = pad(idx, 3);
                         counterEl.style.opacity = "1";
                     }, 150);
                     if (counterTotalEl) {

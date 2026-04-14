@@ -211,8 +211,8 @@
   },
   {
     "remotePath": "/snipplets/header/header-logo.tpl",
-    "hash": "792977757badcef93dcce151457ba50c",
-    "timestamp": 1775501931454
+    "hash": "40e6d0503acc02225d2cb81139f69cc2",
+    "timestamp": 1775509580348
   },
   {
     "remotePath": "/snipplets/header/header-search-results.tpl",
@@ -231,8 +231,8 @@
   },
   {
     "remotePath": "/snipplets/header/header.tpl",
-    "hash": "2118a303512e159359d4852f0873f4bf",
-    "timestamp": 1775338826262
+    "hash": "af02c2715848c4161fc53e62e2509be8",
+    "timestamp": 1775508734642
   },
   {
     "remotePath": "/snipplets/home/home-banners.tpl",
@@ -391,8 +391,8 @@
   },
   {
     "remotePath": "/snipplets/product/product-payment-details.tpl",
-    "hash": "0bdd002249a2bcd7533651b4caeacc5c",
-    "timestamp": 1775338845555
+    "hash": "568f7248001b0da80965a10fabbc55a0",
+    "timestamp": 1775508739748
   },
   {
     "remotePath": "/snipplets/product/product-quantity.tpl",
@@ -686,8 +686,8 @@
   },
   {
     "remotePath": "/static/checkout.scss.tpl",
-    "hash": "8b9aab9bfba652b4c6ec9981bfd8d545",
-    "timestamp": 1775338856316
+    "hash": "68906317aa78f3f6b1b0a3d673a3612f",
+    "timestamp": 1775509590000
   },
   {
     "remotePath": "/static/css/.DS_Store",
@@ -696,8 +696,8 @@
   },
   {
     "remotePath": "/static/css/style-async.scss.tpl",
-    "hash": "25fac5b57dbe85b559f98633eda0054b",
-    "timestamp": 1775506639927
+    "hash": "e0eff8e49de5d77b548b7473f5e6ad13",
+    "timestamp": 1775509309248
   },
   {
     "remotePath": "/static/css/style-colors.scss.tpl",
@@ -741,8 +741,8 @@
   },
   {
     "remotePath": "/static/js/store.js.tpl",
-    "hash": "34e746c387669bd3ad35096bd7689395",
-    "timestamp": 1775507985427
+    "hash": "a0c0325f0fde4a42d3e08e2bafa91240",
+    "timestamp": 1775508750398
   },
   {
     "remotePath": "/templates/404.tpl",
@@ -806,8 +806,8 @@
   },
   {
     "remotePath": "/templates/cart.tpl",
-    "hash": "5dd25278a93fc9e00908d577cf1523fa",
-    "timestamp": 1774818438073
+    "hash": "3137a7b279adbdfb9504c57880aba927",
+    "timestamp": 1775509595656
   },
   {
     "remotePath": "/templates/category.tpl",
@@ -836,8 +836,8 @@
   },
   {
     "remotePath": "/templates/product.tpl",
-    "hash": "29979637954086047441df334ba1a4fd",
-    "timestamp": 1775507988300
+    "hash": "5ba6f74d96c5710e9090fdcce02ff4b9",
+    "timestamp": 1775508753275
   },
   {
     "remotePath": "/templates/search.tpl",
@@ -891,8 +891,8 @@
   },
   {
     "remotePath": "/layouts/layout.tpl",
-    "hash": "97858088ff8452f179f1b140900d5596",
-    "timestamp": 1775484664422
+    "hash": "6dc45405632f0f9ae2439f956bbde0a2",
+    "timestamp": 1775509287247
   },
   {
     "remotePath": "/static/js/store-full.js.tpl",

@@ -111,9 +111,11 @@
 
     {% embed "snipplets/modal.tpl" with{
         modal_id: 'modal-cart',
+        modal_class: 'julia-cart',
         modal_position: 'right',
         modal_transition: 'slide',
         modal_width: 'docked-md',
+        modal_header_class: 'julia-modal-head',
         modal_form_action: store.cart_url,
         modal_form_class: 'js-ajax-cart-panel',
         modal_mobile_full_screen: true,

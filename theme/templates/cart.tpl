@@ -1,8 +1,9 @@
+<section class="julia-cart-page">
 {% embed "snipplets/page-header.tpl" with {'breadcrumbs': true} %}
     {% block page_header_text %}{{ "Carrito de Compras" | translate }}{% endblock page_header_text %}
 {% endembed %}
 
-<div id="shoppingCartPage" class="container" data-minimum="{{ settings.cart_minimum_value }}" data-store="cart-page">
+<div id="shoppingCartPage" class="container julia-cart-page__inner" data-minimum="{{ settings.cart_minimum_value }}" data-store="cart-page">
     <form action="{{ store.cart_url }}" method="post" class="cart-body" data-store="cart-form" data-component="cart">
         <div class="cart-body">
 
@@ -45,4 +46,5 @@
     </form>
     <div id="store-curr" class="hidden">{{ cart.currency }}</div>
 </div>
+</section>
 

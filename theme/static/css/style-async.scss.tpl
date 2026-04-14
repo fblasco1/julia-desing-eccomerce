@@ -846,9 +846,7 @@ body.julia-head-mode--static .julia-head-bar .utilities-item a:focus-visible .ca
 header.julia-head-bar.head-dark .utilities-item a:hover .svg-icon-text,
 header.julia-head-bar.head-dark .utilities-item a:hover .cart-widget-amount,
 header.julia-head-bar.head-dark .utilities-item a:focus-visible .svg-icon-text,
-header.julia-head-bar.head-dark .utilities-item a:focus-visible .cart-widget-amount,
-body.template-cart .julia-head-bar .cart-summary a .svg-icon-text,
-body.template-cart .julia-head-bar .cart-summary a .cart-widget-amount {
+header.julia-head-bar.head-dark .utilities-item a:focus-visible .cart-widget-amount {
   color: var(--white, #ffffff);
   fill: var(--white, #ffffff);
 }
@@ -2446,6 +2444,219 @@ body.julia-head-mode--catalog .julia-head-bar .julia-nav-desktop-summary:hover .
   min-height: 100dvh;
   box-sizing: border-box;
   padding: calc(var(--julia-nav-h, 60px) + var(--julia-catalog-top-extra)) 28px 52px;
+}
+
+{# /* Página carrito: mismo fondo crema y aire que catálogo */ #}
+.julia-cart-page {
+  --julia-cart-top-extra: 24px;
+  background: var(--cream, #ece8e4);
+  color: var(--dark-text, #1c1a16);
+  min-height: 100dvh;
+  box-sizing: border-box;
+  padding: calc(var(--julia-nav-h, 60px) + var(--julia-cart-top-extra)) 28px 52px;
+  font-family: var(--julia-font-body, "Montserrat", sans-serif);
+}
+
+.julia-cart-page .page-header {
+  margin-top: 0 !important;
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+.julia-cart-page .page-header h1 {
+  font-family: var(--julia-font-heading, "Hanken Grotesk", sans-serif);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--dark-text, #1c1a16);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.julia-cart-page .breadcrumbs {
+  margin-bottom: 0.75rem;
+}
+
+.julia-cart-page .breadcrumbs .crumb,
+.julia-cart-page .breadcrumbs .divider {
+  color: var(--mink, #81756c);
+  font-family: var(--julia-font-body, "Montserrat", sans-serif);
+  font-size: clamp(0.8rem, 0.35vw + 0.75rem, 0.9rem);
+  font-weight: 300;
+}
+
+.julia-cart-page .breadcrumbs a.crumb:hover {
+  color: var(--brown, #54463d);
+}
+
+.julia-cart-page .breadcrumbs .crumb.active {
+  color: var(--dark-text, #1c1a16);
+  font-weight: 500;
+}
+
+.julia-cart-page__inner.container {
+  max-width: 1140px;
+}
+
+{# /* Ítems y totales en página (cart_page: true) — alineados con modal carrito Julia */ #}
+body.template-cart .cart-body,
+body.template-cart #shoppingCartPage {
+  color: var(--dark-text, #1c1a16);
+}
+
+body.template-cart .cart-item-name a,
+body.template-cart .cart-item-name {
+  color: var(--dark-text, #1c1a16) !important;
+  font-family: var(--julia-font-heading, "Hanken Grotesk", sans-serif);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+body.template-cart .cart-item-name a:hover {
+  color: var(--brown, #54463d) !important;
+}
+
+body.template-cart .cart-item-name small {
+  color: var(--mink, #81756c);
+  font-weight: 300;
+  font-family: var(--julia-font-body, "Montserrat", sans-serif);
+}
+
+body.template-cart .cart-item-subtotal {
+  color: var(--dark-text, #1c1a16) !important;
+  font-family: var(--julia-font-heading, "Hanken Grotesk", sans-serif);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+body.template-cart .cart-item-input,
+body.template-cart .form-control.cart-item-input {
+  background: var(--white, #ffffff);
+  border: 1px solid var(--gray-light, #d2d0d0);
+  color: var(--dark-text, #1c1a16);
+  border-radius: 0;
+}
+
+body.template-cart .cart-item-btn {
+  background: transparent;
+  border: 1px solid var(--gray-light, #d2d0d0);
+  color: var(--dark-text, #1c1a16);
+  border-radius: 0;
+}
+
+body.template-cart .cart-item-btn:hover {
+  border-color: var(--brown, #54463d);
+  color: var(--brown, #54463d);
+}
+
+body.template-cart .cart-item-delete .btn {
+  color: var(--mink, #81756c) !important;
+}
+
+body.template-cart .cart-item-delete .btn:hover {
+  color: var(--brown, #54463d) !important;
+}
+
+body.template-cart .divider {
+  border-color: var(--gray-light, #d2d0d0) !important;
+}
+
+body.template-cart .alert-info {
+  background: var(--white, #ffffff);
+  border: 1px solid var(--gray-light, #d2d0d0);
+  color: var(--dark-text, #1c1a16);
+  border-radius: 0;
+}
+
+body.template-cart .alert-warning {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid var(--mink, #81756c);
+  color: var(--dark-text, #1c1a16);
+  border-radius: 0;
+}
+
+body.template-cart .alert-warning a {
+  color: var(--brown, #54463d);
+  font-weight: 600;
+}
+
+body.template-cart .js-visible-on-cart-filled.h5,
+body.template-cart .js-cart-total-container .h2 {
+  color: var(--dark-text, #1c1a16);
+  font-family: var(--julia-font-heading, "Hanken Grotesk", sans-serif);
+  letter-spacing: -0.02em;
+}
+
+body.template-cart .js-cart-total-container .text-primary,
+body.template-cart #shoppingCartPage .text-primary {
+  color: var(--brown, #54463d) !important;
+}
+
+body.template-cart #shoppingCartPage .btn-primary,
+body.template-cart .cart-body .btn-primary {
+  background: var(--dark-text, #1c1a16) !important;
+  border: 1.5px solid var(--dark-text, #1c1a16) !important;
+  color: var(--cream, #ece8e4) !important;
+  font-family: var(--julia-font-heading, "Hanken Grotesk", sans-serif);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  border-radius: 0;
+  text-transform: none;
+  padding: 0.85rem 1.25rem;
+}
+
+body.template-cart #shoppingCartPage .btn-primary:hover,
+body.template-cart .cart-body .btn-primary:hover {
+  background: var(--brown, #54463d) !important;
+  border-color: var(--brown, #54463d) !important;
+  color: var(--cream, #ece8e4) !important;
+}
+
+body.template-cart #shoppingCartPage .btn-link,
+body.template-cart .cart-body .btn-link {
+  color: var(--brown, #54463d) !important;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+body.template-cart #shoppingCartPage .btn-link:hover,
+body.template-cart .cart-body .btn-link:hover {
+  color: var(--dark-text, #1c1a16) !important;
+}
+
+body.template-cart #go-to-checkout {
+  text-transform: none;
+}
+
+body.template-cart .js-shipping-calculator-container,
+body.template-cart .shipping-calculator-head,
+body.template-cart #cart-shipping-container {
+  color: var(--dark-text, #1c1a16);
+}
+
+body.template-cart .js-total-promotions {
+  color: var(--brown, #54463d);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .julia-cart-page {
+    padding: calc(var(--julia-nav-h, 56px) + var(--julia-cart-top-extra)) 16px 42px;
+  }
+}
+
+body.template-cart .julia-mega-menu .mega-col-title,
+body.template-cart .julia-mega-menu .mega-link,
+body.template-cart .julia-mega-menu .mega-view-all a,
+body.template-cart .julia-mega-menu a.mega-view-all {
+  color: var(--dark-text, #1c1a16);
+}
+
+body.template-cart .julia-mega-menu .mega-link:hover,
+body.template-cart .julia-mega-menu .mega-view-all a:hover,
+body.template-cart .julia-mega-menu a.mega-view-all:hover {
+  color: var(--brown, #54463d);
 }
 
 .julia-catalog-page__inner {
@@ -4708,5 +4919,340 @@ body.template-product .section-advertising {
 
   .lusano__close {
     margin-bottom: 1.5rem;
+  }
+}
+
+{#/*============================================================================
+  Julia Design — carrito AJAX y modal medios de pago (alineación sistema visual)
+==============================================================================*/#}
+
+$julia-overlay-cart: rgba(28, 26, 22, 0.42);
+$julia-overlay-payments: rgba(28, 26, 22, 0.38);
+
+.js-modal-overlay[data-modal-id="#modal-cart"],
+.js-fullscreen-overlay[data-modal-id="#modal-cart"] {
+  background: $julia-overlay-cart !important;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.js-modal-overlay[data-modal-id="#installments-modal"],
+.js-fullscreen-overlay[data-modal-id="#installments-modal"] {
+  background: $julia-overlay-payments !important;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+#modal-cart.modal-julia-cart {
+  background: var(--cream, #ece8e4) !important;
+  color: var(--dark-text, #1c1a16);
+  font-family: var(--julia-font-body, "Montserrat", sans-serif);
+  -webkit-font-smoothing: antialiased;
+
+  .modal-header.julia-modal-head,
+  .modal-header {
+    background: var(--cream, #ece8e4);
+    border-bottom: 1px solid var(--gray-light, #d2d0d0);
+    color: var(--dark-text, #1c1a16);
+    font-family: var(--julia-font-heading, "Hanken Grotesk", sans-serif);
+    font-weight: 600;
+    font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+    letter-spacing: -0.02em;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .modal-close .svg-icon-text {
+    color: var(--dark-text, #1c1a16);
+    fill: var(--dark-text, #1c1a16);
+  }
+
+  .modal-body {
+    background: var(--cream, #ece8e4);
+    color: var(--dark-text, #1c1a16);
+    font-family: var(--julia-font-body, "Montserrat", sans-serif);
+    font-size: clamp(0.875rem, 0.4vw + 0.8rem, 0.95rem);
+    font-weight: 300;
+    line-height: 1.55;
+  }
+
+  .cart-item-name a,
+  .cart-item-name {
+    color: var(--dark-text, #1c1a16) !important;
+    font-family: var(--julia-font-heading, "Hanken Grotesk", sans-serif);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    &:hover {
+      color: var(--brown, #54463d) !important;
+    }
+  }
+
+  .cart-item-name small {
+    display: block;
+    margin-top: 0.15rem;
+    font-family: var(--julia-font-body, "Montserrat", sans-serif);
+    font-weight: 300;
+    color: var(--mink, #81756c);
+    font-size: 0.85em;
+  }
+
+  .cart-item-subtotal {
+    color: var(--dark-text, #1c1a16) !important;
+    font-family: var(--julia-font-heading, "Hanken Grotesk", sans-serif);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .cart-item-input,
+  .form-control.cart-item-input {
+    background: var(--white, #ffffff);
+    border: 1px solid var(--gray-light, #d2d0d0);
+    color: var(--dark-text, #1c1a16);
+    border-radius: 0;
+    font-family: var(--julia-font-body, "Montserrat", sans-serif);
+  }
+
+  .cart-item-btn {
+    background: transparent;
+    border: 1px solid var(--gray-light, #d2d0d0);
+    color: var(--dark-text, #1c1a16);
+    border-radius: 0;
+    &:hover {
+      border-color: var(--brown, #54463d);
+      color: var(--brown, #54463d);
+    }
+  }
+
+  .cart-item-delete .btn {
+    color: var(--mink, #81756c) !important;
+    &:hover {
+      color: var(--brown, #54463d) !important;
+    }
+  }
+
+  .divider {
+    border-color: var(--gray-light, #d2d0d0) !important;
+  }
+
+  .alert-info {
+    background: var(--white, #ffffff);
+    border: 1px solid var(--gray-light, #d2d0d0);
+    color: var(--dark-text, #1c1a16);
+    border-radius: 0;
+    font-family: var(--julia-font-body, "Montserrat", sans-serif);
+  }
+
+  .alert-warning {
+    background: rgba(236, 232, 228, 0.95);
+    border: 1px solid var(--mink, #81756c);
+    color: var(--dark-text, #1c1a16);
+    border-radius: 0;
+    a {
+      color: var(--brown, #54463d);
+      font-weight: 600;
+    }
+  }
+
+  .js-visible-on-cart-filled.h5,
+  .js-cart-total-container .h2 {
+    color: var(--dark-text, #1c1a16);
+    font-family: var(--julia-font-heading, "Hanken Grotesk", sans-serif);
+    letter-spacing: -0.02em;
+  }
+
+  .js-cart-total-container .text-primary,
+  .text-primary {
+    color: var(--brown, #54463d) !important;
+  }
+
+  .js-total-promotions {
+    color: var(--brown, #54463d);
+    font-family: var(--julia-font-body, "Montserrat", sans-serif);
+    font-size: 0.9rem;
+  }
+
+  .bar-progress {
+    background: var(--gray-light, #d2d0d0);
+    border-radius: 0;
+  }
+  .bar-progress-active {
+    background: var(--brown, #54463d) !important;
+  }
+  .ship-free-rest-text {
+    color: var(--dark-text, #1c1a16);
+    font-family: var(--julia-font-body, "Montserrat", sans-serif);
+    font-size: 0.8rem;
+  }
+
+  .btn-primary {
+    background: var(--dark-text, #1c1a16) !important;
+    border: 1.5px solid var(--dark-text, #1c1a16) !important;
+    color: var(--cream, #ece8e4) !important;
+    font-family: var(--julia-font-heading, "Hanken Grotesk", sans-serif);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    border-radius: 0;
+    text-transform: none;
+    padding: 0.85rem 1.25rem;
+    transition: opacity 0.2s ease, background 0.2s ease;
+    &:hover {
+      opacity: 0.88;
+      background: var(--brown, #54463d) !important;
+      border-color: var(--brown, #54463d) !important;
+      color: var(--cream, #ece8e4) !important;
+    }
+  }
+
+  .btn-link {
+    color: var(--brown, #54463d) !important;
+    font-family: var(--julia-font-body, "Montserrat", sans-serif);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    &:hover {
+      color: var(--dark-text, #1c1a16) !important;
+    }
+  }
+
+  .label.label-secondary,
+  .label.label-accent {
+    border-radius: 0;
+    font-family: var(--julia-font-body, "Montserrat", sans-serif);
+    font-size: 0.7rem;
+  }
+}
+
+#installments-modal.modal-julia-payments {
+  background: var(--cream, #ece8e4) !important;
+  color: var(--dark-text, #1c1a16);
+  font-family: var(--julia-font-body, "Montserrat", sans-serif);
+
+  .modal-header.julia-modal-head,
+  .modal-header {
+    background: var(--cream, #ece8e4);
+    border-bottom: 1px solid var(--gray-light, #d2d0d0);
+    color: var(--dark-text, #1c1a16);
+    font-family: var(--julia-font-heading, "Hanken Grotesk", sans-serif);
+    font-weight: 600;
+    font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+    letter-spacing: -0.02em;
+  }
+
+  .modal-close .svg-icon-text {
+    color: var(--dark-text, #1c1a16);
+    fill: var(--dark-text, #1c1a16);
+  }
+
+  .modal-body {
+    background: var(--cream, #ece8e4);
+    color: var(--dark-text, #1c1a16);
+    font-family: var(--julia-font-body, "Montserrat", sans-serif);
+    font-weight: 300;
+    line-height: 1.55;
+  }
+
+  .modal-footer.julia-modal-foot,
+  .modal-footer {
+    background: var(--cream, #ece8e4);
+    border-top: 1px solid var(--gray-light, #d2d0d0);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .julia-payments-foot-actions {
+    width: 100%;
+  }
+
+  .julia-payments-back {
+    appearance: none;
+    -webkit-appearance: none;
+    background: none;
+    border: none;
+    padding: 0.35rem 0;
+    cursor: pointer;
+    font-family: var(--julia-font-body, "Montserrat", sans-serif);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--brown, #54463d);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    &:hover {
+      color: var(--dark-text, #1c1a16);
+    }
+  }
+
+  .tab-group {
+    margin-left: 0;
+    margin-right: 0;
+    border-bottom: 1px solid var(--gray-light, #d2d0d0);
+  }
+
+  .tab .tab-link,
+  .tab-link {
+    font-family: var(--julia-font-heading, "Hanken Grotesk", sans-serif);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-transform: none;
+    color: var(--mink, #81756c);
+    border-bottom: 2px solid transparent;
+  }
+
+  .tab.active .tab-link,
+  .tab-link.active,
+  .tab-link:hover {
+    color: var(--dark-text, #1c1a16);
+  }
+
+  .tab.active .tab-link {
+    border-bottom-color: var(--dark-text, #1c1a16);
+  }
+
+  .julia-payments-method,
+  .julia-payments-method.card {
+    background: var(--white, #ffffff) !important;
+    border: 1px solid var(--gray-light, #d2d0d0) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .julia-payments-subtitle.h6,
+  .julia-payments-subtitle {
+    font-family: var(--julia-font-heading, "Hanken Grotesk", sans-serif) !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.02em !important;
+    color: var(--dark-text, #1c1a16) !important;
+    text-transform: none;
+  }
+
+  .julia-payments-lead.font-big {
+    font-family: var(--julia-font-heading, "Hanken Grotesk", sans-serif);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--dark-text, #1c1a16);
+  }
+
+  .julia-payments-small.font-small {
+    color: var(--mink, #81756c);
+    font-weight: 400;
+  }
+
+  .julia-payments-muted {
+    color: var(--mink, #81756c) !important;
+  }
+
+  .julia-payments-accent.label-accent {
+    background: transparent !important;
+    border: 1px solid var(--brown, #54463d) !important;
+    color: var(--brown, #54463d) !important;
+    font-family: var(--julia-font-body, "Montserrat", sans-serif);
+    font-weight: 500;
+  }
+
+  a {
+    color: var(--brown, #54463d);
+    &:hover {
+      color: var(--dark-text, #1c1a16);
+    }
   }
 }
