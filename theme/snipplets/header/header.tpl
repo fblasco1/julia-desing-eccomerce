@@ -105,7 +105,8 @@
     {% endblock %}
 {% endembed %}
 
-{% if not store.is_catalog and settings.ajax_cart and template != 'cart' %}           
+{# Julia: el carrito debe abrir como sidebar (también en /carrito). #}
+{% if not store.is_catalog and settings.ajax_cart %}           
 
     {# Cart Ajax #}
 

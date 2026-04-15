@@ -1030,30 +1030,53 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+{# El contenido del checkout debe leerse negro sobre fondos claros (ej. Entrega). #}
+.main,
+.content,
+.panel,
+.panel-header,
+.panel-body,
+.accordion,
+.accordion *,
+.form,
+.form *,
+.shipping-options,
+.shipping-options *,
+.radio-content,
+.radio-content * {
+  color: var(--dark-text) !important;
+}
+
 .title {
   color: var(--dark-text) !important;
 }
 
 .header {
-  background-color: var(--cream) !important;
-  border-color: var(--gray-light) !important;
+  background-color: var(--brown) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
 }
 
 .headbar {
-  background: var(--cream) !important;
+  background: var(--brown) !important;
 }
 
-{# Logo checkout: mismo criterio que tienda (negro sobre crema). La app puede servir el PNG claro del tema; silueta oscura legible. Logos a color: subir variante oscura en el checkout o quitar este filtro. #}
+{# Checkout: navbar marrón → logo blanco + textos de header blancos. #}
 
 .headbar .logo-img,
 .header .logo-img {
-  filter: brightness(0);
-  opacity: 0.94;
+  filter: brightness(0) invert(1);
+  opacity: 0.98;
 }
 
 .headbar .logo-text,
 .header .logo-text {
-  color: var(--dark-text) !important;
+  color: var(--cream) !important;
+}
+
+{# Badge “Compra segura …”: forzamos lectura en blanco en el header #}
+.headbar,
+.header {
+  color: var(--cream) !important;
 }
 
 {# CTAs: nunca blanco sobre blanco #}

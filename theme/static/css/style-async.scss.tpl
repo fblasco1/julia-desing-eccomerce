@@ -2542,6 +2542,57 @@ body.template-cart .cart-item-btn {
   border-radius: 0;
 }
 
+{# Cantidad en página carrito: alinear - [input] + #}
+body.template-cart .form-quantity {
+  display: inline-flex !important;
+  align-items: stretch !important;
+  gap: 0 !important;
+}
+
+body.template-cart .form-quantity .row.m-0 {
+  display: inline-flex !important;
+  align-items: stretch !important;
+  gap: 0 !important;
+  margin: 0 !important;
+}
+
+body.template-cart .form-quantity .js-cart-quantity-btn,
+body.template-cart .form-quantity .cart-item-btn {
+  width: 42px;
+  height: 38px;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: var(--white, #ffffff);
+  border: 1px solid var(--gray-light, #d2d0d0) !important;
+  color: var(--dark-text, #1c1a16) !important;
+  opacity: 1;
+}
+
+body.template-cart .form-quantity .cart-item-input,
+body.template-cart .form-quantity .form-control.cart-item-input {
+  width: 46px !important;
+  height: 38px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  text-align: center !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-top: 1px solid var(--gray-light, #d2d0d0) !important;
+  border-bottom: 1px solid var(--gray-light, #d2d0d0) !important;
+  border-radius: 0 !important;
+  background: var(--white, #ffffff) !important;
+  color: var(--dark-text, #1c1a16) !important;
+  font-variant-numeric: tabular-nums;
+}
+
+body.template-cart .form-quantity .js-cart-quantity-btn svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
 body.template-cart .cart-item-btn:hover {
   border-color: var(--brown, #54463d);
   color: var(--brown, #54463d);
@@ -3306,6 +3357,11 @@ body.julia-head-mode--static .head-main {
   box-shadow: none;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+}
+
+{# Institucionales: logo claro si solo hay logo oscuro disponible (invertir imagen). #}
+body.julia-head-mode--static .julia-logo-invert {
+  filter: brightness(0) invert(1);
 }
 
 {# No anular padding-top del .julia-inst-split: el offset --julia-nav-h evita que el contenido quede bajo la barra fija #}
@@ -4457,9 +4513,10 @@ body.template-product .section-advertising {
 }
 
 .lusano__note-body {
-  font-size: 0.95rem;
+  font-size: clamp(1rem, 0.2vw + 0.95rem, 1.08rem);
   line-height: 1.65;
-  font-weight: 300;
+  font-weight: 400;
+  color: var(--dark-text, #1c1a16);
   margin: 0;
 }
 
@@ -4587,13 +4644,14 @@ body.template-product .section-advertising {
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 0;
-  font-size: 0.82rem;
+  font-size: clamp(0.94rem, 0.15vw + 0.9rem, 1.02rem);
 }
 
 .lusano__row-label {
-  font-style: italic;
+  font-style: normal;
+  font-weight: 500;
   color: var(--dark-text, #1c1a16);
-  opacity: 0.88;
+  opacity: 1;
 }
 
 .lusano__row-value {
@@ -4601,6 +4659,8 @@ body.template-product .section-advertising {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  color: var(--dark-text, #1c1a16);
+  font-weight: 500;
 }
 
 .lusano__row-value--price {
@@ -4700,12 +4760,14 @@ body.template-product .section-advertising {
   align-items: center;
   padding: 0.75rem 0;
   border-top: 1px solid rgba(129, 117, 108, 0.35);
-  font-size: 0.82rem;
-  font-style: italic;
+  font-size: clamp(0.95rem, 0.15vw + 0.92rem, 1.02rem);
+  font-style: normal;
 }
 
 .lusano__qty-label {
-  opacity: 0.7;
+  opacity: 1;
+  color: var(--dark-text, #1c1a16);
+  font-weight: 500;
 }
 
 .lusano__qty-ctrl {
@@ -4715,11 +4777,12 @@ body.template-product .section-advertising {
 }
 
 .lusano__qty-btn {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 1.1rem;
+  font-family: var(--julia-font-heading, "Hanken Grotesk", sans-serif);
+  font-size: 1.2rem;
+  font-weight: 600;
   background: none;
   border: none;
-  color: var(--brown, #54463D);
+  color: var(--dark-text, #1c1a16);
   cursor: pointer;
   padding: 0;
   line-height: 1;
@@ -4731,13 +4794,14 @@ body.template-product .section-advertising {
 }
 
 .lusano__qty-input {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 0.85rem;
-  width: 36px;
+  font-family: var(--julia-font-body, "Montserrat", sans-serif);
+  font-size: 1rem;
+  font-weight: 500;
+  width: 42px;
   text-align: center;
   border: none;
   background: transparent;
-  color: var(--brown, #54463D);
+  color: var(--dark-text, #1c1a16);
   -moz-appearance: textfield;
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button {
@@ -4748,21 +4812,25 @@ body.template-product .section-advertising {
 
 .lusano__payments {
   padding: 0.5rem 0 0.75rem;
-  font-size: 0.82rem;
+  font-size: clamp(0.95rem, 0.12vw + 0.92rem, 1rem);
 }
 
 .lusano__payments-text {
-  font-style: italic;
-  opacity: 0.7;
+  font-style: normal;
+  opacity: 1;
+  color: var(--dark-text, #1c1a16);
+  font-weight: 500;
   margin-right: 0.5rem;
 }
 
 .lusano__payments-link {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 0.78rem;
-  color: var(--brown, #54463D);
+  font-family: var(--julia-font-heading, "Hanken Grotesk", sans-serif);
+  font-size: clamp(0.92rem, 0.1vw + 0.9rem, 0.98rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--dark-text, #1c1a16);
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-underline-offset: 3px;
   cursor: pointer;
 }
 
@@ -4773,9 +4841,10 @@ body.template-product .section-advertising {
   color: var(--cream, #ece8e4);
   border: none;
   padding: 1.1rem 1rem;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 0.9rem;
-  letter-spacing: 0.05em;
+  font-family: var(--julia-font-heading, "Hanken Grotesk", sans-serif);
+  font-size: clamp(0.96rem, 0.12vw + 0.94rem, 1.02rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
   cursor: pointer;
   transition: opacity 0.2s ease;
   margin-top: 0.75rem;
@@ -5011,6 +5080,66 @@ $julia-overlay-payments: rgba(28, 26, 22, 0.38);
     color: var(--dark-text, #1c1a16);
     border-radius: 0;
     font-family: var(--julia-font-body, "Montserrat", sans-serif);
+  }
+
+  {# Cantidad: alinear - [input] + en una sola línea y mismo tamaño #}
+  .form-quantity {
+    display: inline-flex !important;
+    align-items: stretch !important;
+    justify-content: flex-start;
+    gap: 0 !important;
+    border-radius: 0;
+  }
+
+  .form-quantity .row.m-0 {
+    display: inline-flex !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    margin: 0 !important;
+  }
+
+  .form-quantity .js-cart-quantity-btn,
+  .form-quantity .cart-item-btn {
+    width: 42px;
+    height: 38px;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: var(--white, #ffffff);
+    border: 1px solid var(--gray-light, #d2d0d0) !important;
+    color: var(--dark-text, #1c1a16) !important;
+    opacity: 1;
+  }
+
+  .form-quantity .js-cart-quantity-btn:hover,
+  .form-quantity .js-cart-quantity-btn:focus-visible {
+    border-color: var(--brown, #54463d) !important;
+    color: var(--brown, #54463d) !important;
+    outline: none;
+  }
+
+  .form-quantity .cart-item-input,
+  .form-quantity .form-control.cart-item-input {
+    width: 46px !important;
+    height: 38px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: center !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-top: 1px solid var(--gray-light, #d2d0d0) !important;
+    border-bottom: 1px solid var(--gray-light, #d2d0d0) !important;
+    border-radius: 0 !important;
+    background: var(--white, #ffffff) !important;
+    color: var(--dark-text, #1c1a16) !important;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .form-quantity .js-cart-quantity-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
   }
 
   .cart-item-btn {

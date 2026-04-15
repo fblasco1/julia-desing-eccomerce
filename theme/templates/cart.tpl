@@ -46,5 +46,38 @@
     </form>
     <div id="store-curr" class="hidden">{{ cart.currency }}</div>
 </div>
+
+{# Julia Design: /carrito no debe existir como página. Abrimos la sidebar del carrito y ocultamos el layout de página. #}
+{% if settings.ajax_cart %}
+<style>
+  #shoppingCartPage { display: none !important; }
+  .page-header { display: none !important; }
+</style>
+<script>
+  (function () {
+    function openCartSidebar() {
+      var modal = document.getElementById("modal-cart");
+      var overlay = document.querySelector('.js-modal-overlay[data-modal-id="#modal-cart"], .js-fullscreen-overlay[data-modal-id="#modal-cart"]');
+      if (!modal) return false;
+      modal.style.display = "block";
+      modal.classList.add("modal-show");
+      if (overlay) overlay.style.display = "block";
+      document.documentElement.classList.add("modal-open");
+      document.body.classList.add("modal-open");
+      return true;
+    }
+
+    // Intento 1: abrir inmediatamente
+    if (openCartSidebar()) return;
+
+    // Intento 2: esperar a que cargue el DOM y el header inyecte el modal
+    document.addEventListener("DOMContentLoaded", function () {
+      if (openCartSidebar()) return;
+      setTimeout(openCartSidebar, 300);
+      setTimeout(openCartSidebar, 900);
+    });
+  })();
+</script>
+{% endif %}
 </section>
 

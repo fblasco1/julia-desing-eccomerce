@@ -1022,6 +1022,78 @@ p{
   max-height: 80px;
 }
 
+{# Julia header (critical): reduce CLS before async CSS #}
+html.julia-html-home,
+body.julia-head-mode--home,
+body.julia-head-mode--catalog,
+body.julia-head-mode--static {
+  --julia-nav-h: 60px;
+  --julia-header-pad: clamp(16px, 3.5vw, 44px);
+}
+
+@media (max-width: 767px) {
+  html.julia-html-home,
+  body.julia-head-mode--home,
+  body.julia-head-mode--catalog,
+  body.julia-head-mode--static {
+    --julia-nav-h: 56px;
+  }
+}
+
+.julia-header-wrap {
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  padding-left: var(--julia-header-pad, 44px);
+  padding-right: var(--julia-header-pad, 44px);
+  box-sizing: border-box;
+}
+
+.julia-header-grid {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 8px 12px;
+  width: 100%;
+}
+
+.julia-header-nav-desktop { display: none; min-width: 0; }
+.julia-header-logo-cell { grid-column: 1; grid-row: 1; justify-self: start; }
+.julia-header-utilities-cell { grid-column: 3; grid-row: 1; justify-self: end; }
+
+@media (min-width: 768px) {
+  .julia-header-grid {
+    grid-template-columns: 1fr auto 1fr;
+    gap: 12px 20px;
+  }
+  .julia-header-nav-desktop {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: stretch;
+  }
+  .julia-header-logo-cell { grid-column: 2; justify-self: center; }
+  .julia-header-utilities-cell { grid-column: 3; justify-self: end; }
+}
+
+.julia-header-logo .logo-img {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  max-height: 32px;
+  max-width: 160px;
+  width: auto;
+}
+
+body.julia-head-mode--catalog .head-main,
+body.julia-head-mode--static .head-main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
 {# /* // Cart widget and search */ #}
 
 .utilities-item {

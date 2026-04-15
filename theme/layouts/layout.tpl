@@ -12,9 +12,7 @@
         <meta name="description" content="{{ page_description }}" />
         <link rel="preload" as="style" href="{{ [settings.font_headings, settings.font_rest] | google_fonts_url('300, 400, 700') }}" />
         <link rel="preload" href="{{ 'css/style-colors.scss.tpl' | static_url }}" as="style" />
-        {% if template == 'category' %}
         <link rel="preload" href="{{ 'css/style-async.scss.tpl' | static_url }}" as="style" />
-        {% endif %}
 
         {# Preload LCP home, category and product page elements #}
 
@@ -43,13 +41,25 @@
             {% include "static/css/style-colors-inline.tpl" %}
         </style>
 
-        {# Colors and fonts used from settings.txt and defined on theme customization #}
+        {# CSS async híbrido:
+           - Plantillas Julia críticas: carga bloqueante (evita FOUC/CLS en header/nav)
+           - Resto de plantillas: carga diferida para recuperar performance #}
+        {% set julia_async_blocking = template == 'home' or template == 'category' or template == 'search' or template == 'product' or template == 'cart' or (template == 'page' and page is defined and page.handle is defined and (page.handle == 'quienes-somos' or page.handle == 'como-trabajamos')) %}
 
-        <link rel="stylesheet" href="{{ 'css/style-colors.scss.tpl' | static_url }}" media="print" onload="this.media='all'">
+        {# Colors and fonts used from settings.txt and defined on theme customization. #}
+        <link rel="stylesheet" href="{{ 'css/style-colors.scss.tpl' | static_url }}">
 
-        {# Load async styling not mandatory for first meaningfull paint #}
+        {# Estilos principales del theme #}
+        {% if julia_async_blocking %}
+            <link rel="stylesheet" href="{{ 'css/style-async.scss.tpl' | static_url }}">
+        {% else %}
+            <link rel="stylesheet" href="{{ 'css/style-async.scss.tpl' | static_url }}" media="print" onload="this.media='all'">
+        {% endif %}
 
-        <link rel="stylesheet" href="{{ 'css/style-async.scss.tpl' | static_url }}" media="print" onload="this.media='all'">
+        <noscript>
+            <link rel="stylesheet" href="{{ 'css/style-colors.scss.tpl' | static_url }}">
+            <link rel="stylesheet" href="{{ 'css/style-async.scss.tpl' | static_url }}">
+        </noscript>
 
         {#/*============================================================================
             #Javascript: Needed before HTML loads

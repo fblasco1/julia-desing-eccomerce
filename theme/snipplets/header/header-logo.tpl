@@ -13,6 +13,8 @@
 	{% set logo_src = logo_file | static_url | settings_image_url('large') %}
 {% elseif logo_file_alt | has_custom_image %}
 	{% set logo_src = logo_file_alt | static_url | settings_image_url('large') %}
+    {# Si la página requiere logo blanco pero solo está subido el negro, invertimos por CSS. #}
+    {% set julia_logo_needs_invert = (not use_logo_negro) %}
 {% else %}
 	{% set logo_src = '' %}
 {% endif %}
@@ -23,7 +25,7 @@
 			<img
 				src="{{ logo_src }}"
 				alt="{{ store.name }}"
-				class="logo-img transition-soft-slow"
+				class="logo-img transition-soft-slow{% if julia_logo_needs_invert %} julia-logo-invert{% endif %}"
 				loading="eager"
 			/>
 		</a>

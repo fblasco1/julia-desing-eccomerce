@@ -346,6 +346,31 @@ DOMContentLoaded.addEventOrExecute(() => {
                 return window.matchMedia("(max-width: 768px)").matches;
             }
 
+            function clampNum(n, min, max) {
+                return Math.min(max, Math.max(min, n));
+            }
+
+            function getJuliaNavHFallback() {
+                return isMobileViewport() ? 56 : 60;
+            }
+
+            function sanitizeJuliaNavH(raw) {
+                var fallback = getJuliaNavHFallback();
+                var min = isMobileViewport() ? 46 : 50;
+                var max = isMobileViewport() ? 78 : 90;
+                var n = parseFloat(raw);
+                if (!isFinite(n)) n = fallback;
+                return clampNum(n, min, max);
+            }
+
+            function setJuliaNavH(raw) {
+                var n = sanitizeJuliaNavH(raw);
+                var px = n + "px";
+                document.documentElement.style.setProperty("--julia-nav-h", px);
+                if (body && body.style) body.style.setProperty("--julia-nav-h", px);
+                return n;
+            }
+
             var homeLogoCtl = null;
 
             if (isHome && head) {
@@ -374,12 +399,12 @@ DOMContentLoaded.addEventOrExecute(() => {
                     }
                     function posLogo(inNavFlag) {
                         if (head) {
-                            var nh = head.offsetHeight + "px";
-                            document.documentElement.style.setProperty("--julia-nav-h", nh);
-                            if (body && body.style) body.style.setProperty("--julia-nav-h", nh);
+                            setJuliaNavH(head.offsetHeight);
                         }
                         var vw = window.innerWidth;
-                        var navHCss = getCssPxVar("--julia-nav-h", head ? head.offsetHeight : 60);
+                        var navHCss = sanitizeJuliaNavH(
+                            getCssPxVar("--julia-nav-h", head ? head.offsetHeight : getJuliaNavHFallback())
+                        );
                         var stripH = juliaReadStripH();
                         var imgCol = juliaReadImgColRatio();
                         var mobile = isMobileViewport();
@@ -436,11 +461,9 @@ DOMContentLoaded.addEventOrExecute(() => {
 
                     function syncHomeScroll() {
                         var y = document.documentElement.scrollTop || window.scrollY;
-                        var navH = head.offsetHeight || getCssPxVar("--julia-nav-h", 60);
-                        document.documentElement.style.setProperty("--julia-nav-h", navH + "px");
-                        if (body && body.style) body.style.setProperty("--julia-nav-h", navH + "px");
+                        var navH = setJuliaNavH(head.offsetHeight || getCssPxVar("--julia-nav-h", getJuliaNavHFallback()));
                         var stripH = juliaReadStripH();
-                        var navForPast = getCssPxVar("--julia-nav-h", navH);
+                        var navForPast = sanitizeJuliaNavH(getCssPxVar("--julia-nav-h", navH));
                         var past = y > navForPast + stripH - 20;
                         body.classList.toggle("julia-head-home-solid", past);
                         if (past !== isInNav) {
@@ -497,13 +520,15 @@ DOMContentLoaded.addEventOrExecute(() => {
 
             function syncJuliaNavH() {
                 if (head) {
-                    var nh = head.offsetHeight + "px";
-                    document.documentElement.style.setProperty("--julia-nav-h", nh);
-                    if (body && body.style) body.style.setProperty("--julia-nav-h", nh);
+                    setJuliaNavH(head.offsetHeight);
                 }
             }
             syncJuliaNavH();
             window.addEventListener("resize", syncJuliaNavH);
+            window.addEventListener("load", function () {
+                syncJuliaNavH();
+                setTimeout(syncJuliaNavH, 80);
+            });
 
             function setMobileMenu(open) {
                 if (head) head.classList.toggle("julia-mega-mobile-open", open);
@@ -872,6 +897,15 @@ DOMContentLoaded.addEventOrExecute(() => {
         var spacer = document.querySelector(".js-category-controls-spacer");
         if (toolbar && spacer) {
             var compactThreshold = 72;
+            function getSafeToolbarHeight() {
+                var h = toolbar.offsetHeight || 0;
+                var min = 28;
+                var max = 140;
+                if (h < min || h > max) {
+                    return window.matchMedia("(max-width: 768px)").matches ? 52 : 64;
+                }
+                return h;
+            }
             function updateCatalogCompact() {
                 var y = window.scrollY || window.pageYOffset;
                 var compact = y > compactThreshold;
@@ -879,7 +913,7 @@ DOMContentLoaded.addEventOrExecute(() => {
                 if (compact) {
                     requestAnimationFrame(function () {
                         if (document.body.classList.contains("julia-catalog-compact")) {
-                            spacer.style.height = toolbar.offsetHeight + "px";
+                            spacer.style.height = getSafeToolbarHeight() + "px";
                         }
                     });
                 } else {
