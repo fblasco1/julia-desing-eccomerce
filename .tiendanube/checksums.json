@@ -696,8 +696,8 @@
   },
   {
     "remotePath": "/static/css/style-async.scss.tpl",
-    "hash": "00e2543bc5d37e42e6231306caa26c41",
-    "timestamp": 1776438462435
+    "hash": "a7025a15628232e8909a7b4522feaeaa",
+    "timestamp": 1776442085168
   },
   {
     "remotePath": "/static/css/style-colors.scss.tpl",
@@ -741,8 +741,8 @@
   },
   {
     "remotePath": "/static/js/store.js.tpl",
-    "hash": "973d276e7ce70356bebcd81fe5078324",
-    "timestamp": 1776436323854
+    "hash": "092e26ba1c942a2d5a31631ed54dcfb2",
+    "timestamp": 1776440900819
   },
   {
     "remotePath": "/templates/404.tpl",
@@ -836,8 +836,8 @@
   },
   {
     "remotePath": "/templates/product.tpl",
-    "hash": "5ba6f74d96c5710e9090fdcce02ff4b9",
-    "timestamp": 1775508753275
+    "hash": "f677fa9e950e541946dd07cc099aacdd",
+    "timestamp": 1776442089400
   },
   {
     "remotePath": "/templates/search.tpl",

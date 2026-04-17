@@ -80,20 +80,11 @@
           <p class="lusano__note-body">{{ product.description | striptags | slice(0, 400) }}{% if product.description | striptags | length > 400 %}…{% endif %}</p>
         </div>
         {% endif %}
-        <div class="lusano__note">
-          <span class="lusano__note-ix">ii.</span>
-          <p class="lusano__note-body lusano__note-body--em js-lusano-variant-label">—</p>
-        </div>
-      </div>
-
-      <div class="lusano__detail">
-        {% if product.images_count > 0 %}
-          <span class="lusano__detail-label">(Detail)</span>
-          <img
-            src="{{ product.images | first | product_image_url('small') }}"
-            data-full="{{ product.images | first | product_image_url('original') }}"
-            class="lusano__detail-thumb js-lusano-detail-thumb"
-            alt="{{ product.name }}" />
+        {% if product.variations is defined and product.variations is not empty %}
+          <div class="lusano__note">
+            <span class="lusano__note-ix">ii.</span>
+            <p class="lusano__note-body lusano__note-body--em js-lusano-variant-label">—</p>
+          </div>
         {% endif %}
       </div>
     </aside>

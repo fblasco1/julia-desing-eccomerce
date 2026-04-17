@@ -4556,7 +4556,7 @@ body.template-product .section-advertising {
 .lusano__close {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 0.85rem;
-  cursor: crosshair;
+  cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 3px;
   background: none;
@@ -4628,6 +4628,7 @@ body.template-product .section-advertising {
 
 .lusano__col--center {
   overflow-y: scroll;
+  overflow-x: hidden;
   height: 100vh;
   cursor: crosshair;
   scrollbar-width: none;
@@ -4650,6 +4651,29 @@ body.template-product .section-advertising {
   object-fit: contain;
   object-position: center;
   background: transparent;
+}
+
+@media (max-width: 767px) {
+  {# PDP: en mobile la galería scrollea horizontalmente #}
+  .lusano__col--center {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 0;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+  }
+
+  .lusano__gallery-img {
+    flex: 0 0 100%;
+    width: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
 }
 
 {# ── Columna derecha — info + compra ── #}
@@ -4675,7 +4699,7 @@ body.template-product .section-advertising {
 }
 
 .lusano__counter-num {
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-size: clamp(2.75rem, 4.4vw, 3.85rem);
   font-weight: 400;
   line-height: 1;
   transition: opacity 0.25s ease;
@@ -5018,10 +5042,19 @@ body.template-product .section-advertising {
   }
 
   .lusano__col--center {
+    overflow-x: scroll;
     overflow-y: visible;
     height: auto;
     padding-top: 0;
+    padding-bottom: 0;
     order: 2;
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    touch-action: auto;
   }
 
   .lusano__col--right {
@@ -5048,9 +5081,27 @@ body.template-product .section-advertising {
   }
 
   .lusano__gallery-img {
-    height: 100vh;
-    min-height: 100vh;
-    max-height: 100vh;
+    flex: 0 0 100%;
+    width: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    height: 78vh;
+    min-height: 78vh;
+    max-height: 78vh;
+  }
+
+  {# En tablet/mobile: botón Volver fijo arriba a la izquierda sobre la galería #}
+  .lusano__close {
+    position: fixed;
+    top: calc(var(--julia-nav-h, 56px) + 10px);
+    left: 14px;
+    z-index: 1200;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(236, 232, 228, 0.92);
+    border: 1px solid rgba(28, 26, 22, 0.12);
+    box-shadow: 0 10px 24px rgba(28, 26, 22, 0.08);
+    text-decoration: none;
   }
 }
 

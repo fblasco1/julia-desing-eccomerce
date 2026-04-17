@@ -1444,8 +1444,14 @@ DOMContentLoaded.addEventOrExecute(() => {
         lusanoUnveilGalleryImg(el);
         var gRect = gallery.getBoundingClientRect();
         var eRect = el.getBoundingClientRect();
-        var nextTop = gallery.scrollTop + (eRect.top - gRect.top);
-        gallery.scrollTo({ top: Math.max(0, nextTop), behavior: "smooth" });
+        var isHorizontal = gallery.scrollWidth > gallery.clientWidth + 2;
+        if (isHorizontal) {
+            var nextLeft = gallery.scrollLeft + (eRect.left - gRect.left);
+            gallery.scrollTo({ left: Math.max(0, nextLeft), behavior: "smooth" });
+        } else {
+            var nextTop = gallery.scrollTop + (eRect.top - gRect.top);
+            gallery.scrollTo({ top: Math.max(0, nextTop), behavior: "smooth" });
+        }
         var idx = parseInt(el.getAttribute("data-index"), 10);
         if (!isNaN(idx) && counterEl) {
             counterEl.textContent = pad(idx, 3);
