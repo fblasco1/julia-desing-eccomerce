@@ -10,6 +10,7 @@
 			         	<a href="{{ image | product_image_url('original') }}" data-fancybox="product-gallery" class="js-product-slide-link d-block position-relative" style="padding-bottom: {{ image.dimensions['height'] / image.dimensions['width'] * 100}}%;">
 		         			
 							{% set apply_lazy_load = not loop.first %}
+							{% set image_alt = image.alt | default(product.name) | striptags | trim %}
 
 							{% if apply_lazy_load %}
 								{% set product_image_src = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' %}
@@ -19,12 +20,14 @@
 							
 							<img 
 								{% if not apply_lazy_load %}fetchpriority="high"{% endif %}
+								loading="{% if apply_lazy_load %}lazy{% else %}eager{% endif %}"
+								decoding="async"
 								{% if apply_lazy_load %}data-{% endif %}src="{{ product_image_src }}"
 								{% if apply_lazy_load %}data-{% endif %}srcset='{{  image | product_image_url('large') }} 480w, {{  image | product_image_url('huge') }} 640w, {{  image | product_image_url('original') }} 1024w' 
 								class="js-product-slide-img product-slider-image img-absolute img-absolute-centered {% if apply_lazy_load %}lazyautosizes lazyload{% endif %}" 
 								{% if apply_lazy_load %}data-sizes="auto"{% endif %}
 								{% if image.dimensions.width and image.dimensions.height %}width="{{ image.dimensions.width }}" height="{{ image.dimensions.height }}"{% endif %}
-								{% if image.alt %}alt="{{image.alt}}"{% endif %} />
+								alt="{{ image_alt }}" />
 			        	</a>
  					</div>
 					{% endfor %}

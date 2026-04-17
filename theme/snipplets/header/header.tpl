@@ -97,13 +97,7 @@
 {% endembed %}
 {# Notifications #}
 
-{# Modal Search #}
-
-{% embed "snipplets/modal.tpl" with{modal_id: 'nav-search', modal_position: 'right', modal_transition: 'slide', modal_width: 'docked-md' } %}
-    {% block modal_body %}
-        {% snipplet "header/header-search.tpl" %}
-    {% endblock %}
-{% endembed %}
+{# Search deshabilitado en este proyecto #}
 
 {# Julia: el carrito debe abrir como sidebar (también en /carrito). #}
 {% if not store.is_catalog and settings.ajax_cart %}           

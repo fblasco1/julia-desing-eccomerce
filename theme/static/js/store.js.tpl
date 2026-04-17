@@ -1084,6 +1084,15 @@ DOMContentLoaded.addEventOrExecute(() => {
             }
         }
 
+        function juliaSubmitPriceFilter(scope) {
+            var btn = juliaFindPriceSubmitButton(scope);
+            if (!btn) {
+                return;
+            }
+            juliaEnablePriceSubmit(scope);
+            btn.click();
+        }
+
         function juliaCatalogInitPriceRange() {
             var filterRoot = document.getElementById("julia-catalog-filters-panel");
             if (!filterRoot) {
@@ -1197,8 +1206,19 @@ DOMContentLoaded.addEventOrExecute(() => {
             } else {
                 body.insertBefore(wrap, body.firstChild);
             }
-
-            var actionSpan = filterRoot.querySelector(".julia-catalog-dropdown__action");
+            var userTouchedPrice = false;
+            var submitDebounceId = null;
+            function scheduleSubmit() {
+                if (!userTouchedPrice) {
+                    return;
+                }
+                if (submitDebounceId) {
+                    clearTimeout(submitDebounceId);
+                }
+                submitDebounceId = setTimeout(function () {
+                    juliaSubmitPriceFilter(body);
+                }, 450);
+            }
 
             function syncReadout(v) {
                 valueEl.textContent = lblHasta + " " + juliaFormatMoneyAr(v);
@@ -1228,6 +1248,7 @@ DOMContentLoaded.addEventOrExecute(() => {
             }
 
             function onSliderMove() {
+                userTouchedPrice = true;
                 var v = parseInt(slider.value, 10);
                 if (isNaN(v)) {
                     return;
@@ -1242,13 +1263,30 @@ DOMContentLoaded.addEventOrExecute(() => {
                 }
                 syncReadout(v);
                 juliaEnablePriceSubmit(body);
-                if (actionSpan) {
-                    actionSpan.classList.add("julia-catalog-dropdown__action--active");
-                }
+                scheduleSubmit();
             }
 
             slider.addEventListener("input", onSliderMove);
             slider.addEventListener("change", onSliderMove);
+            slider.addEventListener("pointerdown", function () {
+                userTouchedPrice = true;
+            });
+            slider.addEventListener("touchstart", function () {
+                userTouchedPrice = true;
+            }, { passive: true });
+            slider.addEventListener("mousedown", function () {
+                userTouchedPrice = true;
+            });
+
+            // Inputs nativos (desde/hasta): aplicar automáticamente si el usuario los edita.
+            // Usamos change/blur para evitar submit en cada tecla.
+            for (var ii = 0; ii < priceInputs.length; ii++) {
+                priceInputs[ii].addEventListener("change", scheduleSubmit);
+                priceInputs[ii].addEventListener("blur", scheduleSubmit);
+                priceInputs[ii].addEventListener("focus", function () {
+                    userTouchedPrice = true;
+                });
+            }
 
             syncSliderFromInputs();
             if (minEl && maxEl) {
@@ -1259,30 +1297,6 @@ DOMContentLoaded.addEventOrExecute(() => {
         }
 
         var filterDetailsForPrice = document.getElementById("julia-catalog-filters-panel");
-        if (filterDetailsForPrice && filterDetailsForPrice.getAttribute("data-julia-filter-apply-wired") !== "1") {
-            filterDetailsForPrice.setAttribute("data-julia-filter-apply-wired", "1");
-            filterDetailsForPrice.addEventListener(
-                "click",
-                function (e) {
-                    if (!filterDetailsForPrice.open) {
-                        return;
-                    }
-                    var act = e.target.closest(".julia-catalog-dropdown__action");
-                    if (!act) {
-                        return;
-                    }
-                    e.preventDefault();
-                    e.stopPropagation();
-                    var bodyEl = filterDetailsForPrice.querySelector(".julia-catalog-dropdown__body");
-                    var btn = juliaFindPriceSubmitButton(bodyEl);
-                    if (btn) {
-                        juliaEnablePriceSubmit(bodyEl);
-                        btn.click();
-                    }
-                },
-                true
-            );
-        }
         if (filterDetailsForPrice) {
             filterDetailsForPrice.addEventListener("toggle", function () {
                 if (filterDetailsForPrice.open) {

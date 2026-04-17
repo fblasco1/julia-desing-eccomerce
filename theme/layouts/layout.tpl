@@ -10,6 +10,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{{ page_title }}</title>
         <meta name="description" content="{{ page_description }}" />
+
+        {# SEO: evitar indexación de páginas utilitarias #}
+        {% if template == 'search'
+            or template == 'cart'
+            or template == 'password'
+            or template == '404'
+            or template starts with 'account.' %}
+            <meta name="robots" content="noindex,follow" />
+        {% endif %}
         <link rel="preload" as="style" href="{{ [settings.font_headings, settings.font_rest] | google_fonts_url('300, 400, 700') }}" />
         <link rel="preload" href="{{ 'css/style-colors.scss.tpl' | static_url }}" as="style" />
         <link rel="preload" href="{{ 'css/style-async.scss.tpl' | static_url }}" as="style" />

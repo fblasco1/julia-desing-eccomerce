@@ -47,9 +47,11 @@
 									<a href="{% if sub.url %}{{ sub.url | setting_url }}{% else %}#{% endif %}">{{ sub.name }}</a>
 								</li>
 							{% endfor %}
+							{% if store.products_url is defined and store.products_url %}
 							<li>
 								<a href="{{ store.products_url }}">{{ 'Ver todo el catálogo' | translate }}</a>
 							</li>
+							{% endif %}
 						</ul>
 					</div>
 				{% endif %}

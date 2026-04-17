@@ -87,7 +87,6 @@
 			>
 				<summary class="julia-catalog-dropdown__summary">
 					<span class="julia-catalog-dropdown__label">{{ "Filtros" | translate }}</span>
-					<span class="julia-catalog-dropdown__action">{{ "Aplicar" | translate }}</span>
 				</summary>
 				<div class="julia-catalog-dropdown__body">
 					{% include 'snipplets/grid/filters.tpl' %}

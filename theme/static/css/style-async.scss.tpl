@@ -2349,6 +2349,22 @@ body.julia-head-mode--catalog .head-main {
   -webkit-backdrop-filter: none !important;
 }
 
+@media (max-width: 767px) {
+  {# Mobile catálogo: navbar fija + sólida (cremita) #}
+  body.julia-head-mode--catalog .head-main {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1040;
+    background: rgba(236, 232, 228, 0.97) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(28, 26, 22, 0.07);
+    box-shadow: 0 6px 24px rgba(28, 26, 22, 0.05);
+  }
+}
+
 @media (min-width: 768px) {
   body.julia-catalog-compact .julia-head-bar {
     transform: translateY(-100%);
@@ -2860,7 +2876,7 @@ body.template-cart .julia-mega-menu a.mega-view-all:hover {
 }
 
 .julia-catalog-sort-details {
-  position: relative;
+  position: static;
   width: 100%;
 }
 
@@ -2895,16 +2911,25 @@ body.template-cart .julia-mega-menu a.mega-view-all:hover {
 .julia-catalog-sort-dropdown {
   position: absolute;
   top: calc(100% + 8px);
+  left: 0;
   right: 0;
-  left: auto;
   z-index: 60;
-  min-width: 240px;
-  max-width: min(92vw, 280px);
-  padding: 10px 12px;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  max-height: min(70vh, 420px);
+  overflow: auto;
+  padding: 18px 16px;
   border: 1px solid rgba(28, 26, 22, 0.14);
   border-radius: 10px;
-  background: #ffffff;
+  background: #f4f3f1;
   box-shadow: 0 14px 32px rgba(0, 0, 0, 0.1);
+}
+
+.julia-catalog-sort-dropdown label,
+.julia-catalog-sort-dropdown a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .julia-catalog-sort-opt {
@@ -2937,6 +2962,7 @@ body.template-cart .julia-mega-menu a.mega-view-all:hover {
   font-weight: 400;
   color: rgba(28, 26, 22, 0.88);
   cursor: pointer;
+  text-decoration: none;
 }
 
 .julia-catalog-dropdown__body .julia-catalog-filter-opt + .julia-catalog-filter-opt {
@@ -3211,6 +3237,20 @@ body.template-cart .julia-mega-menu a.mega-view-all:hover {
   border-radius: 8px !important;
 }
 
+{# En catálogo, el filtro precio se aplica reactivo: ocultar botón nativo #}
+.julia-catalog-dropdown__body .julia-catalog-filter-price .btn,
+.julia-catalog-dropdown__body .julia-catalog-filter-price .btn-default {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
 .julia-catalog-dropdown__body .checkbox-container .checkbox {
   display: flex;
   flex-direction: row;
@@ -3306,6 +3346,14 @@ body.template-cart .julia-mega-menu a.mega-view-all:hover {
     justify-content: stretch;
   }
 
+  .julia-catalog-tabs {
+    display: none !important;
+  }
+
+  .julia-category-toolbar {
+    margin-bottom: 12px;
+  }
+
   .julia-catalog-pill,
   .julia-catalog-dropdown--filters {
     flex: 1 1 calc(50% - 5px);
@@ -3325,6 +3373,14 @@ body.template-cart .julia-mega-menu a.mega-view-all:hover {
     width: auto;
   }
 
+  .julia-catalog-sort-dropdown {
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
   body.julia-catalog-compact .julia-category-toolbar {
     position: fixed;
     left: 0;
@@ -3339,6 +3395,27 @@ body.template-cart .julia-mega-menu a.mega-view-all:hover {
     border-bottom: 1px solid rgba(28, 26, 22, 0.07);
     box-shadow: 0 6px 24px rgba(28, 26, 22, 0.05);
   }
+}
+
+.julia-applied-filters {
+  margin-top: 6px;
+  margin-bottom: 14px;
+}
+
+.julia-applied-filters__clear {
+  font-family: var(--julia-font-heading);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(28, 26, 22, 0.82);
+  opacity: 0.85;
+  text-decoration: none;
+}
+
+.julia-applied-filters__clear:hover,
+.julia-applied-filters__clear:focus-visible {
+  opacity: 1;
+  text-decoration: none;
 }
 
 {# Institucionales: barra transparente sobre el split (misma lectura que home sin scroll sólido) #}

@@ -20,11 +20,6 @@
 			</div>
 		</span>
 	{% endif %}
-	<div class="utilities-item">
-		<a href="#" class="js-modal-open js-toggle-search utilities-link" data-toggle="#nav-search" aria-label="{{ 'Buscador' | translate }}">
-			{% include "snipplets/svg/search.tpl" with {svg_custom_class: "icon-inline icon-w-16 svg-icon-text"} %}
-		</a>
-	</div>
 	{% if not store.is_catalog %}
 	<div class="utilities-item">
 		<div id="ajax-cart" class="cart-summary" data-component='cart-button'>

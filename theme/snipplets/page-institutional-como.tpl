@@ -27,11 +27,24 @@
 		{% endif %}
 		<div class="julia-inst-faq-list">
 			{% set prev_cat = false %}
+			{% set faq_entities = [] %}
 			{% for i in 1..10 %}
 				{% set faq_t = attribute(settings, 'julia_inst_como_faq_' ~ i ~ '_title') %}
 				{% set faq_b = attribute(settings, 'julia_inst_como_faq_' ~ i ~ '_body') %}
 				{% set faq_c = attribute(settings, 'julia_inst_como_faq_' ~ i ~ '_category') | default('') | trim %}
 				{% if faq_t is defined and faq_t | trim %}
+					{% set faq_t_plain = faq_t | striptags | trim %}
+					{% set faq_b_plain = (faq_b is defined and faq_b) ? (faq_b | striptags | trim) : '' %}
+					{% if faq_t_plain != '' and faq_b_plain != '' %}
+						{% set faq_entities = faq_entities | merge([{
+							'@type': 'Question',
+							'name': faq_t_plain,
+							'acceptedAnswer': {
+								'@type': 'Answer',
+								'text': faq_b_plain
+							}
+						}]) %}
+					{% endif %}
 					{% if faq_c != '' %}
 						{% if prev_cat is same as(false) or faq_c != prev_cat %}
 							<h2 class="julia-inst-faq-group">{{ faq_c | e }}</h2>
@@ -56,3 +69,14 @@
 		</div>
 	</section>
 </main>
+
+{# AEO/GEO: FAQPage JSON-LD solo para esta página institucional #}
+{% if faq_entities | length > 0 %}
+	<script type="application/ld+json">
+		{{ {
+			'@context': 'https://schema.org',
+			'@type': 'FAQPage',
+			'mainEntity': faq_entities
+		} | json_encode | raw }}
+	</script>
+{% endif %}

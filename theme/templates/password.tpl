@@ -10,7 +10,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{{ page_title }}</title>
         <meta name="description" content="{{ page_description }}" />
+        {% if settings.font_headings is defined and settings.font_rest is defined %}
         <link rel="preload" as="style" href="{{ [settings.font_headings, settings.font_rest] | google_fonts_url('300, 400, 700') }}" />
+        {% endif %}
         <link rel="preload" href="{{ 'css/style-colors.scss.tpl' | static_url }}" as="style" />
         
         {{ component('social-meta') }}
@@ -47,7 +49,7 @@
         {# Loads custom CSS added from Advanced Settings on the admin´s theme customization screen #}
 
         <style>
-            {{ settings.css_code | raw }}
+            {{ settings.css_code | default('') | raw }}
         </style>
 
         {#/*============================================================================
@@ -79,7 +81,7 @@
         {{ component('structured-data') }}
 
     </head>
-    <body class="{% if customer %}customer-logged-in{% endif %} template-{{ template | replace('.', '-') }}">
+    <body class="{% if customer is defined and customer %}customer-logged-in{% endif %} template-{{ (template | default('password')) | replace('.', '-') }}">
 
         {# Back to admin bar #}
 
@@ -95,11 +97,14 @@
                             {{ component('logos/logo', {logo_size: 'large', logo_img_classes: 'transition-soft-slow', logo_text_classes: 'h1 m-0'}) }}
                         </div>
 
-                        <h2 class="mb-5">{{ message }}</h2>
+                        <h2 class="mb-5">{{ message | default('') }}</h2>
+                        {# En preview del editor, store.customer_reset_password_url puede no existir: evitar 500 al compilar #}
+                        {% set password_reset_url = store.customer_reset_password_url is defined ? (store.customer_reset_password_url | default('')) : '' %}
                         {% embed "snipplets/forms/form.tpl" with{form_id: 'password-form', submit_text: 'Desbloquear' | translate } %}
                             {% block form_body %}
 
-                                {% embed "snipplets/forms/form-input.tpl" with{input_for: 'password', type_password: true, input_name: 'password', input_help: true, input_help_link: store.customer_reset_password_url, input_label_text: 'Contraseña de acceso' | translate } %}
+                                {% embed "snipplets/forms/form-input.tpl" with{input_for: 'password', type_password: true, input_name: 'password', input_help: password_reset_url, input_help_link: password_reset_url, input_label_text: 'Contraseña de acceso' | translate } %}
+                                    {% block input_help_text %}{{ '¿Olvidaste tu contraseña?' | translate }}{% endblock input_help_text %}
                                     {% block input_form_alert %}
                                         {% if invalid_password == true %}
                                             <div class="alert alert-danger">{{ 'La contraseña es incorrecta.' | translate }}</div>
@@ -116,9 +121,9 @@
         </section>
 
 
-        {# Footer #}
+        {# Pie: mismo que el resto del theme (footer.tpl legacy usa claim-info y puede fallar al compilar en /password) #}
 
-        {% snipplet "footer.tpl" %}
+        {% snipplet "footer/footer-julia.tpl" %}
 
         {# Javascript needed to footer logos lazyload #}
 

@@ -31,8 +31,8 @@
   },
   {
     "remotePath": "/snipplets/breadcrumbs.tpl",
-    "hash": "e11dda3b997dbdef0664d2cac45bafcb",
-    "timestamp": 1775338810497
+    "hash": "363ab81fd9692e64532fee1ee73c1cea",
+    "timestamp": 1776394953628
   },
   {
     "remotePath": "/snipplets/card.tpl",
@@ -176,8 +176,8 @@
   },
   {
     "remotePath": "/snipplets/grid/filters.tpl",
-    "hash": "96671035b0133ed42ba21621553f5956",
-    "timestamp": 1775480765481
+    "hash": "ec537c879b751e5e24ff40a6e424e59c",
+    "timestamp": 1776437893215
   },
   {
     "remotePath": "/snipplets/grid/item-colors.tpl",
@@ -226,13 +226,13 @@
   },
   {
     "remotePath": "/snipplets/header/header-utilities.tpl",
-    "hash": "347eafc7996045df01e82935bd877a28",
-    "timestamp": 1775432862471
+    "hash": "9335ed572eb69c07329db4685b3da1ff",
+    "timestamp": 1776438308744
   },
   {
     "remotePath": "/snipplets/header/header.tpl",
-    "hash": "ce0a930de39e47279df4d6f5233b7f65",
-    "timestamp": 1776188708772
+    "hash": "69123853198ae8965e63251a262be2eb",
+    "timestamp": 1776438309886
   },
   {
     "remotePath": "/snipplets/home/home-banners.tpl",
@@ -386,8 +386,8 @@
   },
   {
     "remotePath": "/snipplets/product/product-image.tpl",
-    "hash": "9b63a40b5b2ad9bdc2abe200b7c9845c",
-    "timestamp": 1775338844306
+    "hash": "3deacf47939573213273c5041d08502e",
+    "timestamp": 1776394964920
   },
   {
     "remotePath": "/snipplets/product/product-payment-details.tpl",
@@ -696,8 +696,8 @@
   },
   {
     "remotePath": "/static/css/style-async.scss.tpl",
-    "hash": "7524b462d72de65a03a504fcdc9fd0f8",
-    "timestamp": 1776199981434
+    "hash": "00e2543bc5d37e42e6231306caa26c41",
+    "timestamp": 1776438462435
   },
   {
     "remotePath": "/static/css/style-colors.scss.tpl",
@@ -741,8 +741,8 @@
   },
   {
     "remotePath": "/static/js/store.js.tpl",
-    "hash": "59b92cdb37ee2ae40fac7501e9325e00",
-    "timestamp": 1776193747466
+    "hash": "973d276e7ce70356bebcd81fe5078324",
+    "timestamp": 1776436323854
   },
   {
     "remotePath": "/templates/404.tpl",
@@ -831,8 +831,8 @@
   },
   {
     "remotePath": "/templates/password.tpl",
-    "hash": "cc8aa418eaa67b3924ef8d74652832a4",
-    "timestamp": 1775338863171
+    "hash": "cb9baeaab00074f0aa996539231776fe",
+    "timestamp": 1776400512398
   },
   {
     "remotePath": "/templates/product.tpl",
@@ -841,13 +841,13 @@
   },
   {
     "remotePath": "/templates/search.tpl",
-    "hash": "3b9953cdfe5a9e65cf0995609bcfb0f9",
-    "timestamp": 1775338863137
+    "hash": "6cb194b1c453a4e759854658a63bc23a",
+    "timestamp": 1776438323974
   },
   {
     "remotePath": "/snipplets/footer/footer-julia.tpl",
-    "hash": "e3fa793600aaa6a3aa38202c5d8cb8ef",
-    "timestamp": 1775342051868
+    "hash": "a5344ebd2d56a8e03fb7acf9379893bf",
+    "timestamp": 1776400496265
   },
   {
     "remotePath": "/snipplets/home/home-exhibitor-card.tpl",
@@ -891,8 +891,8 @@
   },
   {
     "remotePath": "/layouts/layout.tpl",
-    "hash": "69fcc9f23eeba866590577e615561d23",
-    "timestamp": 1776199964307
+    "hash": "95f515a3a40c5f364846772fe688507b",
+    "timestamp": 1776394951087
   },
   {
     "remotePath": "/static/js/store-full.js.tpl",
@@ -911,8 +911,8 @@
   },
   {
     "remotePath": "/static/css/style-colors-inline.tpl",
-    "hash": "f7b13453922a79f7174e211e724dd1ea",
-    "timestamp": 1775484665805
+    "hash": "153354d58217655359ec4ec72c008bdc",
+    "timestamp": 1776400508206
   },
   {
     "remotePath": "/snipplets/home/home-julia-home-info.tpl",
@@ -976,8 +976,8 @@
   },
   {
     "remotePath": "/snipplets/category-julia-toolbar.tpl",
-    "hash": "496fb920d4a0f44f59972ca0f7960300",
-    "timestamp": 1775479208871
+    "hash": "d10b104bd0065ad60f40274270d61bda",
+    "timestamp": 1776436056680
   },
   {
     "remotePath": "/snipplets/page-institutional-quienes.tpl",
@@ -986,7 +986,7 @@
   },
   {
     "remotePath": "/snipplets/page-institutional-como.tpl",
-    "hash": "4002304447153e21cb211f49177fdb90",
-    "timestamp": 1775432866729
+    "hash": "9ab7e719cda749bf4283d126a5cc071c",
+    "timestamp": 1776394961965
   }
 ]

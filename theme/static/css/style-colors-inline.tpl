@@ -9,9 +9,9 @@
   --cream:#ece8e4;
   --dark-text:#1c1a16;
 
-  /* Tipografías desde settings */
-  --julia-font-heading: {{ settings.font_headings | raw }};
-  --julia-font-body: {{ settings.font_rest | raw }};
+  /* Tipografías desde settings (defaults evitan 500 si falta clave en Twig estricto) */
+  --julia-font-heading: {{ (settings.font_headings is defined ? settings.font_headings : 'inherit') | raw }};
+  --julia-font-body: {{ (settings.font_rest is defined ? settings.font_rest : 'inherit') | raw }};
 
   /* Escalas fluidas */
   --julia-text-h1: clamp(2rem, 2.4vw + 1.2rem, 3.75rem);
@@ -28,8 +28,8 @@
 }
 
 body{
-  color: {{ settings.text_color }};
-  background-color: {{ settings.background_color }};
+  color: {{ settings.text_color is defined ? settings.text_color : '#1c1a16' }};
+  background-color: {{ settings.background_color is defined ? settings.background_color : '#ffffff' }};
   font-family: var(--julia-font-body);
   font-size: var(--julia-text-body);
   font-weight: 400;
